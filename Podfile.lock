@@ -1,10 +1,4 @@
 PODS:
-  - AudioKit (4.0.3):
-    - AudioKit/UI (= 4.0.3)
-  - AudioKit/UI (4.0.3)
-  - Jukebox (0.2.1)
-  - PandoraPlayer (1.2):
-    - AudioKit (= 4.0.3)
   - Realm (3.7.5):
     - Realm/Headers (= 3.7.5)
   - Realm/Headers (3.7.5)
@@ -13,28 +7,20 @@ PODS:
   - SwiftSoup (1.7.2)
 
 DEPENDENCIES:
-  - Jukebox
-  - PandoraPlayer
   - RealmSwift
   - SwiftSoup
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AudioKit
-    - Jukebox
-    - PandoraPlayer
     - Realm
     - RealmSwift
     - SwiftSoup
 
 SPEC CHECKSUMS:
-  AudioKit: 914e5e8fcbf35099ff2398775342446a2d81476d
-  Jukebox: 81db618ccd3a1cc9b154f4ae0f5c4b54638666dd
-  PandoraPlayer: 6e2f905ad7c6e51294e6f090d304f08a724174aa
   Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
   SwiftSoup: e5f61d37e3d802a4b5db81b4945de3da9bfdf115
 
-PODFILE CHECKSUM: e91dded9cc226bfee8d87e8f6e355a8d0546dfc4
+PODFILE CHECKSUM: e57913a654faf54300adff45edfada9951c7a417
 
 COCOAPODS: 1.5.3

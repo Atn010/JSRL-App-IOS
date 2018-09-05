@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+		
+		
+		Realm.Configuration.defaultConfiguration = Realm.Configuration(
+			schemaVersion: 1,
+			migrationBlock: { migration, oldSchemaVersion in
+				if (oldSchemaVersion < 1) {
+					// The enumerateObjects(ofType:_:) method iterates
+					// over every Person object stored in the Realm file
+					//                    migration.enumerateObjects(ofType: Person.className()) { oldObject, newObject in
+					//                        // combine name fields into a single field
+					////                        let firstName = oldObject!["firstName"] as! String
+					////                        let lastName = oldObject!["lastName"] as! String
+					////                        newObject!["fullName"] = "\(firstName) \(lastName)"
+					//                    }
+				}
+		})
+		
+		return true
+		
         return true
     }
 

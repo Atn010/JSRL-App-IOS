@@ -143,19 +143,11 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${PODS_ROOT}/AudioKit/iOS/AudioKit.framework"
-  install_framework "${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Jukebox/Jukebox.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PandoraPlayer/PandoraPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${PODS_ROOT}/AudioKit/iOS/AudioKit.framework"
-  install_framework "${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Jukebox/Jukebox.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PandoraPlayer/PandoraPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework"
