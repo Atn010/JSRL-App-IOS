@@ -14,8 +14,15 @@
 		FB4AA273213E35C2009B62AD /* FileDownloaderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */; };
 		FB4AA275213E39F8009B62AD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4AA274213E39F8009B62AD /* RealmManager.swift */; };
 		FB4AA278213E3A63009B62AD /* FileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4AA277213E3A63009B62AD /* FileObject.swift */; };
+		FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5739082186C0DE009C3970 /* MusicStationCell.swift */; };
 		FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B2E213F99A20088105A /* PlaylistObject.swift */; };
 		FB669B31213FA54D0088105A /* StationSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B30213FA54D0088105A /* StationSelectionVC.swift */; };
+		FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */; };
+		FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FC2186C81600CEB371 /* StationListVC.swift */; };
+		FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */; };
+		FB8248B42187FD070050A382 /* MusicStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8248B32187FD070050A382 /* MusicStation.swift */; };
+		FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8248B62187FD970050A382 /* UIColorExt.swift */; };
+		FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E9BEB2187F3E800066A18 /* ScrollText.swift */; };
 		FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5AB192131526000684308 /* AppDelegate.swift */; };
 		FBA5AB1C2131526000684308 /* MusicPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */; };
 		FBA5AB1F2131526000684308 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB1D2131526000684308 /* Main.storyboard */; };
@@ -33,8 +40,15 @@
 		FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloaderObject.swift; sourceTree = "<group>"; };
 		FB4AA274213E39F8009B62AD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		FB4AA277213E3A63009B62AD /* FileObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileObject.swift; sourceTree = "<group>"; };
+		FB5739082186C0DE009C3970 /* MusicStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStationCell.swift; sourceTree = "<group>"; };
 		FB669B2E213F99A20088105A /* PlaylistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistObject.swift; sourceTree = "<group>"; };
 		FB669B30213FA54D0088105A /* StationSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectionVC.swift; sourceTree = "<group>"; };
+		FB669B35213FBFB30088105A /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		FB8088FC2186C81600CEB371 /* StationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListVC.swift; sourceTree = "<group>"; };
+		FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToTopSegue.swift; sourceTree = "<group>"; };
+		FB8248B32187FD070050A382 /* MusicStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStation.swift; sourceTree = "<group>"; };
+		FB8248B62187FD970050A382 /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
+		FB9E9BEB2187F3E800066A18 /* ScrollText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollText.swift; sourceTree = "<group>"; };
 		FBA5AB162131526000684308 /* JSRL IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSRL IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA5AB192131526000684308 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerVC.swift; sourceTree = "<group>"; };
@@ -67,11 +81,6 @@
 		FB4AA270213E24E4009B62AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */,
-				FB669B30213FA54D0088105A /* StationSelectionVC.swift */,
-				FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */,
-				FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */,
-				FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -93,9 +102,31 @@
 			path = Object;
 			sourceTree = "<group>";
 		};
+		FB5739062186C0A7009C3970 /* StationList */ = {
+			isa = PBXGroup;
+			children = (
+				FB5739082186C0DE009C3970 /* MusicStationCell.swift */,
+				FB8088FC2186C81600CEB371 /* StationListVC.swift */,
+				FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */,
+			);
+			path = StationList;
+			sourceTree = "<group>";
+		};
+		FB5739072186C0B6009C3970 /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */,
+			);
+			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
 		FB669B32213FAB8E0088105A /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FB669B30213FA54D0088105A /* StationSelectionVC.swift */,
+				FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */,
+				FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */,
+				FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */,
 				FB471AC6213CFA5000BEE62C /* DataParsingObject.swift */,
 				FB4AA274213E39F8009B62AD /* RealmManager.swift */,
 				FB4AA277213E3A63009B62AD /* FileObject.swift */,
@@ -106,8 +137,32 @@
 		FB669B33213FABFF0088105A /* Structure */ = {
 			isa = PBXGroup;
 			children = (
+				FB8248B32187FD070050A382 /* MusicStation.swift */,
 			);
 			path = Structure;
+			sourceTree = "<group>";
+		};
+		FB8248B52187FD820050A382 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FB8248B62187FD970050A382 /* UIColorExt.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FB9E9BED2187F40F00066A18 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FB9E9BEB2187F3E800066A18 /* ScrollText.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		FB9E9BEE2187F41700066A18 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		FBA5AB0D2131526000684308 = {
@@ -132,6 +187,11 @@
 		FBA5AB182131526000684308 /* JSRL IOS */ = {
 			isa = PBXGroup;
 			children = (
+				FB8248B52187FD820050A382 /* Extension */,
+				FB9E9BEE2187F41700066A18 /* Helper */,
+				FB9E9BED2187F40F00066A18 /* Utility */,
+				FB5739072186C0B6009C3970 /* MusicPlayer */,
+				FB5739062186C0A7009C3970 /* StationList */,
 				FB669B32213FAB8E0088105A /* Unused */,
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
 				FB4AA270213E24E4009B62AD /* Controller */,
@@ -140,6 +200,7 @@
 				FBA5AB202131526200684308 /* Assets.xcassets */,
 				FBA5AB222131526200684308 /* LaunchScreen.storyboard */,
 				FBA5AB252131526200684308 /* Info.plist */,
+				FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */,
 			);
 			path = "JSRL IOS";
 			sourceTree = "<group>";
@@ -269,13 +330,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB8248B42187FD070050A382 /* MusicStation.swift in Sources */,
 				FB4AA278213E3A63009B62AD /* FileObject.swift in Sources */,
 				FB471AC5213CCE6300BEE62C /* AudioPlayerObject.swift in Sources */,
 				FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */,
+				FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */,
+				FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */,
+				FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */,
+				FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */,
 				FB4AA26F213E24DC009B62AD /* FileDirectoryObject.swift in Sources */,
+				FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */,
 				FBA5AB1C2131526000684308 /* MusicPlayerVC.swift in Sources */,
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
 				FB669B31213FA54D0088105A /* StationSelectionVC.swift in Sources */,
+				FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */,
 				FB471AC7213CFA5000BEE62C /* DataParsingObject.swift in Sources */,
 				FB4AA275213E39F8009B62AD /* RealmManager.swift in Sources */,
 				FB4AA273213E35C2009B62AD /* FileDownloaderObject.swift in Sources */,
@@ -426,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7VX669QKF;
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,6 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7VX669QKF;
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +548,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB669B35213FBFB30088105A /* CoreData.xcdatamodel */,
+			);
+			currentVersion = FB669B35213FBFB30088105A /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FBA5AB0E2131526000684308 /* Project object */;
 }

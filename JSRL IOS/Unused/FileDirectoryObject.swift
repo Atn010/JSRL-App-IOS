@@ -33,11 +33,6 @@ class FileDirectoryObject: NSObject {
 	
 	func clearTempFolder() {
 		
-		
-		let fileManager = FileManager.default
-		let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-		let appURL = documentsURL.appendingPathComponent("JSRLiOS")
-		
 		print("Document Folder")
 		print(fileManager.listFiles(path: documentsURL.absoluteString))
 		print("")
