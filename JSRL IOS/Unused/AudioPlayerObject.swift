@@ -13,6 +13,7 @@ class AudioPlayerObject: NSObject {
 	
 	var currentTrack = ""
 	var progress:CGFloat = 0.0
+
 	
 	static let shared = AudioPlayerObject()
 	lazy var player: AVQueuePlayer = self.makePlayer()
@@ -37,25 +38,14 @@ class AudioPlayerObject: NSObject {
 		} catch {
 			print("Failed to set audio session category.  Error: \(error)")
 		}
-		/*
-		player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 100), queue: DispatchQueue.main) { [weak self] time in
-			guard let self = self else { return }
-			let timeString = String(format: "%02.2f", CMTimeGetSeconds(time))
-			
-			if UIApplication.shared.applicationState == .active {
-				//self.timeLabel.text = timeString
-			} else {
-				print("Background: \(timeString)")
-			}
-		}
-*/
-
 	}
 	
 	private func makePlayer() -> AVQueuePlayer {
 		let player = AVQueuePlayer(items: songs)
 		player.actionAtItemEnd = .advance
 		player.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
+		//player.currentItem?.duration
+		//CMTimeGetSeconds()
 		return player
 	}
 	

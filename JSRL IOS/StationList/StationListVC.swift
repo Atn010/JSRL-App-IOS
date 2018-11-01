@@ -9,7 +9,10 @@
 import UIKit
 
 class StationListVC: UIViewController {
-	
+
+	// MARK: - Object
+	let musicPlayer = MusicPlayerObject.shared
+	let t = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
 
 	// MARK: - Outlet
 	@IBOutlet weak var stationList: UITableView!
@@ -44,10 +47,26 @@ class StationListVC: UIViewController {
 		
 		miniPlayerBottom.constant = -80
 		
-		
 		let open = UITapGestureRecognizer(target: self, action: #selector(openPlayer))
 		
 		songNameScrollText.addGestureRecognizer(open)
+		
+		musicPlayer.initializeMusicChecker()
+		t.eventHandler = {
+			self.musicChecker()
+		}
+		
+		t.resume()
+		
+		let controlTap = UITapGestureRecognizer(target: self, action: #selector(controlOnTap))
+		let controlHold = UILongPressGestureRecognizer(target: self, action: #selector(controlOnHold))
+		controlHold.allowableMovement = 50
+		controlHold.minimumPressDuration = 1
+		
+		skipNextOutlet.addGestureRecognizer(controlTap)
+		skipNextOutlet.addGestureRecognizer(controlHold)
+		
+		
 		
 		//stationList.rowHeight = 58
 		//stationList.backgroundColor = .black
@@ -55,6 +74,45 @@ class StationListVC: UIViewController {
 		
         // Do any additional setup after loading the view.
     }
+	
+	func controlsUpdater() {
+		if bgColor != .black{
+			if musicPlayer.isAudioPlayerPlaying{
+				skipNextOutlet.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
+			}else{
+				skipNextOutlet.setImage(UIImage.init(named: "DarkPause"), for: .normal)
+			}
+		}else{
+			if musicPlayer.isAudioPlayerPlaying{
+				skipNextOutlet.setImage(UIImage.init(named: "SkipNext"), for: .normal)
+			}else{
+				skipNextOutlet.setImage(UIImage.init(named: "Pause"), for: .normal)
+			}
+		}
+	}
+	
+	
+	@objc func controlOnTap(){
+	
+		if musicPlayer.isAudioPlayerPlaying{
+			musicPlayer.audioPlayer.advanceToNextItem()
+		}else if musicPlayer.audioPlayer.items().isEmpty{
+			
+		}else{
+			
+			musicPlayer.audioPlayer.play()
+			musicPlayer.isAudioPlayerPlaying = true
+		}
+		controlsUpdater()
+	}
+	@objc func controlOnHold(){
+		if musicPlayer.isAudioPlayerPlaying{
+			musicPlayer.audioPlayer.pause()
+			musicPlayer.isAudioPlayerPlaying = false
+		}
+		controlsUpdater()
+	}
+	
 	func initMiniPlayer(trackName:String, bgColor:UIColor,acColor:UIColor){
 		songNameScrollText.destroy()
 		var tnColor = UIColor.purple
@@ -70,9 +128,22 @@ class StationListVC: UIViewController {
 		skipNextOutlet.tintColor = tnColor
 		skipNextOutlet.awakeFromNib()
 		
+		
 		songNameScrollText.setup(text: trackName, BackgroundColor: bgColor, TextColor: tnColor)
 		
 		bottomCover.backgroundColor = bgColor
+		
+	}
+	
+	func musicChecker(){
+		DispatchQueue.main.async {
+			if self.trackName != self.musicPlayer.currentTrack{
+				self.trackName = self.musicPlayer.currentTrack
+				self.initMiniPlayer(trackName: self.trackName, bgColor: self.bgColor, acColor: self.acColor)
+			}
+			
+			self.trackProgressBar.progress = self.musicPlayer.progress
+		}
 		
 	}
 	
@@ -82,10 +153,8 @@ class StationListVC: UIViewController {
 
 	
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		songNameScrollText.destroy()
 		if toMusicPlayer {
 			let playerVC = segue.destination as! MusicPlayerVC
 			
@@ -97,10 +166,17 @@ class StationListVC: UIViewController {
 			playerVC.logo = trackLogo
 		}
     }
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		songNameScrollText.destroy()
+		t.suspend()
+	}
 
 	override func viewDidAppear(_ animated: Bool) {
 		initMiniPlayer(trackName: trackName, bgColor: bgColor, acColor: acColor)
 		stationList.reloadData()
+		t.resume()
+		controlsUpdater()
 	}
 	
 	
@@ -133,7 +209,7 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 		
 		if playingAt != indexPath{
 		
-			trackName = "Gogol Bordello vs Tamir Muskat - Balkanization of Amerikanization"
+			//trackName = "Gogol Bordello vs Tamir Muskat - Balkanization of Amerikanization"
 			trackStation = musicStationList[indexPath.section].musicStation[indexPath.row].name
 			bgColor = .black
 			acColor = musicStationList[indexPath.section].musicStation[indexPath.row].acLogoColor
@@ -143,7 +219,8 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 				bgColor = musicStationList[indexPath.section].musicStation[indexPath.row].bgLogoColor
 			}
 			
-
+			
+			/*
 			if indexPath.row == 0 {
 				trackName = "Daft Punk - One More Time (Frenssu Remix)"
 			}else if indexPath.row == 1 {
@@ -153,14 +230,12 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			}else{
 				trackName = "Bon Jovi - It's My Life"
 			}
-			
+			*/
 			miniPlayer.backgroundColor = bgColor
 			skipNextOutlet.backgroundColor = bgColor
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
-
-			isPlayingSomething = true
-			
-			initMiniPlayer(trackName: trackName, bgColor: bgColor, acColor: acColor)
+			musicPlayer.playMusic(station: trackStation)
+			controlsUpdater()
 			stationList.reloadData()
 		}
 	}

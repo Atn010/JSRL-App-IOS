@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8FE37FA543002EC262119284 /* Pods_JSRL_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */; };
+		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
+		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
+		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
 		FB471AC5213CCE6300BEE62C /* AudioPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */; };
 		FB471AC7213CFA5000BEE62C /* DataParsingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB471AC6213CFA5000BEE62C /* DataParsingObject.swift */; };
 		FB4AA26F213E24DC009B62AD /* FileDirectoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */; };
@@ -42,6 +45,9 @@
 		19E8A05D0B370E63D93075FA /* Pods-JSRL IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSRL IOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS.debug.xcconfig"; sourceTree = "<group>"; };
 		21F324411D31C9EFDAF922F9 /* Pods-JSRL IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSRL IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS.release.xcconfig"; sourceTree = "<group>"; };
 		66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSRL_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
+		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
+		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerObject.swift; sourceTree = "<group>"; };
 		FB471AC6213CFA5000BEE62C /* DataParsingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParsingObject.swift; sourceTree = "<group>"; };
 		FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDirectoryObject.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 		FB807CE5218ABE9900CFC9E1 /* Bumps */ = {
 			isa = PBXGroup;
 			children = (
+				FB1ED0D7218AE4C90008289E /* static.mp3 */,
 				FB807CE9218ABEAB00CFC9E1 /* bump1.mp3 */,
 				FB807CE6218ABEAB00CFC9E1 /* bump2.mp3 */,
 				FB807CE7218ABEAB00CFC9E1 /* bump3.mp3 */,
@@ -185,6 +192,7 @@
 				FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */,
 				FB9E9BEB2187F3E800066A18 /* ScrollText.swift */,
 				FBB95CE9218971280086CD32 /* StationListCreator.swift */,
+				FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 		FB9E9BEE2187F41700066A18 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -315,6 +324,7 @@
 				FBA5AB212131526200684308 /* Assets.xcassets in Resources */,
 				FB807CEF218ABEAB00CFC9E1 /* bump4.mp3 in Resources */,
 				FB807CEC218ABEAB00CFC9E1 /* bump3.mp3 in Resources */,
+				FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */,
 				FB807CED218ABEAB00CFC9E1 /* bump5.mp3 in Resources */,
 				FB807CEE218ABEAB00CFC9E1 /* bump1.mp3 in Resources */,
 				FBA5AB1F2131526000684308 /* Main.storyboard in Resources */,
@@ -388,9 +398,11 @@
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
 				FB669B31213FA54D0088105A /* StationSelectionVC.swift in Sources */,
 				FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */,
+				FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */,
 				FB471AC7213CFA5000BEE62C /* DataParsingObject.swift in Sources */,
 				FB4AA275213E39F8009B62AD /* RealmManager.swift in Sources */,
 				FB4AA273213E35C2009B62AD /* FileDownloaderObject.swift in Sources */,
+				FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */,
 				FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

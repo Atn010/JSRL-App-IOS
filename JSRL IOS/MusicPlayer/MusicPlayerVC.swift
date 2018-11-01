@@ -13,6 +13,12 @@ import SwiftSoup
 
 class MusicPlayerVC: UIViewController {
 	
+	// MARK: - Object
+	let musicPlayer = MusicPlayerObject.shared
+	let t = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
+	
+	
+	// MARK: - Outlet
 	@IBOutlet weak var stationLogo: UIImageView!
 	@IBOutlet weak var scrollingTrackName: ScrollText!
 	@IBOutlet weak var trackProgressBar: UIProgressView!
@@ -20,33 +26,14 @@ class MusicPlayerVC: UIViewController {
 	@IBOutlet weak var skipNextButton: UIButton!
 	@IBOutlet weak var deadButton: UIButton!
 	
-	
-	
-	@IBOutlet weak var testPlayButton: UIButton!
-	
-	typealias Item = (text: String, html: String)
-	
-	let player = AudioPlayerObject.shared
-	let downloader = FileDownloaderObject.shared
-	let directory = FileDownloaderObject.shared
-	
-	var playStatus:Bool = false
-	var loadingStatus:Bool = false
-	var bumpList:[String] = [""]
-	
-	var items: [Item] = []
-	var document: Document = Document.init("")
-	
-	//var music:AVAudioFormat
-	
-	
+	// MARK: - Variable
 	var bgcolor:UIColor = .white
 	var acColor:UIColor = .white
 	
-	var station:String = "Failed"
+	var station:String = ""
 	var logo:UIImage = UIImage.init(named: "Preloadlogo")!
 	
-	var track:String = "Here"
+	var track:String = ""
 	
 	
 	override func viewDidLoad() {
@@ -57,7 +44,12 @@ class MusicPlayerVC: UIViewController {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
+		musicPlayer.initializeMusicChecker()
+		t.eventHandler = {
+			self.musicChecker()
+		}
 		
+		t.resume()
 		
 		
 		//testPlayButton.isEnabled = true
@@ -66,6 +58,18 @@ class MusicPlayerVC: UIViewController {
 		
 		//clearTempFolder()
 		// Do any additional setup after loading the view, typically from a nib.
+	}
+	
+	func musicChecker(){
+		DispatchQueue.main.async {
+			if self.track != self.musicPlayer.currentTrack{
+				self.track = self.musicPlayer.currentTrack
+				self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
+			}
+			
+			self.trackProgressBar.progress = self.musicPlayer.progress
+		}
+		
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -104,40 +108,6 @@ class MusicPlayerVC: UIViewController {
 		self.navigationController?.popViewController(animated: true)
 	}
 	
-	@IBAction func pressedPlayPausedButton(_ sender: UIButton) {
-		player.player.play()
-		initMusicPlayer(trackName: player.currentTrack, bgColor: bgcolor, acColor: acColor)
-	}
-	
-	@IBAction func onClick(_ sender: UIButton) {
-		
-		if loadingStatus == true{
-			testPlayButton.setTitle("Loading File", for: .normal)
-			bumpList.removeFirst()
-			
-			print(bumpList)
-			
-			//for fileName in bumpList{
-			//let music = "Bump1"
-			
-			
-			
-			playStatus = true
-			loadingStatus = false
-			testPlayButton.setTitle("Plays Bump", for: .normal)
-			
-			
-		}else if playStatus == true{
-			print("play Music Here")
-			let fileString = "https://jetsetradio.live/audioplayer/stations/bumps/bump1.mp3"
-			
-			//player.audioURL = downloader.downloadAudioURL(fileStringUrl: fileString, fileStation: "bump")
-			
-
-		}
-		
-		
-	}
 	
 	
 	
