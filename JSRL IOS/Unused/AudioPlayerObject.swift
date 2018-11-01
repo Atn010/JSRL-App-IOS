@@ -11,31 +11,64 @@ import AVFoundation
 
 class AudioPlayerObject: NSObject {
 	
+	var currentTrack = ""
+	var progress:CGFloat = 0.0
+	
 	static let shared = AudioPlayerObject()
+	lazy var player: AVQueuePlayer = self.makePlayer()
+	
+	private lazy var songs: [AVPlayerItem] = {
+		let songNames = ["bump1", "bump2", "bump3", "bump4", "bump5"]
+		return songNames.map {
+			let url = Bundle.main.url(forResource: $0, withExtension: "mp3")!
+			return AVPlayerItem(url: url)
+		}
+	}()
 	
 	override private init() {
-		
-		do {
-			//keep alive audio at background
+		do {/*
+			try AVAudioSession.sharedInstance().setCategory( AVAudioSession.Category.playAndRecord,mode: .default,options: [])
+			*/
 			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-		} catch _ {
-			print("Failed set category")
-		}
-		do {
+/*
+			try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
 			try AVAudioSession.sharedInstance().setActive(true)
-		} catch _ {
-			print("Failed set Active")
+*/
+		} catch {
+			print("Failed to set audio session category.  Error: \(error)")
 		}
-		UIApplication.shared.beginReceivingRemoteControlEvents()
-		audioURL = URL(fileURLWithPath: "")
-		audioPlayer = AVAudioPlayer()
-		
+		/*
+		player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 100), queue: DispatchQueue.main) { [weak self] time in
+			guard let self = self else { return }
+			let timeString = String(format: "%02.2f", CMTimeGetSeconds(time))
+			
+			if UIApplication.shared.applicationState == .active {
+				//self.timeLabel.text = timeString
+			} else {
+				print("Background: \(timeString)")
+			}
+		}
+*/
+
 	}
 	
-	var audioURL:URL
+	private func makePlayer() -> AVQueuePlayer {
+		let player = AVQueuePlayer(items: songs)
+		player.actionAtItemEnd = .advance
+		player.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
+		return player
+	}
 	
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		if keyPath == "currentItem",
+			let player = object as? AVPlayer,
+			let currentItem = player.currentItem?.asset as? AVURLAsset {
+			currentTrack = currentItem.url.lastPathComponent
+		}
+	}
 	
-	var audioPlayer:AVAudioPlayer
+
+	
 
 }
 

@@ -75,9 +75,6 @@ class ScrollText:UIView{
         timeInterval = TimeInterval((labelText?.count)! / 4)
         let sizeOfText = label.sizeThatFits(CGSize.zero)
         let textIsTooLong = sizeOfText.width >= frame.size.width ? true : false
-		print(sizeOfText.width)
-		print(frame.size.width)
-		print(textIsTooLong)
 		
         rect0 = CGRect(x: leadingBuffer, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
         rect1 = CGRect(x: rect0.origin.x + rect0.size.width + 25, y: 0, width: sizeOfText.width, height: self.bounds.size.height)

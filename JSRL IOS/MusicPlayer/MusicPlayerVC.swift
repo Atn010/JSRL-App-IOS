@@ -104,6 +104,10 @@ class MusicPlayerVC: UIViewController {
 		self.navigationController?.popViewController(animated: true)
 	}
 	
+	@IBAction func pressedPlayPausedButton(_ sender: UIButton) {
+		player.player.play()
+		initMusicPlayer(trackName: player.currentTrack, bgColor: bgcolor, acColor: acColor)
+	}
 	
 	@IBAction func onClick(_ sender: UIButton) {
 		
@@ -129,16 +133,7 @@ class MusicPlayerVC: UIViewController {
 			
 			//player.audioURL = downloader.downloadAudioURL(fileStringUrl: fileString, fileStation: "bump")
 			
-			do{
-				
-				player.audioPlayer = try AVAudioPlayer(contentsOf: self.player.audioURL, fileTypeHint: ".mp3")
-				
-				player.audioPlayer.numberOfLoops = -1
-				player.audioPlayer.play()
-				
-			}catch{
-				print("Error here")
-			}
+
 		}
 		
 		
