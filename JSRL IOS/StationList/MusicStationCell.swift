@@ -12,7 +12,8 @@ class MusicStationCell: UITableViewCell {
 
 	@IBOutlet weak var stationImage: UIImageView!
 	@IBOutlet weak var stationName: UILabel!
-	@IBOutlet weak var stationPlayingIndicator: UIImageView!
+	@IBOutlet weak var stationPlayingIndicator: SVBSoundBars!
+	
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

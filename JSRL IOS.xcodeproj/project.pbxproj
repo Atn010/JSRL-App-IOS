@@ -28,6 +28,9 @@
 		FBA5AB1F2131526000684308 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB1D2131526000684308 /* Main.storyboard */; };
 		FBA5AB212131526200684308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB202131526200684308 /* Assets.xcassets */; };
 		FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB222131526200684308 /* LaunchScreen.storyboard */; };
+		FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CE9218971280086CD32 /* StationListCreator.swift */; };
+		FBB95CEC21898DDD0086CD32 /* AnimatedBars.gif in Resources */ = {isa = PBXBuildFile; fileRef = FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */; };
+		FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		FBA5AB202131526200684308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBA5AB232131526200684308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBA5AB252131526200684308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBB95CE9218971280086CD32 /* StationListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListCreator.swift; sourceTree = "<group>"; };
+		FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AnimatedBars.gif; sourceTree = "<group>"; };
+		FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVBSoundBars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +159,10 @@
 		FB9E9BED2187F40F00066A18 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */,
+				FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */,
 				FB9E9BEB2187F3E800066A18 /* ScrollText.swift */,
+				FBB95CE9218971280086CD32 /* StationListCreator.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 				FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */,
 				FBA5AB212131526200684308 /* Assets.xcassets in Resources */,
 				FBA5AB1F2131526000684308 /* Main.storyboard in Resources */,
+				FBB95CEC21898DDD0086CD32 /* AnimatedBars.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +344,7 @@
 				FB4AA278213E3A63009B62AD /* FileObject.swift in Sources */,
 				FB471AC5213CCE6300BEE62C /* AudioPlayerObject.swift in Sources */,
 				FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */,
+				FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */,
 				FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */,
 				FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */,
 				FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */,
@@ -347,6 +358,7 @@
 				FB471AC7213CFA5000BEE62C /* DataParsingObject.swift in Sources */,
 				FB4AA275213E39F8009B62AD /* RealmManager.swift in Sources */,
 				FB4AA273213E35C2009B62AD /* FileDownloaderObject.swift in Sources */,
+				FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,7 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7VX669QKF;
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,7 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7VX669QKF;
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

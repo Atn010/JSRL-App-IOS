@@ -12,6 +12,7 @@ class ScrollText:UIView{
     private var labelText : String?
     private var rect0: CGRect!
     private var rect1: CGRect!
+	private var rect2: CGRect!
     private var labelArray = [UILabel]()
     private var isStop = false
     private var timeInterval: TimeInterval!
@@ -70,21 +71,26 @@ class ScrollText:UIView{
 		currentText = labelText
         label.textColor = TextColor ?? UIColor.black
         label.frame = CGRect.zero
-		label.textAlignment = .center
         
         timeInterval = TimeInterval((labelText?.count)! / 4)
         let sizeOfText = label.sizeThatFits(CGSize.zero)
-        let textIsTooLong = sizeOfText.width > frame.size.width ? true : false
-        
+        let textIsTooLong = sizeOfText.width >= frame.size.width ? true : false
+		print(sizeOfText.width)
+		print(frame.size.width)
+		print(textIsTooLong)
+		
         rect0 = CGRect(x: leadingBuffer, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
-        rect1 = CGRect(x: rect0.origin.x + rect0.size.width, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
-        label.frame = rect0
-        label.tag = 100
-        super.clipsToBounds = true
-        labelArray.append(label)
-        self.addSubview(label)
+        rect1 = CGRect(x: rect0.origin.x + rect0.size.width + 25, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
+		rect2 = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.bounds.size.height)
+
 		//isStop = true
         if textIsTooLong {
+			label.frame = rect0
+			label.tag = 100
+			super.clipsToBounds = true
+			labelArray.append(label)
+			self.addSubview(label)
+			
             let additionalLabel = UILabel(frame: rect1)
             additionalLabel.text = labelText
             additionalLabel.textColor = TextColor
@@ -94,7 +100,15 @@ class ScrollText:UIView{
             labelArray.append(additionalLabel)
 			isStop = false
 			animateLabelText(animatedText: labelText)
-        }
+		}else{
+			label.frame = rect2
+			label.tag = 100
+			label.textAlignment = .center
+			super.clipsToBounds = true
+			labelArray.append(label)
+			self.addSubview(label)
+			
+		}
     }
     
     private func animateLabelText(animatedText:String?) {

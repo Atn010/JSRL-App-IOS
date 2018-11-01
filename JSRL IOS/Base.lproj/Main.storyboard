@@ -53,9 +53,10 @@
                                     <constraint firstItem="Ab4-pA-xVb" firstAttribute="leading" secondItem="cvC-tC-1z3" secondAttribute="leading" id="m5N-be-hIT"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50O-hn-kai">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="50O-hn-kai">
                                 <rect key="frame" x="0.0" y="88" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="50" maxX="0.0" maxY="50"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="T1h-iH-b9U" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
@@ -66,44 +67,49 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qxi-Ol-nLg">
-                                                    <rect key="frame" x="16" y="4" width="382" height="44"/>
+                                                    <rect key="frame" x="16" y="4" width="288" height="44"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lsr-eS-I6A">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Preloadlogo" translatesAutoresizingMaskIntoConstraints="NO" id="Lsr-eS-I6A">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Lsr-eS-I6A" secondAttribute="height" multiplier="1:1" id="2EM-Bj-3hQ"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHa-rB-WNr">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHa-rB-WNr">
+                                                            <rect key="frame" x="52" y="0.0" width="184" height="44"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-Mo-cxF">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-4B-gML" customClass="SVBSoundBars" customModule="JSRL_IOS" customModuleProvider="target">
+                                                            <rect key="frame" x="244" y="0.0" width="44" height="44"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Hyv-Mo-cxF" secondAttribute="height" multiplier="1:1" id="aDv-kG-ZHQ"/>
+                                                                <constraint firstAttribute="width" secondItem="CRf-4B-gML" secondAttribute="height" multiplier="1:1" id="01Q-Ha-ncC"/>
                                                             </constraints>
-                                                        </imageView>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="vpj-Nd-Frq"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="qxi-Ol-nLg" secondAttribute="trailing" constant="16" id="6MW-EP-kFT"/>
                                                 <constraint firstItem="qxi-Ol-nLg" firstAttribute="leading" secondItem="Dq0-o8-KqC" secondAttribute="leading" constant="16" id="FDy-bF-dR5"/>
                                                 <constraint firstAttribute="bottom" secondItem="qxi-Ol-nLg" secondAttribute="bottom" constant="4" id="Xr9-5x-d8V"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="stationImage" destination="Lsr-eS-I6A" id="2iu-os-xE5"/>
                                             <outlet property="stationName" destination="uHa-rB-WNr" id="cbg-P6-fwm"/>
-                                            <outlet property="stationPlayingIndicator" destination="Hyv-Mo-cxF" id="G9S-Yv-bzr"/>
+                                            <outlet property="stationPlayingIndicator" destination="CRf-4B-gML" id="3Ej-TH-bMD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -120,6 +126,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="50O-hn-kai" firstAttribute="top" secondItem="uG6-XJ-vGB" secondAttribute="top" id="5Zw-7m-fmQ"/>
+                            <constraint firstItem="uG6-XJ-vGB" firstAttribute="bottom" secondItem="50O-hn-kai" secondAttribute="bottom" priority="999" id="FLk-oz-NXr"/>
                             <constraint firstItem="H7E-tJ-hkX" firstAttribute="top" secondItem="cvC-tC-1z3" secondAttribute="bottom" id="GKx-GE-JmG"/>
                             <constraint firstItem="50O-hn-kai" firstAttribute="leading" secondItem="uG6-XJ-vGB" secondAttribute="leading" id="M7u-Si-f58"/>
                             <constraint firstItem="cvC-tC-1z3" firstAttribute="trailing" secondItem="uG6-XJ-vGB" secondAttribute="trailing" id="WR1-8q-39J"/>
@@ -135,6 +142,7 @@
                     <navigationItem key="navigationItem" id="WOv-DO-yV4"/>
                     <connections>
                         <outlet property="bottomCover" destination="H7E-tJ-hkX" id="Eyf-kc-gNq"/>
+                        <outlet property="bottomList" destination="FLk-oz-NXr" id="DEt-ts-KJ6"/>
                         <outlet property="miniPlayer" destination="cvC-tC-1z3" id="BnJ-D3-7Bj"/>
                         <outlet property="miniPlayerBottom" destination="kej-2X-nBb" id="arf-hr-9NI"/>
                         <outlet property="skipNextOutlet" destination="ude-oO-0KL" id="lKT-LO-FKf"/>
@@ -443,43 +451,45 @@
             </objects>
             <point key="canvasLocation" x="157" y="-364"/>
         </scene>
-        <!--Music PlayerVC-->
+        <!--Magic-->
         <scene sceneID="wws-Vc-SN5">
             <objects>
-                <viewController id="BYf-vc-Gf8" customClass="MusicPlayerVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Magic" id="BYf-vc-Gf8" customClass="MusicPlayerVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5mr-6f-uPI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Christmas" translatesAutoresizingMaskIntoConstraints="NO" id="aUE-W0-CKz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Preloadlogo" translatesAutoresizingMaskIntoConstraints="NO" id="aUE-W0-CKz">
                                 <rect key="frame" x="57" y="145" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aUE-W0-CKz" secondAttribute="height" multiplier="1:1" id="Rlm-zt-lDF"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Oei-0L-xcV">
-                                <rect key="frame" x="0.0" y="588.66666666666663" width="414" height="233.33333333333337"/>
+                                <rect key="frame" x="0.0" y="590.66666666666663" width="414" height="231.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NLM-wU-RZG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZC-4G-tHG" customClass="ScrollText" customModule="JSRL_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZC-4G-tHG" customClass="ScrollText" customModule="JSRL_IOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="XTw-Xk-3g6"/>
+                                                </constraints>
                                             </view>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cMm-Sx-7or">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="9"/>
+                                                <rect key="frame" x="0.0" y="48" width="414" height="9"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="8" id="0Xn-2W-htG"/>
                                                 </constraints>
-                                                <color key="progressTintColor" red="1" green="0.000832612335216254" blue="0.18144577741622925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </progressView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15P-j4-Hs4">
-                                        <rect key="frame" x="40" y="122" width="334" height="111.33333333333331"/>
+                                        <rect key="frame" x="40" y="120" width="334" height="111.33333333333331"/>
                                         <subviews>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZK-aH-Lcz">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZK-aH-Lcz">
                                                 <rect key="frame" x="0.0" y="0.0" width="111.33333333333333" height="111.33333333333333"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -529,6 +539,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WVv-U0-ITV"/>
                     </view>
+                    <connections>
+                        <outlet property="deadButton" destination="LZK-aH-Lcz" id="r0o-j4-8fu"/>
+                        <outlet property="playPauseButton" destination="nnj-Fx-Ow2" id="7RJ-sp-FsD"/>
+                        <outlet property="scrollingTrackName" destination="GZC-4G-tHG" id="BGy-AE-1E1"/>
+                        <outlet property="skipNextButton" destination="TtW-67-Z12" id="vgx-zk-Cub"/>
+                        <outlet property="stationLogo" destination="aUE-W0-CKz" id="k70-VT-zvx"/>
+                        <outlet property="trackProgressBar" destination="cMm-Sx-7or" id="qdi-XQ-eDe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NY9-uo-LCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -554,8 +572,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Christmas" width="2000" height="2000"/>
-        <image name="CirclePlay" width="84" height="84"/>
-        <image name="SkipNext" width="26" height="26"/>
+        <image name="CirclePlay" width="100" height="100"/>
+        <image name="Preloadlogo" width="1000" height="1000"/>
+        <image name="SkipNext" width="25" height="25"/>
     </resources>
 </document>
