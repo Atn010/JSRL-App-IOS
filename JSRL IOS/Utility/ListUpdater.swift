@@ -72,9 +72,9 @@ class ListUpdater: NSObject {
 	
 	func checkForUpdate(){
 		if let dataDate = UserDefaults.standard.object(forKey: "date") as? Date {
-			//if daysBetweenDates(startDate: dataDate, endDate: dateNow) >= 1{
+			if daysBetweenDates(startDate: dataDate, endDate: dateNow) >= 1{
 				getAndUpdateList()
-		//	}
+			}
 		}else{
 			getAndUpdateList()
 		}
@@ -137,7 +137,6 @@ class ListUpdater: NSObject {
 		tempList[doomRiders] = doomRidersPath
 		tempList[goldenRhinos] = goldenRhinosPath
 		
-		print(tempList)
 		return tempList
 	}
 	

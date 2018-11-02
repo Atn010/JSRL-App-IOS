@@ -95,19 +95,19 @@ class StationListVC: UIViewController {
 	@objc func controlOnTap(){
 	
 		if musicPlayer.isAudioPlayerPlaying{
-			musicPlayer.audioPlayer.advanceToNextItem()
+			musicPlayer.playNextItem()
 		}else if musicPlayer.audioPlayer.items().isEmpty{
 			
 		}else{
 			
-			musicPlayer.audioPlayer.play()
+			musicPlayer.musicPlayer.play()
 			musicPlayer.isAudioPlayerPlaying = true
 		}
 		controlsUpdater()
 	}
 	@objc func controlOnHold(){
 		if musicPlayer.isAudioPlayerPlaying{
-			musicPlayer.audioPlayer.pause()
+			musicPlayer.musicPlayer.pause()
 			musicPlayer.isAudioPlayerPlaying = false
 		}
 		controlsUpdater()

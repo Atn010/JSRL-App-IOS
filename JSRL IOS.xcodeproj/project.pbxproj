@@ -150,7 +150,6 @@
 				FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */,
 				FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */,
 				FB5BDA3E218BE3E900CCE20D /* AudioDownloader.swift */,
-				FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */,
 			);
 			path = Unused;
 			sourceTree = "<group>";
@@ -188,6 +187,7 @@
 		FB9E9BED2187F40F00066A18 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */,
 				FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */,
 				FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */,
 				FB9E9BEB2187F3E800066A18 /* ScrollText.swift */,
