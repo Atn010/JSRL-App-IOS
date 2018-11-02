@@ -25,7 +25,7 @@ class MusicPlayerVC: UIViewController {
 	@IBOutlet weak var deadButton: UIButton!
 	
 	// MARK: - Variable
-	var bgcolor:UIColor = .white
+	var bgcolor:UIColor = .black
 	var acColor:UIColor = .white
 	
 	var station:String = ""
@@ -49,7 +49,7 @@ class MusicPlayerVC: UIViewController {
 		
 		t.resume()
 		
-		
+		controlsUpdater()
 		//testPlayButton.isEnabled = true
 		//testPlayButton.setTitle("Loading List", for: .normal)
 		//loadingStatus = true
@@ -77,6 +77,25 @@ class MusicPlayerVC: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		t.resume()
+	}
+	
+	func controlsUpdater() {
+		if bgcolor != .black{
+			if musicPlayer.isAudioPlayerPlaying{
+				playPauseButton.setImage(UIImage.init(named: "DarkCirclePlay"), for: .normal)
+			}else{
+				playPauseButton.setImage(UIImage.init(named: "DarkCirclePause"), for: .normal)
+			}
+			
+			skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
+		}else{
+			if musicPlayer.isAudioPlayerPlaying{
+				playPauseButton.setImage(UIImage.init(named: "CirclePlay"), for: .normal)
+			}else{
+				playPauseButton.setImage(UIImage.init(named: "CirclePause"), for: .normal)
+			}
+			skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
+		}
 	}
 
 	
@@ -111,6 +130,24 @@ class MusicPlayerVC: UIViewController {
 		self.navigationController?.popViewController(animated: true)
 	}
 	
+	@IBAction func playPauseClicked(_ sender: UIButton) {
+		
+		if musicPlayer.isAudioPlayerPlaying{
+			musicPlayer.musicPlayer.pause()
+			musicPlayer.isAudioPlayerPlaying = false
+		}else if musicPlayer.playerItems.isEmpty{
+			musicPlayer.isAudioPlayerPlaying = false
+		}else{
+			musicPlayer.musicPlayer.play()
+			musicPlayer.isAudioPlayerPlaying = true
+		}
+		
+		controlsUpdater()
+		
+		
+	}
+	@IBAction func skipNextClicked(_ sender: UIButton) {
+	}
 	
 	
 	

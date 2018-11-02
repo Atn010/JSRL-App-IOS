@@ -214,6 +214,7 @@
                                                 </constraints>
                                                 <state key="normal" image="CirclePlay"/>
                                                 <connections>
+                                                    <action selector="playPauseClicked:" destination="BYf-vc-Gf8" eventType="touchUpInside" id="2dP-6S-Wpt"/>
                                                     <action selector="pressedPlayPausedButton:" destination="BYf-vc-Gf8" eventType="touchUpInside" id="YzM-V2-yGR"/>
                                                 </connections>
                                             </button>
@@ -223,6 +224,9 @@
                                                     <constraint firstAttribute="width" secondItem="TtW-67-Z12" secondAttribute="height" multiplier="1:1" id="KwR-Ct-7eD"/>
                                                 </constraints>
                                                 <state key="normal" image="SkipNext"/>
+                                                <connections>
+                                                    <action selector="skipNextClicked:" destination="BYf-vc-Gf8" eventType="touchUpInside" id="pOc-8k-Car"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

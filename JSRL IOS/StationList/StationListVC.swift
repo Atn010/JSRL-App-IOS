@@ -96,7 +96,7 @@ class StationListVC: UIViewController {
 	
 		if musicPlayer.isAudioPlayerPlaying{
 			musicPlayer.playNextItem()
-		}else if musicPlayer.audioPlayer.items().isEmpty{
+		}else if musicPlayer.playerItems.isEmpty{
 			
 		}else{
 			
