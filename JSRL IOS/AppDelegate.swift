@@ -16,14 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-	override func remoteControlReceivedWithEvent(event: UIEvent?) {
+	override func remoteControlReceived(with event: UIEvent?) {
+		guard let rc = event?.subtype else {
+			print("Error in Remote Control")
+			return
+		}
+		print("\(rc.rawValue)")
+		
+	}
+	
+	/*
+	override func remoteControlReceived(with event: UIEvent?) {
 		let rc = event!.subtype
 		print("does this work? \(rc.rawValue)")
 	}
-
+*/
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 		dataUpdater.checkForUpdate()
+		musicPlayer.requestAuth()
 		
 		return true
     }
@@ -78,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		application to it. This property is optional since there are legitimate
 		error conditions that could cause the creation of the store to fail.
 		*/
-		let container = NSPersistentContainer(name: "AturuV2")
+		let container = NSPersistentContainer(name: "JSRL-IOS")
 		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
 			if let error = error as NSError? {
 				// Replace this implementation with code to handle the error appropriately.

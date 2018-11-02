@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 import AVFoundation
 
 class MusicPlayerObject: NSObject{
@@ -79,12 +80,11 @@ class MusicPlayerObject: NSObject{
 		
 			do {
 				try AVAudioSession.sharedInstance().setActive(true)
-				UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+				UIApplication.shared.beginReceivingRemoteControlEvents()
 				print("AVAudioSession is Active")
 			} catch let error as NSError {
 				print(error.localizedDescription)
 			}
-			
 			try staticPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "static", ofType: "mp3")!))
 			staticPlayer.numberOfLoops = -1
 		} catch {
@@ -172,6 +172,24 @@ class MusicPlayerObject: NSObject{
 			isAudioPlayerPlaying = true
 		}
 		
+	}
+	
+	func requestAuth() {
+		
+		MPMediaLibrary.requestAuthorization { (authStatus) in
+			switch authStatus {
+			case .notDetermined:
+				self.requestAuth()
+				break
+			case .authorized:
+				//self.querySongs()
+				break
+			default:
+				//self.displayPermissionsError()
+				break
+				
+			}
+		}
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

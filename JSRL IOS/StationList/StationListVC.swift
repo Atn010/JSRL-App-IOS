@@ -173,15 +173,13 @@ class StationListVC: UIViewController {
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
-		UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+		UIApplication.shared.beginReceivingRemoteControlEvents()
 		initMiniPlayer(trackName: trackName, bgColor: bgColor, acColor: acColor)
 		stationList.reloadData()
 		t.resume()
 		controlsUpdater()
 	}
 	
-	
-
 }
 
 extension StationListVC: UITableViewDelegate, UITableViewDataSource{

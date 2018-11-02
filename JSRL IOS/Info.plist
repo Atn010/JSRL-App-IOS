@@ -25,6 +25,10 @@
 		<string>audio</string>
 		<string>fetch</string>
 	</array>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>This App Requires Music Usage to Play in Background</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>This App Requires Music Usage to Play in Background</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
