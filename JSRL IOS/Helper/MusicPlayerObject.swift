@@ -121,8 +121,6 @@ class MusicPlayerObject: NSObject{
 	
 	func playNextItem(){
 		currentTrack = "Loading"
-		print(index)
-		print(playerItems.count)
 		if index + 1 >= playerItems.count{
 			isAudioPlayerPlaying = false
 			playerItems.removeAll()
@@ -142,6 +140,7 @@ class MusicPlayerObject: NSObject{
 				currentTrack.removeLast(4)
 			
 			musicPlayer.rate = 1
+			musicPlayer.automaticallyWaitsToMinimizeStalling = false
 			musicPlayer.play()
 
 		}
@@ -156,6 +155,7 @@ class MusicPlayerObject: NSObject{
 			
 			musicPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
 			musicPlayer.rate = 1
+			musicPlayer.automaticallyWaitsToMinimizeStalling = false
 			musicPlayer.play()
 			//audioPlayer = AVQueuePlayer.init(items: playListMaker(stationSelected: station))
 			//audioPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
