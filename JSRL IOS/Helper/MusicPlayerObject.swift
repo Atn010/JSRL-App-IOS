@@ -179,11 +179,37 @@ class MusicPlayerObject: NSObject{
 		var playList = stationPlayListRetriever(stationSelected: stationSelected)
 		playList.shuffle()
 		
+		var bumpSet = stationPlayListRetriever(stationSelected: bump)
+		//bumpSet.shuffle()
+		
+		var counting = 0
+		var itemCount = 0
+		var randomInterval = Int.random(in: 2 ... 4)
+		
+		playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: 0)
+		while itemCount < playList.count {
+			counting += 1
+			if counting == randomInterval{
+				
+				playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: itemCount)
+				//print(playList[itemCount])
+				counting = 0
+				randomInterval = Int.random(in: 2 ... 4)
+			}
+			
+			itemCount+=1
+		}
+		
+
 		return playList
 	}
 	func getStationPath(station:String) -> String {
 		
-		if station == classic{
+		if station == bump{
+			return bumpPath
+		}
+		
+		else if station == classic{
 			return classicPath
 		}else if station == future{
 			return futurePath

@@ -21,11 +21,6 @@
 		FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B2E213F99A20088105A /* PlaylistObject.swift */; };
 		FB669B31213FA54D0088105A /* StationSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B30213FA54D0088105A /* StationSelectionVC.swift */; };
 		FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */; };
-		FB807CEB218ABEAB00CFC9E1 /* bump2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB807CE6218ABEAB00CFC9E1 /* bump2.mp3 */; };
-		FB807CEC218ABEAB00CFC9E1 /* bump3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB807CE7218ABEAB00CFC9E1 /* bump3.mp3 */; };
-		FB807CED218ABEAB00CFC9E1 /* bump5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB807CE8218ABEAB00CFC9E1 /* bump5.mp3 */; };
-		FB807CEE218ABEAB00CFC9E1 /* bump1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB807CE9218ABEAB00CFC9E1 /* bump1.mp3 */; };
-		FB807CEF218ABEAB00CFC9E1 /* bump4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB807CEA218ABEAB00CFC9E1 /* bump4.mp3 */; };
 		FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FC2186C81600CEB371 /* StationListVC.swift */; };
 		FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */; };
 		FB8248B42187FD070050A382 /* MusicStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8248B32187FD070050A382 /* MusicStation.swift */; };
@@ -58,11 +53,6 @@
 		FB669B2E213F99A20088105A /* PlaylistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistObject.swift; sourceTree = "<group>"; };
 		FB669B30213FA54D0088105A /* StationSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectionVC.swift; sourceTree = "<group>"; };
 		FB669B35213FBFB30088105A /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
-		FB807CE6218ABEAB00CFC9E1 /* bump2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bump2.mp3; sourceTree = "<group>"; };
-		FB807CE7218ABEAB00CFC9E1 /* bump3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bump3.mp3; sourceTree = "<group>"; };
-		FB807CE8218ABEAB00CFC9E1 /* bump5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bump5.mp3; sourceTree = "<group>"; };
-		FB807CE9218ABEAB00CFC9E1 /* bump1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bump1.mp3; sourceTree = "<group>"; };
-		FB807CEA218ABEAB00CFC9E1 /* bump4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bump4.mp3; sourceTree = "<group>"; };
 		FB8088FC2186C81600CEB371 /* StationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListVC.swift; sourceTree = "<group>"; };
 		FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToTopSegue.swift; sourceTree = "<group>"; };
 		FB8248B32187FD070050A382 /* MusicStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStation.swift; sourceTree = "<group>"; };
@@ -167,11 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				FB1ED0D7218AE4C90008289E /* static.mp3 */,
-				FB807CE9218ABEAB00CFC9E1 /* bump1.mp3 */,
-				FB807CE6218ABEAB00CFC9E1 /* bump2.mp3 */,
-				FB807CE7218ABEAB00CFC9E1 /* bump3.mp3 */,
-				FB807CEA218ABEAB00CFC9E1 /* bump4.mp3 */,
-				FB807CE8218ABEAB00CFC9E1 /* bump5.mp3 */,
 			);
 			path = Bumps;
 			sourceTree = "<group>";
@@ -321,13 +306,8 @@
 			files = (
 				FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */,
 				FBA5AB212131526200684308 /* Assets.xcassets in Resources */,
-				FB807CEF218ABEAB00CFC9E1 /* bump4.mp3 in Resources */,
-				FB807CEC218ABEAB00CFC9E1 /* bump3.mp3 in Resources */,
 				FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */,
-				FB807CED218ABEAB00CFC9E1 /* bump5.mp3 in Resources */,
-				FB807CEE218ABEAB00CFC9E1 /* bump1.mp3 in Resources */,
 				FBA5AB1F2131526000684308 /* Main.storyboard in Resources */,
-				FB807CEB218ABEAB00CFC9E1 /* bump2.mp3 in Resources */,
 				FBB95CEC21898DDD0086CD32 /* AnimatedBars.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
