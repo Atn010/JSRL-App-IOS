@@ -121,7 +121,9 @@ class MusicPlayerObject: NSObject{
 	
 	func playNextItem(){
 		currentTrack = "Loading"
-		if index >= playerItems.count{
+		print(index)
+		print(playerItems.count)
+		if index + 1 >= playerItems.count{
 			isAudioPlayerPlaying = false
 			playerItems.removeAll()
 			index = 0
