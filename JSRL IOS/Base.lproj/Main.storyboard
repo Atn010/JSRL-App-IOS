@@ -4,15 +4,16 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Station ListVC-->
+        <!--Station-->
         <scene sceneID="Mmi-xR-Zgq">
             <objects>
-                <viewController id="zwx-Iw-qbo" customClass="StationListVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Station" id="zwx-Iw-qbo" customClass="StationListVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ShZ-hI-R13">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +68,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qxi-Ol-nLg">
-                                                    <rect key="frame" x="16" y="4" width="288" height="44"/>
+                                                    <rect key="frame" x="16" y="4" width="382" height="44"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Preloadlogo" translatesAutoresizingMaskIntoConstraints="NO" id="Lsr-eS-I6A">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -76,13 +77,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHa-rB-WNr">
-                                                            <rect key="frame" x="52" y="0.0" width="184" height="44"/>
+                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-4B-gML" customClass="SVBSoundBars" customModule="JSRL_IOS" customModuleProvider="target">
-                                                            <rect key="frame" x="244" y="0.0" width="44" height="44"/>
+                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="CRf-4B-gML" secondAttribute="height" multiplier="1:1" id="01Q-Ha-ncC"/>
@@ -156,305 +157,10 @@
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="298.66071428571428"/>
         </scene>
-        <!--Station-->
-        <scene sceneID="Eo8-jD-gV7">
-            <objects>
-                <tableViewController title="Station" id="p9v-LI-GoW" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jIN-5v-m11">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection headerTitle="Soundtrack" id="dGb-2j-m3f">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="uS0-U6-bgv" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uS0-U6-bgv" id="dmM-5K-qe9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ylZ-dh-hH2">
-                                                    <rect key="frame" x="16" y="3.6666666666666679" width="382" height="44"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qzf-J6-ZJw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="qzf-J6-ZJw" secondAttribute="height" multiplier="1:1" id="zgd-mi-YuY"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIj-iu-ctK">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2lq-ic-bIN">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="2lq-ic-bIN" secondAttribute="height" multiplier="1:1" id="hLK-6J-i9L"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="jMQ-oA-hH1"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="ylZ-dh-hH2" secondAttribute="trailing" constant="16" id="S5r-9u-2zl"/>
-                                                <constraint firstItem="ylZ-dh-hH2" firstAttribute="leading" secondItem="dmM-5K-qe9" secondAttribute="leading" constant="16" id="WTL-dN-mik"/>
-                                                <constraint firstAttribute="bottom" secondItem="ylZ-dh-hH2" secondAttribute="bottom" constant="4" id="cnL-ls-jvy"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="czW-aG-7vT" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="414" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="czW-aG-7vT" id="q3y-8P-O9v">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-34-7bR">
-                                                    <rect key="frame" x="16" y="3.6666666666666679" width="382" height="44"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G8z-Yw-yJI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="G8z-Yw-yJI" secondAttribute="height" multiplier="1:1" id="p59-tz-pFm"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Future" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCq-eJ-8M2">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1SU-8f-3Kq">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="1SU-8f-3Kq" secondAttribute="height" multiplier="1:1" id="tQp-un-wCA"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="nkF-WN-NpN"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="5eK-34-7bR" secondAttribute="trailing" constant="16" id="1j9-mH-qu0"/>
-                                                <constraint firstItem="5eK-34-7bR" firstAttribute="leading" secondItem="q3y-8P-O9v" secondAttribute="leading" constant="16" id="Y3D-CQ-Jy2"/>
-                                                <constraint firstAttribute="bottom" secondItem="5eK-34-7bR" secondAttribute="bottom" constant="4" id="bSJ-56-2ze"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Soundtrack" id="d1Q-BS-Dgg">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="LW6-WY-t78" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="160" width="414" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LW6-WY-t78" id="pqz-jh-08H">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xC0-cx-DrU">
-                                                    <rect key="frame" x="16" y="3.6666666666666679" width="382" height="44"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WtZ-1N-1DK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="WtZ-1N-1DK" secondAttribute="height" multiplier="1:1" id="iVN-0O-c0U"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSu-QF-x0b">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fm8-Cr-inF">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="fm8-Cr-inF" secondAttribute="height" multiplier="1:1" id="7ak-y1-btg"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="rvP-a6-D7t"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="xC0-cx-DrU" firstAttribute="leading" secondItem="pqz-jh-08H" secondAttribute="leading" constant="16" id="Fkf-RQ-LJG"/>
-                                                <constraint firstAttribute="bottom" secondItem="xC0-cx-DrU" secondAttribute="bottom" constant="4" id="nSJ-Xs-WSK"/>
-                                                <constraint firstAttribute="trailing" secondItem="xC0-cx-DrU" secondAttribute="trailing" constant="16" id="wbf-bO-61r"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="7It-ow-6sB" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="212" width="414" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7It-ow-6sB" id="exx-of-Uls">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iGo-jX-29y">
-                                                    <rect key="frame" x="16" y="3.6666666666666679" width="382" height="44"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c03-wv-lwc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="c03-wv-lwc" secondAttribute="height" multiplier="1:1" id="2Hq-7o-JE2"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpt-nV-F9S">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ate-4b-rbR">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Ate-4b-rbR" secondAttribute="height" multiplier="1:1" id="TTl-lL-Hnr"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="S34-Rh-mUy"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="iGo-jX-29y" secondAttribute="trailing" constant="16" id="4pe-zu-RLX"/>
-                                                <constraint firstItem="iGo-jX-29y" firstAttribute="leading" secondItem="exx-of-Uls" secondAttribute="leading" constant="16" id="jBZ-Df-Yxc"/>
-                                                <constraint firstAttribute="bottom" secondItem="iGo-jX-29y" secondAttribute="bottom" constant="4" id="ycH-aY-rVw"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Seasonal" id="qbw-xu-xvS">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="yJ5-8I-gLf" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="292" width="414" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yJ5-8I-gLf" id="bxH-2P-1dP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fhu-07-2mG">
-                                                    <rect key="frame" x="16" y="3.6666666666666679" width="382" height="44"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eRq-Px-dBx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="eRq-Px-dBx" secondAttribute="height" multiplier="1:1" id="uMn-Cr-PcS"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOU-AQ-YOY">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ido-qk-nmE">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Ido-qk-nmE" secondAttribute="height" multiplier="1:1" id="F3X-e8-OEf"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="6XE-kR-g9n"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Fhu-07-2mG" firstAttribute="leading" secondItem="bxH-2P-1dP" secondAttribute="leading" constant="16" id="BTd-Yc-L1l"/>
-                                                <constraint firstAttribute="trailing" secondItem="Fhu-07-2mG" secondAttribute="trailing" constant="16" id="mBm-dM-Uu9"/>
-                                                <constraint firstAttribute="bottom" secondItem="Fhu-07-2mG" secondAttribute="bottom" constant="4" id="zW0-0d-EK5"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="79Y-8C-52v" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="344" width="414" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="79Y-8C-52v" id="z2l-5P-71F">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2i7-vb-ZMR">
-                                                    <rect key="frame" x="16" y="3.6666666666666679" width="382" height="44"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n4C-li-EJl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="n4C-li-EJl" secondAttribute="height" multiplier="1:1" id="S2x-iq-grD"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjE-PE-7Zy">
-                                                            <rect key="frame" x="52" y="0.0" width="278" height="44"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vOb-xT-23a">
-                                                            <rect key="frame" x="338" y="0.0" width="44" height="44"/>
-                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="vOb-xT-23a" secondAttribute="height" multiplier="1:1" id="F7t-LC-8x5"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="Gbb-bx-F9X"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="2i7-vb-ZMR" firstAttribute="leading" secondItem="z2l-5P-71F" secondAttribute="leading" constant="16" id="1Mh-vo-hHj"/>
-                                                <constraint firstAttribute="bottom" secondItem="2i7-vb-ZMR" secondAttribute="bottom" constant="4" id="RMa-1D-ixn"/>
-                                                <constraint firstAttribute="trailing" secondItem="2i7-vb-ZMR" secondAttribute="trailing" constant="16" id="bGC-IH-EZC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="p9v-LI-GoW" id="klK-5F-2O8"/>
-                            <outlet property="delegate" destination="p9v-LI-GoW" id="NJl-9I-AQB"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="SM7-ik-Zg1"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="QIf-dc-vwW"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bnw-zi-PGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="157" y="-364"/>
-        </scene>
-        <!--Magic-->
+        <!--Player-->
         <scene sceneID="wws-Vc-SN5">
             <objects>
-                <viewController title="Magic" id="BYf-vc-Gf8" customClass="MusicPlayerVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Player" id="BYf-vc-Gf8" customClass="MusicPlayerVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5mr-6f-uPI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

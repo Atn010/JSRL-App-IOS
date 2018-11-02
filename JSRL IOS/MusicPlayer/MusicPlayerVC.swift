@@ -9,8 +9,6 @@
 import UIKit
 import AVFoundation
 
-import SwiftSoup
-
 class MusicPlayerVC: UIViewController {
 	
 	// MARK: - Object
@@ -72,8 +70,13 @@ class MusicPlayerVC: UIViewController {
 		
 	}
 	
+	override func viewDidDisappear(_ animated: Bool) {
+		t.suspend()
+	}
+	
 	override func viewDidAppear(_ animated: Bool) {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
+		t.resume()
 	}
 
 	
