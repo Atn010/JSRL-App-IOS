@@ -72,27 +72,29 @@ class MusicPlayerVC: UIViewController {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		t.suspend()
+		controlsUpdater()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		t.resume()
+		controlsUpdater()
 	}
 	
 	func controlsUpdater() {
 		if bgcolor != .black{
 			if musicPlayer.isAudioPlayerPlaying{
-				playPauseButton.setImage(UIImage.init(named: "DarkCirclePlay"), for: .normal)
-			}else{
 				playPauseButton.setImage(UIImage.init(named: "DarkCirclePause"), for: .normal)
+			}else{
+				playPauseButton.setImage(UIImage.init(named: "DarkCirclePlay"), for: .normal)
 			}
 			
 			skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
 		}else{
 			if musicPlayer.isAudioPlayerPlaying{
-				playPauseButton.setImage(UIImage.init(named: "CirclePlay"), for: .normal)
-			}else{
 				playPauseButton.setImage(UIImage.init(named: "CirclePause"), for: .normal)
+			}else{
+				playPauseButton.setImage(UIImage.init(named: "CirclePlay"), for: .normal)
 			}
 			skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
 		}
@@ -131,22 +133,25 @@ class MusicPlayerVC: UIViewController {
 	}
 	
 	@IBAction func playPauseClicked(_ sender: UIButton) {
-		
+		print("Clicked")
 		if musicPlayer.isAudioPlayerPlaying{
+			print("Pausing")
 			musicPlayer.musicPlayer.pause()
 			musicPlayer.isAudioPlayerPlaying = false
 		}else if musicPlayer.playerItems.isEmpty{
 			musicPlayer.isAudioPlayerPlaying = false
 		}else{
+			print("Playing")
 			musicPlayer.musicPlayer.play()
 			musicPlayer.isAudioPlayerPlaying = true
 		}
-		
+		print("Done")
 		controlsUpdater()
 		
 		
 	}
 	@IBAction func skipNextClicked(_ sender: UIButton) {
+		musicPlayer.playNextItem()
 	}
 	
 	

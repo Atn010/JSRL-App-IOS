@@ -215,7 +215,6 @@
                                                 <state key="normal" image="CirclePlay"/>
                                                 <connections>
                                                     <action selector="playPauseClicked:" destination="BYf-vc-Gf8" eventType="touchUpInside" id="2dP-6S-Wpt"/>
-                                                    <action selector="pressedPlayPausedButton:" destination="BYf-vc-Gf8" eventType="touchUpInside" id="YzM-V2-yGR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtW-67-Z12">
