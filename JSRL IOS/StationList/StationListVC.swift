@@ -173,6 +173,7 @@ class StationListVC: UIViewController {
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
+		UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
 		initMiniPlayer(trackName: trackName, bgColor: bgColor, acColor: acColor)
 		stationList.reloadData()
 		t.resume()

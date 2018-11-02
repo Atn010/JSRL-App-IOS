@@ -133,19 +133,15 @@ class MusicPlayerVC: UIViewController {
 	}
 	
 	@IBAction func playPauseClicked(_ sender: UIButton) {
-		print("Clicked")
 		if musicPlayer.isAudioPlayerPlaying{
-			print("Pausing")
 			musicPlayer.musicPlayer.pause()
 			musicPlayer.isAudioPlayerPlaying = false
 		}else if musicPlayer.playerItems.isEmpty{
 			musicPlayer.isAudioPlayerPlaying = false
 		}else{
-			print("Playing")
 			musicPlayer.musicPlayer.play()
 			musicPlayer.isAudioPlayerPlaying = true
 		}
-		print("Done")
 		controlsUpdater()
 		
 		

@@ -74,7 +74,16 @@ class MusicPlayerObject: NSObject{
 	
 	override private init() {
 		do {
+			UIApplication.shared.beginReceivingRemoteControlEvents()
 			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+		
+			do {
+				try AVAudioSession.sharedInstance().setActive(true)
+				UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+				print("AVAudioSession is Active")
+			} catch let error as NSError {
+				print(error.localizedDescription)
+			}
 			
 			try staticPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "static", ofType: "mp3")!))
 			staticPlayer.numberOfLoops = -1
@@ -99,7 +108,7 @@ class MusicPlayerObject: NSObject{
 			let total = CMTimeGetSeconds(totalTime)
 			
 			progress = Float(current / total)
-			if progress >= 0.9999{
+			if progress >= 0.99{
 				playNextItem()
 			}
 			
@@ -138,7 +147,7 @@ class MusicPlayerObject: NSObject{
 			
 				currentTrack = itemURL.url.lastPathComponent
 				currentTrack.removeLast(4)
-			
+			print(currentTrack)
 			musicPlayer.rate = 1
 			musicPlayer.automaticallyWaitsToMinimizeStalling = false
 			musicPlayer.play()
