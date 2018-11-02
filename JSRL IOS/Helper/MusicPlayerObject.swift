@@ -184,7 +184,7 @@ class MusicPlayerObject: NSObject{
 		
 		var counting = 0
 		var itemCount = 0
-		var randomInterval = Int.random(in: 2 ... 4)
+		var randomInterval = Int.random(in: 3 ... 5)
 		
 		playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: 0)
 		while itemCount < playList.count {
@@ -194,7 +194,7 @@ class MusicPlayerObject: NSObject{
 				playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: itemCount)
 				//print(playList[itemCount])
 				counting = 0
-				randomInterval = Int.random(in: 2 ... 4)
+				randomInterval = Int.random(in: 3 ... 5)
 			}
 			
 			itemCount+=1
