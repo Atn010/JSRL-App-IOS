@@ -16,7 +16,7 @@ class AudioPlayerObject: NSObject {
 
 	
 	static let shared = AudioPlayerObject()
-	lazy var player: AVQueuePlayer = self.makePlayer()
+	//lazy var player: AVQueuePlayer = self.makePlayer()
 	
 	private lazy var songs: [AVPlayerItem] = {
 		let songNames = ["bump1", "bump2", "bump3", "bump4", "bump5"]

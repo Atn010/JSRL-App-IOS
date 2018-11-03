@@ -71,7 +71,9 @@ class MusicPlayerObject: NSObject{
 	var musicPlayer = AVPlayer()
 	var index = 0
 	
-	
+	var loadingNextItem = false
+	var nextItem:AVPlayerItem?
+	var nextItemisLoaded = false
 	
 	override private init() {
 		do {
@@ -88,7 +90,7 @@ class MusicPlayerObject: NSObject{
 			try staticPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "static", ofType: "mp3")!))
 			staticPlayer.numberOfLoops = -1
 		} catch {
-			print("Failed to set audio session category.  Error: \(error)")
+			print("Failed to set audio session category.  Error: \(error.localizedDescription)")
 		}
 	}
 	
@@ -119,10 +121,6 @@ class MusicPlayerObject: NSObject{
 		if playerItems.count == 0{
 			if staticPlayer.isPlaying == false{
 				staticPlayer.play()
-			}
-		}else{
-			if staticPlayer.isPlaying == true{
-				staticPlayer.stop()
 			}
 		}
 		
@@ -155,6 +153,10 @@ class MusicPlayerObject: NSObject{
 		}
 	}
 	
+	func bufferNextItem(){
+		
+	}
+	
 	func playMusic(station:String){
 		
 		playerItems = playListMaker(stationSelected: station)
@@ -163,12 +165,32 @@ class MusicPlayerObject: NSObject{
 			musicPlayer = AVPlayer(playerItem: playerItems[index])
 			
 			musicPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
+			musicPlayer.addObserver(self, forKeyPath: "rate", options: [.new, .initial], context: nil)
+
+			musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 600), queue: DispatchQueue.main, using: { time in
+				
+				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
+					
+					if self.staticPlayer.isPlaying{
+						self.staticPlayer.stop()
+					}
+					if (self.musicPlayer.currentItem?.isPlaybackBufferFull) != nil{
+						// something here to Load next item
+						//bufferNextItem()
+						
+					}
+					
+				}else{
+					if !self.staticPlayer.isPlaying{
+						self.staticPlayer.play()
+					}
+					//print("Not Ready yet")
+				}
+			})
+			
 			musicPlayer.rate = 1
 			musicPlayer.automaticallyWaitsToMinimizeStalling = false
 			musicPlayer.play()
-			//audioPlayer = AVQueuePlayer.init(items: playListMaker(stationSelected: station))
-			//audioPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
-			//audioPlayer.play()
 			isAudioPlayerPlaying = true
 		}
 		
@@ -193,9 +215,11 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+	
 		if keyPath == "currentItem",
 			let player = object as? AVPlayer,
 			let currentItem = player.currentItem?.asset as? AVURLAsset {
+			
 			currentTrack = currentItem.url.lastPathComponent
 			currentTrack.removeLast(4)
 		}
@@ -290,38 +314,18 @@ class MusicPlayerObject: NSObject{
 					if let readyString = stringURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
 						if let validURL = URL(string: readyString){
 							//print(validURL)
-							stationPlayList.append(AVPlayerItem.init(url: validURL))
+							
+							let playItem = AVPlayerItem.init(url: validURL)
+
+							stationPlayList.append(playItem)
 							return
 						}
 					}
 				}
 			}
 		}
+
 		
-		
-		
-		
-		
-		
-		//stationPlayList.append(AVPlayerItem.init(url: URL(fileURLWithPath: Bundle.main.path(forResource: "bump1", ofType: "mp3")!)))
-		//stationPlayList.append(AVPlayerItem.init(url: URL(fileURLWithPath: Bundle.main.path(forResource: "bump2", ofType: "mp3")!)))
-		//stationPlayList.append(AVPlayerItem.init(url: URL(fileURLWithPath: Bundle.main.path(forResource: "bump3", ofType: "mp3")!)))
-		//stationPlayList.append(AVPlayerItem.init(url: URL(fileURLWithPath: Bundle.main.path(forResource: "bump4", ofType: "mp3")!)))
-		//stationPlayList.append(AVPlayerItem.init(url: URL(fileURLWithPath: Bundle.main.path(forResource: "bump5", ofType: "mp3")!)))
-		
-		//let station = "ggs/"
-		//let audio = "John Guscott - Splashback (Defiant)"
-		
-		//print(jetsetradio + stationPath + station + audio + extentionPath)
-		
-		
-		//(withAllowedCharacters: withAllowedCharacters: .urlHostAllowed)
-		
-		
-		
-		//stationPlayList.append(AVPlayerItem.init(url: URL(string: "https://jetsetradio.live/audioplayer/stations/ggs/John Guscott - Splashback (Defiant).mp3")!))
-		//stationPlayList.append(AVPlayerItem.init(url: URL(string: "https://jetsetradio.live/audioplayer/stations/goldenrhinos/Cipher - Relay Feat XL.mp3")!))
-		//stationPlayList.append(AVPlayerItem.init(url: URL(string: "https://jetsetradio.live/audioplayer/stations/loveshockers/Kimbra - Good Intent.mp3")!))
 		return stationPlayList
 	}
 	
