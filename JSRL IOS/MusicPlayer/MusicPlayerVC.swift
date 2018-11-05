@@ -37,6 +37,7 @@ class MusicPlayerVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		
 		stationLogo.image = logo
 		self.title = station
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
@@ -80,9 +81,17 @@ class MusicPlayerVC: UIViewController {
 		t.resume()
 		controlsUpdater()
 	}
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		if bgcolor != .black{
+			return .default
+		}else{
+			return .lightContent
+		}
+	}
 	
 	func controlsUpdater() {
 		if bgcolor != .black{
+			self.navigationController?.navigationBar.barStyle = .default
 			if musicPlayer.isAudioPlayerPlaying{
 				playPauseButton.setImage(UIImage.init(named: "DarkCirclePause"), for: .normal)
 			}else{
@@ -91,6 +100,7 @@ class MusicPlayerVC: UIViewController {
 			
 			skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
 		}else{
+			self.navigationController?.navigationBar.barStyle = .black
 			if musicPlayer.isAudioPlayerPlaying{
 				playPauseButton.setImage(UIImage.init(named: "CirclePause"), for: .normal)
 			}else{
@@ -99,7 +109,7 @@ class MusicPlayerVC: UIViewController {
 			skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
 		}
 	}
-
+	
 	
 	func initMusicPlayer(trackName:String, bgColor:UIColor,acColor:UIColor){
 		scrollingTrackName.destroy()
@@ -125,7 +135,7 @@ class MusicPlayerVC: UIViewController {
 	}
 	@objc func returnToList(){
 		scrollingTrackName.destroy()
-		
+		self.navigationController?.navigationBar.barStyle = .default
 		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
 		self.navigationController?.navigationBar.barTintColor = .white
 		self.navigationController?.navigationBar.tintColor = .black

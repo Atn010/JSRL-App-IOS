@@ -11,15 +11,10 @@
 		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
 		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
 		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
-		FB471AC5213CCE6300BEE62C /* AudioPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */; };
-		FB4AA26F213E24DC009B62AD /* FileDirectoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */; };
-		FB4AA273213E35C2009B62AD /* FileDownloaderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */; };
 		FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5739082186C0DE009C3970 /* MusicStationCell.swift */; };
 		FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA3C218BE21700CCE20D /* MusicFile.swift */; };
-		FB5BDA3F218BE3E900CCE20D /* AudioDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA3E218BE3E900CCE20D /* AudioDownloader.swift */; };
 		FB5BDA41218BE64B00CCE20D /* ListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */; };
 		FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B2E213F99A20088105A /* PlaylistObject.swift */; };
-		FB669B31213FA54D0088105A /* StationSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B30213FA54D0088105A /* StationSelectionVC.swift */; };
 		FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */; };
 		FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FC2186C81600CEB371 /* StationListVC.swift */; };
 		FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */; };
@@ -43,15 +38,10 @@
 		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
 		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
 		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
-		FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerObject.swift; sourceTree = "<group>"; };
-		FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDirectoryObject.swift; sourceTree = "<group>"; };
-		FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloaderObject.swift; sourceTree = "<group>"; };
 		FB5739082186C0DE009C3970 /* MusicStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStationCell.swift; sourceTree = "<group>"; };
 		FB5BDA3C218BE21700CCE20D /* MusicFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFile.swift; sourceTree = "<group>"; };
-		FB5BDA3E218BE3E900CCE20D /* AudioDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDownloader.swift; sourceTree = "<group>"; };
 		FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpdater.swift; sourceTree = "<group>"; };
 		FB669B2E213F99A20088105A /* PlaylistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistObject.swift; sourceTree = "<group>"; };
-		FB669B30213FA54D0088105A /* StationSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectionVC.swift; sourceTree = "<group>"; };
 		FB669B35213FBFB30088105A /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		FB8088FC2186C81600CEB371 /* StationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListVC.swift; sourceTree = "<group>"; };
 		FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToTopSegue.swift; sourceTree = "<group>"; };
@@ -135,11 +125,6 @@
 		FB669B32213FAB8E0088105A /* Unused */ = {
 			isa = PBXGroup;
 			children = (
-				FB669B30213FA54D0088105A /* StationSelectionVC.swift */,
-				FB4AA26E213E24DC009B62AD /* FileDirectoryObject.swift */,
-				FB4AA272213E35C2009B62AD /* FileDownloaderObject.swift */,
-				FB471AC4213CCE6300BEE62C /* AudioPlayerObject.swift */,
-				FB5BDA3E218BE3E900CCE20D /* AudioDownloader.swift */,
 			);
 			path = Unused;
 			sourceTree = "<group>";
@@ -251,6 +236,7 @@
 				FBA5AB122131526000684308 /* Sources */,
 				FBA5AB132131526000684308 /* Frameworks */,
 				FBA5AB142131526000684308 /* Resources */,
+				FB7E8E0C219016F4006088C6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -333,6 +319,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB7E8E0C219016F4006088C6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" e2f91483c94217ff3e141cda751f285d0415b76f 1c23c898731551cb25790803bfe04b0cda6440eb33e65fa9d581614f2100fc64\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -341,24 +345,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB8248B42187FD070050A382 /* MusicStation.swift in Sources */,
-				FB471AC5213CCE6300BEE62C /* AudioPlayerObject.swift in Sources */,
 				FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */,
-				FB5BDA3F218BE3E900CCE20D /* AudioDownloader.swift in Sources */,
 				FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */,
 				FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */,
 				FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */,
 				FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */,
 				FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */,
 				FB5BDA41218BE64B00CCE20D /* ListUpdater.swift in Sources */,
-				FB4AA26F213E24DC009B62AD /* FileDirectoryObject.swift in Sources */,
 				FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */,
 				FBA5AB1C2131526000684308 /* MusicPlayerVC.swift in Sources */,
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
 				FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */,
-				FB669B31213FA54D0088105A /* StationSelectionVC.swift in Sources */,
 				FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */,
 				FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */,
-				FB4AA273213E35C2009B62AD /* FileDownloaderObject.swift in Sources */,
 				FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */,
 				FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */,
 			);

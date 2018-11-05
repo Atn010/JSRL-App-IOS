@@ -45,7 +45,7 @@ class StationListVC: UIViewController {
 		stationList.delegate = self
 		stationList.dataSource = self
 		
-		miniPlayerBottom.constant = -80
+		miniPlayerBottom.constant = -100
 		
 		let open = UITapGestureRecognizer(target: self, action: #selector(openPlayer))
 		

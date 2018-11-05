@@ -1,3 +1,21 @@
-PODFILE CHECKSUM: 30c85e196cc43120a773e0bc042438d03e7374a1
+PODS:
+  - Crashlytics (3.11.1):
+    - Fabric (~> 1.8.1)
+  - Fabric (1.8.2)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
+
+SPEC CHECKSUMS:
+  Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
+  Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
+
+PODFILE CHECKSUM: e0ca538823ea44fb9029e15ff2f4f64c992210cc
 
 COCOAPODS: 1.5.3

@@ -6,6 +6,8 @@ target 'JSRL IOS' do
   use_frameworks!
   #pod 'SwiftSoup'
 
+  pod 'Fabric'
+  pod 'Crashlytics'
   # Pods for JSRL IOS
 
 end

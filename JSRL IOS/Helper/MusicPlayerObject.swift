@@ -16,7 +16,9 @@ class MusicPlayerObject: NSObject{
 	var progress:Float = 0.0
 	var isAudioPlayerPlaying = false
 	
-	
+	let jetsetradio = "https://jetsetradio.live/"
+	let stationPath = "audioplayer/stations/"
+	let fileExtension = ".mp3"
 	
 	// Station Playlist Path
 	//Station Bumps
@@ -79,7 +81,7 @@ class MusicPlayerObject: NSObject{
 		do {
 			UIApplication.shared.beginReceivingRemoteControlEvents()
 			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-		
+			
 			do {
 				try AVAudioSession.sharedInstance().setActive(true)
 				UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -110,7 +112,7 @@ class MusicPlayerObject: NSObject{
 			let total = CMTimeGetSeconds(totalTime)
 			
 			progress = Float(current / total)
-			if progress >= 0.99{
+			if progress >= 0.999{
 				playNextItem()
 			}
 			
@@ -127,29 +129,43 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	func playNextItem(){
+		//musicPlayer.removeTimeObserver(self)
+		//musicPlayer.seek(to: kCMTimeZero)
+		musicPlayer.pause()
+		
+		musicPlayer.currentItem?.asset.cancelLoading()
+		musicPlayer.currentItem?.cancelPendingSeeks()
+		//musicPlayer.seek(to: kCMTimeZero)
 		currentTrack = "Loading"
+		if !self.staticPlayer.isPlaying{
+			self.staticPlayer.play()
+		}
 		if index + 1 >= playerItems.count{
 			isAudioPlayerPlaying = false
 			playerItems.removeAll()
 			index = 0
 		}else{
 			index += 1
-			guard let nextPlayerItem:AVPlayerItem = playerItems[index] else{
+			
+			if !playerItems.indices.contains(index){
+				print("Not")
 				index = 9999
 				playNextItem()
 			}
+			let nextPlayerItem:AVPlayerItem = playerItems[index]
 			
-			musicPlayer = AVPlayer(playerItem: nextPlayerItem)
-			
+			playerItems.remove(at: index - 1)
+			//musicPlayer.seek(to: kCMTimeZero)
+			musicPlayer.replaceCurrentItem(with: nextPlayerItem)
+			musicPlayer.play()
 			guard let itemURL = musicPlayer.currentItem?.asset as? AVURLAsset else{return}
 			
-				currentTrack = itemURL.url.lastPathComponent
-				currentTrack.removeLast(4)
+			currentTrack = itemURL.url.lastPathComponent
+			currentTrack.removeLast(4)
 			print(currentTrack)
-			musicPlayer.rate = 1
-			musicPlayer.automaticallyWaitsToMinimizeStalling = false
 			musicPlayer.play()
-
+			
+			
 		}
 	}
 	
@@ -158,15 +174,19 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	func playMusic(station:String){
+		musicPlayer.pause()
+		if !self.staticPlayer.isPlaying{
+			self.staticPlayer.play()
+		}
 		
 		playerItems = playListMaker(stationSelected: station)
 		index = 0
 		if playerItems.count > 0{
 			musicPlayer = AVPlayer(playerItem: playerItems[index])
 			
-			musicPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
-			musicPlayer.addObserver(self, forKeyPath: "rate", options: [.new, .initial], context: nil)
-
+			//musicPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
+			//musicPlayer.addObserver(self, forKeyPath: "rate", options: [.new, .initial], context: nil)
+			
 			musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 600), queue: DispatchQueue.main, using: { time in
 				
 				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
@@ -174,19 +194,37 @@ class MusicPlayerObject: NSObject{
 					if self.staticPlayer.isPlaying{
 						self.staticPlayer.stop()
 					}
-					if (self.musicPlayer.currentItem?.isPlaybackBufferFull) != nil{
+					if self.musicPlayer.currentItem?.isPlaybackBufferFull == true{
 						// something here to Load next item
 						//bufferNextItem()
-						
+						print("Buffer Next")
 					}
 					
 				}else{
 					if !self.staticPlayer.isPlaying{
 						self.staticPlayer.play()
 					}
+					
+					if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.failed{
+						print("Error")
+						self.playNextItem()
+					}
 					//print("Not Ready yet")
 				}
+				
+				
+				
+				if self.musicPlayer.status == AVPlayer.Status.failed{
+					print("Error")
+					self.playNextItem()
+				}
 			})
+			
+			guard let itemURL = musicPlayer.currentItem?.asset as? AVURLAsset else{return}
+			
+			currentTrack = itemURL.url.lastPathComponent
+			currentTrack.removeLast(4)
+			
 			
 			musicPlayer.rate = 1
 			musicPlayer.automaticallyWaitsToMinimizeStalling = false
@@ -215,7 +253,7 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-	
+		
 		if keyPath == "currentItem",
 			let player = object as? AVPlayer,
 			let currentItem = player.currentItem?.asset as? AVURLAsset {
@@ -251,7 +289,7 @@ class MusicPlayerObject: NSObject{
 			itemCount+=1
 		}
 		
-
+		
 		return playList
 	}
 	func getStationPath(station:String) -> String {
@@ -259,7 +297,7 @@ class MusicPlayerObject: NSObject{
 		if station == bump{
 			return bumpPath
 		}
-		
+			
 		else if station == classic{
 			return classicPath
 		}else if station == future{
@@ -295,9 +333,6 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	private func stationPlayListRetriever(stationSelected:String) -> [AVPlayerItem]{
-		let jetsetradio = "https://jetsetradio.live/"
-		let stationPath = "audioplayer/stations/"
-		let fileExtension = ".mp3"
 		let station = getStationPath(station: stationSelected)
 		
 		var stationPlayList: [AVPlayerItem] = []
@@ -316,7 +351,7 @@ class MusicPlayerObject: NSObject{
 							//print(validURL)
 							
 							let playItem = AVPlayerItem.init(url: validURL)
-
+							
 							stationPlayList.append(playItem)
 							return
 						}
@@ -324,7 +359,7 @@ class MusicPlayerObject: NSObject{
 				}
 			}
 		}
-
+		
 		
 		return stationPlayList
 	}
