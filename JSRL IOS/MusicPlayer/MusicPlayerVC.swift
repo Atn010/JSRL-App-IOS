@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Fabric
+import Crashlytics
 
 class MusicPlayerVC: UIViewController {
 	
@@ -158,6 +160,9 @@ class MusicPlayerVC: UIViewController {
 	}
 	@IBAction func skipNextClicked(_ sender: UIButton) {
 		musicPlayer.playNextItem()
+			Crashlytics.sharedInstance().crash()
+		
+
 	}
 	
 	
