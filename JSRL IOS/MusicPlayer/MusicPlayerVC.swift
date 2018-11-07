@@ -160,7 +160,7 @@ class MusicPlayerVC: UIViewController {
 	}
 	@IBAction func skipNextClicked(_ sender: UIButton) {
 		musicPlayer.playNextItem()
-			Crashlytics.sharedInstance().crash()
+			
 		
 
 	}

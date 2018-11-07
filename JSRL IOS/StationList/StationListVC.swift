@@ -95,7 +95,6 @@ class StationListVC: UIViewController {
 	
 	
 	@objc func controlOnTap(){
-	
 		if musicPlayer.isAudioPlayerPlaying{
 			musicPlayer.playNextItem()
 		}else if musicPlayer.playerItems.isEmpty{
@@ -175,6 +174,7 @@ class StationListVC: UIViewController {
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
+		controlsUpdater()
 		UIApplication.shared.beginReceivingRemoteControlEvents()
 		initMiniPlayer(trackName: trackName, bgColor: bgColor, acColor: acColor)
 		stationList.reloadData()
