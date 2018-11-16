@@ -58,6 +58,7 @@
 		FBB95CE9218971280086CD32 /* StationListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListCreator.swift; sourceTree = "<group>"; };
 		FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AnimatedBars.gif; sourceTree = "<group>"; };
 		FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVBSoundBars.swift; sourceTree = "<group>"; };
+		FBF25F28219E7A24006F9217 /* JSRL IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JSRL IOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +79,6 @@
 				66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FB4AA270213E24E4009B62AD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		FB4AA271213E24F0009B62AD /* Model */ = {
@@ -197,6 +191,7 @@
 		FBA5AB182131526000684308 /* JSRL IOS */ = {
 			isa = PBXGroup;
 			children = (
+				FBF25F28219E7A24006F9217 /* JSRL IOS.entitlements */,
 				FB807CE5218ABE9900CFC9E1 /* Bumps */,
 				FB8248B52187FD820050A382 /* Extension */,
 				FB9E9BEE2187F41700066A18 /* Helper */,
@@ -205,7 +200,6 @@
 				FB5739062186C0A7009C3970 /* StationList */,
 				FB669B32213FAB8E0088105A /* Unused */,
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
-				FB4AA270213E24E4009B62AD /* Controller */,
 				FB4AA271213E24F0009B62AD /* Model */,
 				FBA5AB1D2131526000684308 /* Main.storyboard */,
 				FBA5AB202131526200684308 /* Assets.xcassets */,
@@ -260,6 +254,9 @@
 					FBA5AB152131526000684308 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};

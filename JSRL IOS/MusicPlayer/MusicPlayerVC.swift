@@ -32,8 +32,10 @@ class MusicPlayerVC: UIViewController {
 	
 	var station:String = ""
 	var logo:UIImage = UIImage.init(named: "Preloadlogo")!
+	var revLogo:UIImage = UIImage.init(named: "Preloadlogo")!
 	
 	var track:String = ""
+	var isTopRight = true
 	
 	
 	override func viewDidLoad() {
@@ -41,6 +43,7 @@ class MusicPlayerVC: UIViewController {
 		
 		
 		stationLogo.image = logo
+		revLogo = logo.imageFlippedForRightToLeftLayoutDirection()
 		self.title = station
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		
@@ -59,6 +62,7 @@ class MusicPlayerVC: UIViewController {
 		
 		//clearTempFolder()
 		// Do any additional setup after loading the view, typically from a nib.
+		//animateLogo()
 	}
 	
 	func musicChecker(){
@@ -89,6 +93,28 @@ class MusicPlayerVC: UIViewController {
 		}else{
 			return .lightContent
 		}
+	}
+	
+	func animateLogo(){
+		
+		if isTopRight{
+			isTopRight = false
+			stationLogo.image = revLogo
+			UIView.transition(with: stationLogo, duration: 5, options: .transitionFlipFromRight, animations: {
+				
+			}) { (bol) in
+				self.animateLogo()
+			}
+		}else{
+			isTopRight = true
+			stationLogo.image = logo
+			UIView.transition(with: stationLogo, duration: 5, options: .transitionFlipFromRight, animations: {
+				
+			}) { (bol) in
+				self.animateLogo()
+			}
+		}
+		
 	}
 	
 	func controlsUpdater() {
