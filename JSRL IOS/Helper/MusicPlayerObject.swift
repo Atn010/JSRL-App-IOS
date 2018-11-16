@@ -73,6 +73,8 @@ class MusicPlayerObject: NSObject{
 	var musicPlayer = AVPlayer()
 	var index = 0
 	
+	var logo:UIImage = UIImage.init(named: "Preloadlogo")!
+	
 	var loadingNextItem = false
 	var nextItem:AVPlayerItem?
 	var nextItemisLoaded = false
@@ -94,6 +96,8 @@ class MusicPlayerObject: NSObject{
 			}
 			try staticPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "static", ofType: "mp3")!))
 			staticPlayer.numberOfLoops = -1
+			
+			
 		} catch {
 			print("Failed to set audio session category.  Error: \(error.localizedDescription)")
 		}
@@ -102,6 +106,7 @@ class MusicPlayerObject: NSObject{
 	// MARK: - Background Checker
 	// Initialize Background Checking Object
 	func initializeMusicChecker(){
+		initialiseMediaRemote()
 		t.eventHandler = {
 			self.musicProgressChecker()
 		}
@@ -190,6 +195,7 @@ class MusicPlayerObject: NSObject{
 				self.currentTrack = itemURL.url.lastPathComponent
 				self.currentTrack.removeLast(4)
 				print(self.currentTrack)
+				self.updateMediaRemoteState()
 				self.musicPlayer.play()
 			}
 	
@@ -280,6 +286,7 @@ class MusicPlayerObject: NSObject{
 			musicPlayer.automaticallyWaitsToMinimizeStalling = false
 			
 			musicPlayer.play()
+			updateMediaRemoteState()
 			isAudioPlayerPlaying = true
 		}
 		
@@ -303,6 +310,63 @@ class MusicPlayerObject: NSObject{
 				
 			}
 		}
+	}
+	
+	func initialiseMediaRemote() {
+		let remote = MPRemoteCommandCenter.shared()
+		
+		remote.togglePlayPauseCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
+			if self.isAudioPlayerPlaying{
+				self.isAudioPlayerPlaying = false
+				self.musicPlayer.pause()
+			}else{
+				self.isAudioPlayerPlaying = true
+				self.musicPlayer.play()
+			}
+			
+			self.updateMediaRemoteState()
+			return MPRemoteCommandHandlerStatus.success
+		}
+		
+		remote.playCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
+				self.isAudioPlayerPlaying = true
+				self.musicPlayer.play()
+			
+			
+			self.updateMediaRemoteState()
+			return MPRemoteCommandHandlerStatus.success
+		}
+		
+		remote.pauseCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
+				self.isAudioPlayerPlaying = false
+				self.musicPlayer.pause()
+			self.updateMediaRemoteState()
+			return MPRemoteCommandHandlerStatus.success
+		}
+		
+		remote.nextTrackCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
+			self.playNextItem()
+			return MPRemoteCommandHandlerStatus.success
+		}
+	}
+	
+	func updateMediaRemoteState() {
+		//let metadata = JSRLSongMetadata(currentTrack!)
+		var data:[String] = currentTrack.components(separatedBy: " - ")
+		if data.count == 1{
+			data.append("Professor K")
+		}
+		
+		let artwork = MPMediaItemArtwork(boundsSize: CGSize(), requestHandler: {size in self.logo})
+		
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+			MPMediaItemPropertyTitle: data[0],
+			MPMediaItemPropertyArtist: data[1],
+			MPMediaItemPropertyArtwork: artwork,
+			MPNowPlayingInfoPropertyPlaybackRate: (isAudioPlayerPlaying ? 1 : 0),
+			MPNowPlayingInfoPropertyIsLiveStream: true
+		]
+
 	}
 	
 	/*
@@ -360,36 +424,49 @@ class MusicPlayerObject: NSObject{
 		}
 			
 		else if station == classic{
+			logo = UIImage(named: "Classic")!
 			return classicPath
 		}else if station == future{
+			logo = UIImage(named: "Future")!
 			return futurePath
 		}else if station == summer{
+			logo = UIImage(named: "Summer")!
 			return summerPath
 		}else if station == christmas{
+			logo = UIImage(named: "Christmas")!
 			return christmasPath
 		}
 			
 			
 		else if station == ggs{
+			logo = UIImage(named: "GG's")!
 			return ggsPath
 		}else if station == poisonJam{
+			logo = UIImage(named: "PoisonJam")!
 			return poisonJamPath
 		}else if station == noiseTanks{
+			logo = UIImage(named: "NoiseTanks")!
 			return noiseTanksPath
 		}else if station == loveShockers{
+			logo = UIImage(named: "LoveShockers")!
 			return loveShockersPath
 		}
 			
 		else if station == rapid99{
+			logo = UIImage(named: "Rapid99")!
 			return rapid99Path
 		}else if station == theImmortals{
+			logo = UIImage(named: "TheImmortals")!
 			return theImmortals
-		}		else if station == doomRiders{
+		}else if station == doomRiders{
+			logo = UIImage(named: "DoomRiders")!
 			return doomRidersPath
 		}else if station == goldenRhinos{
+			logo = UIImage(named: "GoldenRhinos")!
 			return goldenRhinosPath
 		}
 		
+		logo = UIImage(named: "PreloadImage")!
 		return ""
 	}
 	
