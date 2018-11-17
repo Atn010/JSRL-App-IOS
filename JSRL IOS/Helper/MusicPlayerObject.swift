@@ -175,12 +175,19 @@ class MusicPlayerObject: NSObject{
 				index = 9999
 				playNextItem()
 			}
-			
+			if !self.staticPlayer.isPlaying{
+				//print("Playing Static")
+				self.staticPlayer.play()
+			}
 			// Restart Music Player to Zero
 			musicPlayer.seek(to: kCMTimeZero) { (bol) in
 				// On Completion:
-				
 				self.musicPlayer.pause()
+				if !self.staticPlayer.isPlaying{
+					//print("Playing Static")
+					self.staticPlayer.play()
+				}
+				
 				let nextPlayerItem:AVPlayerItem = self.playerItems[self.index]
 				
 				// Remove previous item
