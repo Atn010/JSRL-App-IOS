@@ -235,7 +235,7 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			miniPlayer.backgroundColor = bgColor
 			skipNextOutlet.backgroundColor = bgColor
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
-			musicPlayer.playMusic(station: trackStation)
+			musicPlayer.playMusic(station: [trackStation])
 			controlsUpdater()
 			stationList.reloadData()
 		}

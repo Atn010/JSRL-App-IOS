@@ -146,7 +146,7 @@ class MusicPlayerObject: NSObject{
 	func playNextItem(){
 		//musicPlayer.removeTimeObserver(self)
 		//musicPlayer.seek(to: kCMTimeZero)
-		//musicPlayer.pause()
+		musicPlayer.pause()
 		
 		//musicPlayer.currentItem?.asset.cancelLoading()
 		//musicPlayer.currentItem?.cancelPendingSeeks()
@@ -205,7 +205,7 @@ class MusicPlayerObject: NSObject{
 					
 					self.currentTrack = itemURL.url.lastPathComponent
 					self.currentTrack.removeLast(4)
-					print(self.currentTrack)
+					print("\(self.index)/\(self.playerItems.count) ~ \(Date()) ~ \(self.currentTrack)")
 					self.updateMediaRemoteState()
 					self.musicPlayer.play()
 				}
@@ -222,8 +222,8 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	// MARK: - Initialize Music Player
-	func playMusic(station:String){
-		// Restart Music Plaher
+	func playMusic(station:[String]){
+		// Restart Music player
 		musicPlayer.pause()
 		if !self.staticPlayer.isPlaying{
 			self.staticPlayer.play()
@@ -369,8 +369,28 @@ class MusicPlayerObject: NSObject{
 		}
 		
 		remote.nextTrackCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-			self.playNextItem()
-			return MPRemoteCommandHandlerStatus.success
+			//self.playNextItem()
+			
+			
+			if let curItem  = self.musicPlayer.currentItem{
+				
+				
+				self.musicPlayer.pause()
+				
+				if !self.staticPlayer.isPlaying{
+					self.staticPlayer.play()
+				}
+				
+				curItem.seek(to: curItem.duration, completionHandler: { (bol) in
+					self.musicPlayer.play()
+					if !self.staticPlayer.isPlaying{
+						self.staticPlayer.play()
+					}
+				})
+				return MPRemoteCommandHandlerStatus.success
+			}else{
+				return MPRemoteCommandHandlerStatus.noSuchContent
+			}
 		}
 	}
 	
@@ -410,6 +430,13 @@ class MusicPlayerObject: NSObject{
 	@objc func playerItemDidReachEnd(notification: NSNotification) {
 		//player.seek(to: CMTime.zero)
 		//player.play()
+		if !self.staticPlayer.isPlaying{
+			self.staticPlayer.play()
+		}
+		musicPlayer.pause()
+		musicPlayer.cancelPendingPrerolls()
+		musicPlayer.currentItem?.cancelPendingSeeks()
+
 		playNextItem()
 	}
 	// Remove Observer
@@ -418,9 +445,17 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	// MARK: - Play List Maker
-	private func playListMaker(stationSelected:String) -> [AVPlayerItem]{
-		// Load Playlist from the selected Station
-		var playList = stationPlayListRetriever(stationSelected: stationSelected)
+	private func playListMaker(stationSelected:[String]) -> [AVPlayerItem]{
+		// Load Playlist from the selected Stations
+		var playList:[AVPlayerItem] = []
+		
+		stationSelected.forEach { (station) in
+			//stationPlayListRetriever(stationSelected: stationSelected)
+			stationPlayListRetriever(stationSelected: station).forEach({ (playListItem) in
+				playList.append(playListItem)
+			})
+		}
+		
 		playList.shuffle()
 		
 		// Load radio bumps
