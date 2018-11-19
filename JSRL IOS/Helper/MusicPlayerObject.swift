@@ -125,10 +125,11 @@ class MusicPlayerObject: NSObject{
 			progress = Float(current / total)
 			
 			// Plays Next Music when completed
+			/*
 			if progress >= 0.999{
 				playNextItem()
 			}
-
+			*/
 		}
 		
 		
@@ -152,7 +153,7 @@ class MusicPlayerObject: NSObject{
 		//musicPlayer.seek(to: kCMTimeZero)
 		/*
 		musicPlayer.seek(to: kCMTimeZero) { (bol) in
-			self.musicPlayer.pause()
+		self.musicPlayer.pause()
 		}
 		*/
 		
@@ -174,45 +175,50 @@ class MusicPlayerObject: NSObject{
 				print("Not")
 				index = 9999
 				playNextItem()
-			}
-			if !self.staticPlayer.isPlaying{
-				//print("Playing Static")
-				self.staticPlayer.play()
-			}
-			// Restart Music Player to Zero
-			musicPlayer.seek(to: kCMTimeZero) { (bol) in
-				// On Completion:
-				self.musicPlayer.pause()
+				
+			}else{
+				
 				if !self.staticPlayer.isPlaying{
 					//print("Playing Static")
 					self.staticPlayer.play()
 				}
+				self.musicPlayer.pause()
+				// Restart Music Player to Zero
+				musicPlayer.seek(to: kCMTimeZero) { (bol) in
+					// On Completion:
+					self.musicPlayer.pause()
+					if !self.staticPlayer.isPlaying{
+						//print("Playing Static")
+						self.staticPlayer.play()
+					}
+					
+					let nextPlayerItem:AVPlayerItem = self.playerItems[self.index]
+					
+					// Remove previous item
+					self.playerItems.remove(at: self.index - 1)
+					//musicPlayer.seek(to: kCMTimeZero)
+					self.musicPlayer.replaceCurrentItem(with: nextPlayerItem)
+					//self.musicPlayer.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+					
+					// Show updated Music Track name to User
+					guard let itemURL = self.musicPlayer.currentItem?.asset as? AVURLAsset else{return}
+					
+					self.currentTrack = itemURL.url.lastPathComponent
+					self.currentTrack.removeLast(4)
+					print(self.currentTrack)
+					self.updateMediaRemoteState()
+					self.musicPlayer.play()
+				}
 				
-				let nextPlayerItem:AVPlayerItem = self.playerItems[self.index]
 				
-				// Remove previous item
-				self.playerItems.remove(at: self.index - 1)
-				//musicPlayer.seek(to: kCMTimeZero)
-				self.musicPlayer.replaceCurrentItem(with: nextPlayerItem)
-				self.musicPlayer.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-				
-				// Show updated Music Track name to User
-				guard let itemURL = self.musicPlayer.currentItem?.asset as? AVURLAsset else{return}
-				
-				self.currentTrack = itemURL.url.lastPathComponent
-				self.currentTrack.removeLast(4)
-				print(self.currentTrack)
-				self.updateMediaRemoteState()
-				self.musicPlayer.play()
 			}
-	
-			
-			
 		}
 	}
 	
 	func bufferNextItem(){
 		// TODO
+		
+
 	}
 	
 	// MARK: - Initialize Music Player
@@ -234,6 +240,13 @@ class MusicPlayerObject: NSObject{
 			// Adds Observer over time.
 			musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 600), queue: DispatchQueue.main, using: { time in
 				
+				if self.musicPlayer.timeControlStatus == AVPlayerTimeControlStatus.paused{
+					self.isAudioPlayerPlaying = false
+				}else{
+					self.isAudioPlayerPlaying = true
+				}
+				
+				
 				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
 					if self.staticPlayer.isPlaying{
 						//print("Stopping Static Player")
@@ -246,14 +259,14 @@ class MusicPlayerObject: NSObject{
 					
 					guard let playbackIsFull = self.musicPlayer.currentItem?.isPlaybackBufferFull else {return}
 					print("F: \(playbackIsFull)")
-		
+					
 					guard let playbackIsEmpty = self.musicPlayer.currentItem?.isPlaybackBufferEmpty else {return}
 					print("E: \(playbackIsEmpty)")
 					
 					if playbackIsFull {
-						// something here to Load next item
-						//bufferNextItem()
-						print("Buffer Next")
+					// something here to Load next item
+					//bufferNextItem()
+					print("Buffer Next")
 					}
 					*/
 				}else{
@@ -271,14 +284,13 @@ class MusicPlayerObject: NSObject{
 					if self.musicPlayer.status == AVPlayer.Status.failed{
 						print("Error")
 						//print(self.musicPlayer.error?.localizedDescription)
-						
 						self.playNextItem()
 					}
 					/*
 					guard let playbackIsEmpty = self.musicPlayer.currentItem?.isPlaybackBufferEmpty else {return}
 					print("E: \(playbackIsEmpty)")
 					//print("Not Ready yet")
-*/
+					*/
 				}
 				
 			})
@@ -291,6 +303,11 @@ class MusicPlayerObject: NSObject{
 			// Set Player to Play while buffering - streaming mode
 			musicPlayer.rate = 1
 			musicPlayer.automaticallyWaitsToMinimizeStalling = false
+			
+			NotificationCenter.default.addObserver(self,
+												   selector: #selector(playerItemDidReachEnd),
+												   name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+												   object: nil) // Add observer
 			
 			musicPlayer.play()
 			updateMediaRemoteState()
@@ -336,8 +353,8 @@ class MusicPlayerObject: NSObject{
 		}
 		
 		remote.playCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-				self.isAudioPlayerPlaying = true
-				self.musicPlayer.play()
+			self.isAudioPlayerPlaying = true
+			self.musicPlayer.play()
 			
 			
 			self.updateMediaRemoteState()
@@ -345,8 +362,8 @@ class MusicPlayerObject: NSObject{
 		}
 		
 		remote.pauseCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-				self.isAudioPlayerPlaying = false
-				self.musicPlayer.pause()
+			self.isAudioPlayerPlaying = false
+			self.musicPlayer.pause()
 			self.updateMediaRemoteState()
 			return MPRemoteCommandHandlerStatus.success
 		}
@@ -378,16 +395,27 @@ class MusicPlayerObject: NSObject{
 	
 	/*
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-		
-		if keyPath == "currentItem",
-			let player = object as? AVPlayer,
-			let currentItem = player.currentItem?.asset as? AVURLAsset {
-			
-			currentTrack = currentItem.url.lastPathComponent
-			currentTrack.removeLast(4)
-		}
+	
+	if keyPath == "currentItem",
+	let player = object as? AVPlayer,
+	let currentItem = player.currentItem?.asset as? AVURLAsset {
+	
+	currentTrack = currentItem.url.lastPathComponent
+	currentTrack.removeLast(4)
+	}
 	}
 	*/
+	
+	// Notification Handling
+	@objc func playerItemDidReachEnd(notification: NSNotification) {
+		//player.seek(to: CMTime.zero)
+		//player.play()
+		playNextItem()
+	}
+	// Remove Observer
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}
 	
 	// MARK: - Play List Maker
 	private func playListMaker(stationSelected:String) -> [AVPlayerItem]{
@@ -515,30 +543,30 @@ class MusicPlayerObject: NSObject{
 
 /*
 extension MusicPlayerObject: AVQueuedSampleBufferRendering{
-	var timebase: CMTimebase {
-		<#code#>
-	}
-	
-	func enqueue(_ sampleBuffer: CMSampleBuffer) {
-		<#code#>
-	}
-	
-	func flush() {
-		<#code#>
-	}
-	
-	var isReadyForMoreMediaData: Bool {
-		<#code#>
-	}
-	
-	func requestMediaDataWhenReady(on queue: DispatchQueue, using block: @escaping () -> Void) {
-		<#code#>
-	}
-	
-	func stopRequestingMediaData() {
-		<#code#>
-	}
-	
-	
+var timebase: CMTimebase {
+<#code#>
+}
+
+func enqueue(_ sampleBuffer: CMSampleBuffer) {
+<#code#>
+}
+
+func flush() {
+<#code#>
+}
+
+var isReadyForMoreMediaData: Bool {
+<#code#>
+}
+
+func requestMediaDataWhenReady(on queue: DispatchQueue, using block: @escaping () -> Void) {
+<#code#>
+}
+
+func stopRequestingMediaData() {
+<#code#>
+}
+
+
 }
 */
