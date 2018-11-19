@@ -15,7 +15,7 @@ class MusicPlayerVC: UIViewController {
 	
 	// MARK: - Object
 	let musicPlayer = MusicPlayerObject.shared
-	let t = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
+	let musicPlayerPageTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
 	
 	
 	// MARK: - Outlet
@@ -49,11 +49,11 @@ class MusicPlayerVC: UIViewController {
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
 		musicPlayer.initializeMusicChecker()
-		t.eventHandler = {
+		musicPlayerPageTimer.eventHandler = {
 			self.musicChecker()
 		}
 		
-		t.resume()
+		musicPlayerPageTimer.resume()
 		
 		controlsUpdater()
 		//testPlayButton.isEnabled = true
@@ -78,13 +78,13 @@ class MusicPlayerVC: UIViewController {
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
-		t.suspend()
+		musicPlayerPageTimer.suspend()
 		controlsUpdater()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
-		t.resume()
+		musicPlayerPageTimer.resume()
 		controlsUpdater()
 	}
 	override var preferredStatusBarStyle: UIStatusBarStyle {

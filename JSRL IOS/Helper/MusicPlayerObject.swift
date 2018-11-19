@@ -66,7 +66,7 @@ class MusicPlayerObject: NSObject{
 	
 	
 	static let shared = MusicPlayerObject()
-	let t = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
+	let MusicPlayerObjectTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
 	var audioPlayer =  AVQueuePlayer()
 	var staticPlayer = AVAudioPlayer()
 	var playerItems: [AVPlayerItem] = []
@@ -107,11 +107,11 @@ class MusicPlayerObject: NSObject{
 	// Initialize Background Checking Object
 	func initializeMusicChecker(){
 		initialiseMediaRemote()
-		t.eventHandler = {
+		MusicPlayerObjectTimer.eventHandler = {
 			self.musicProgressChecker()
 		}
 		
-		t.resume()
+		MusicPlayerObjectTimer.resume()
 	}
 	// Checks the progress of music in background, and update to this object
 	func musicProgressChecker(){
@@ -236,8 +236,10 @@ class MusicPlayerObject: NSObject{
 			
 			//musicPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
 			//musicPlayer.addObserver(self, forKeyPath: "rate", options: [.new, .initial], context: nil)
-			
+
+			NotificationCenter.default.removeObserver(self)
 			// Adds Observer over time.
+			
 			musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 600), queue: DispatchQueue.main, using: { time in
 				
 				if self.musicPlayer.timeControlStatus == AVPlayerTimeControlStatus.paused{
@@ -372,11 +374,9 @@ class MusicPlayerObject: NSObject{
 			//self.playNextItem()
 			
 			
-			if let curItem  = self.musicPlayer.currentItem{
-				
-				
+			if let curItem  = self.musicPlayer.currentItem, self.progress > 0{
+
 				self.musicPlayer.pause()
-				
 				if !self.staticPlayer.isPlaying{
 					self.staticPlayer.play()
 				}
@@ -387,7 +387,9 @@ class MusicPlayerObject: NSObject{
 						self.staticPlayer.play()
 					}
 				})
+				
 				return MPRemoteCommandHandlerStatus.success
+				
 			}else{
 				return MPRemoteCommandHandlerStatus.noSuchContent
 			}

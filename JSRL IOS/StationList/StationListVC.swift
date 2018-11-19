@@ -14,7 +14,7 @@ class StationListVC: UIViewController {
 
 	// MARK: - Object
 	let musicPlayer = MusicPlayerObject.shared
-	let t = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
+	let stationListTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
 
 	// MARK: - Outlet
 	@IBOutlet weak var stationList: UITableView!
@@ -54,11 +54,11 @@ class StationListVC: UIViewController {
 		songNameScrollText.addGestureRecognizer(open)
 		
 		musicPlayer.initializeMusicChecker()
-		t.eventHandler = {
+		stationListTimer.eventHandler = {
 			self.musicChecker()
 		}
 		
-		t.resume()
+		stationListTimer.resume()
 		
 		let controlTap = UITapGestureRecognizer(target: self, action: #selector(controlOnTap))
 		let controlHold = UILongPressGestureRecognizer(target: self, action: #selector(controlOnHold))
@@ -170,7 +170,7 @@ class StationListVC: UIViewController {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		songNameScrollText.destroy()
-		t.suspend()
+		stationListTimer.suspend()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -178,7 +178,7 @@ class StationListVC: UIViewController {
 		UIApplication.shared.beginReceivingRemoteControlEvents()
 		initMiniPlayer(trackName: trackName, bgColor: bgColor, acColor: acColor)
 		stationList.reloadData()
-		t.resume()
+		stationListTimer.resume()
 		controlsUpdater()
 	}
 	

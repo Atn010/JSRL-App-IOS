@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 		//musicPlayer.t.suspend()
 		print("Resinging from Active")
-		musicPlayer.t.resume()
+		musicPlayer.MusicPlayerObjectTimer.resume()
 		if musicPlayer.staticPlayer.isPlaying{
 			musicPlayer.staticPlayer.stop()
 		}
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 		print("Entering foreground")
-		musicPlayer.t.resume()
+		musicPlayer.MusicPlayerObjectTimer.resume()
 		if musicPlayer.isAudioPlayerPlaying{
 			musicPlayer.musicPlayer.play()
 		}
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-		musicPlayer.t.resume()
+		musicPlayer.MusicPlayerObjectTimer.resume()
 		if musicPlayer.isAudioPlayerPlaying{
 			musicPlayer.musicPlayer.play()
 		}
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-		musicPlayer.t.suspend()
+		musicPlayer.MusicPlayerObjectTimer.suspend()
 		self.saveContext()
     }
 
