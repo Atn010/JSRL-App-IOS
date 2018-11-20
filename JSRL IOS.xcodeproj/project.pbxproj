@@ -22,7 +22,7 @@
 		FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8248B62187FD970050A382 /* UIColorExt.swift */; };
 		FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E9BEB2187F3E800066A18 /* ScrollText.swift */; };
 		FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5AB192131526000684308 /* AppDelegate.swift */; };
-		FBA5AB1C2131526000684308 /* MusicPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */; };
+		FBA5AB1C2131526000684308 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5AB1B2131526000684308 /* PlayerVC.swift */; };
 		FBA5AB1F2131526000684308 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB1D2131526000684308 /* Main.storyboard */; };
 		FBA5AB212131526200684308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB202131526200684308 /* Assets.xcassets */; };
 		FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB222131526200684308 /* LaunchScreen.storyboard */; };
@@ -50,7 +50,7 @@
 		FB9E9BEB2187F3E800066A18 /* ScrollText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollText.swift; sourceTree = "<group>"; };
 		FBA5AB162131526000684308 /* JSRL IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSRL IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA5AB192131526000684308 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerVC.swift; sourceTree = "<group>"; };
+		FBA5AB1B2131526000684308 /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		FBA5AB1E2131526000684308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBA5AB202131526200684308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBA5AB232131526200684308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		FB5739072186C0B6009C3970 /* MusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				FBA5AB1B2131526000684308 /* MusicPlayerVC.swift */,
+				FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
@@ -164,7 +164,6 @@
 		FB9E9BEE2187F41700066A18 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -197,6 +196,7 @@
 				FB9E9BEE2187F41700066A18 /* Helper */,
 				FB9E9BED2187F40F00066A18 /* Utility */,
 				FB5739072186C0B6009C3970 /* MusicPlayer */,
+				FBE12E5021A452DA00BA8AA0 /* PlayerVC */,
 				FB5739062186C0A7009C3970 /* StationList */,
 				FB669B32213FAB8E0088105A /* Unused */,
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
@@ -208,6 +208,14 @@
 				FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */,
 			);
 			path = "JSRL IOS";
+			sourceTree = "<group>";
+		};
+		FBE12E5021A452DA00BA8AA0 /* PlayerVC */ = {
+			isa = PBXGroup;
+			children = (
+				FBA5AB1B2131526000684308 /* PlayerVC.swift */,
+			);
+			path = PlayerVC;
 			sourceTree = "<group>";
 		};
 		FFF4BA8754BE77F69D7F8846 /* Pods */ = {
@@ -350,7 +358,7 @@
 				FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */,
 				FB5BDA41218BE64B00CCE20D /* ListUpdater.swift in Sources */,
 				FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */,
-				FBA5AB1C2131526000684308 /* MusicPlayerVC.swift in Sources */,
+				FBA5AB1C2131526000684308 /* PlayerVC.swift in Sources */,
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
 				FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */,
 				FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */,

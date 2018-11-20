@@ -11,7 +11,7 @@ import AVFoundation
 import Fabric
 import Crashlytics
 
-class MusicPlayerVC: UIViewController {
+class PlayerVC: UIViewController {
 	
 	// MARK: - Object
 	let musicPlayer = MusicPlayerObject.shared
@@ -120,7 +120,7 @@ class MusicPlayerVC: UIViewController {
 	func controlsUpdater() {
 		if bgcolor != .black{
 			self.navigationController?.navigationBar.barStyle = .default
-			if musicPlayer.isAudioPlayerPlaying{
+			if musicPlayer.userCommandAudioPlaying{
 				playPauseButton.setImage(UIImage.init(named: "DarkCirclePause"), for: .normal)
 			}else{
 				playPauseButton.setImage(UIImage.init(named: "DarkCirclePlay"), for: .normal)
@@ -129,7 +129,7 @@ class MusicPlayerVC: UIViewController {
 			skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
 		}else{
 			self.navigationController?.navigationBar.barStyle = .black
-			if musicPlayer.isAudioPlayerPlaying{
+			if musicPlayer.userCommandAudioPlaying{
 				playPauseButton.setImage(UIImage.init(named: "CirclePause"), for: .normal)
 			}else{
 				playPauseButton.setImage(UIImage.init(named: "CirclePlay"), for: .normal)
@@ -171,14 +171,14 @@ class MusicPlayerVC: UIViewController {
 	}
 	
 	@IBAction func playPauseClicked(_ sender: UIButton) {
-		if musicPlayer.isAudioPlayerPlaying{
+		if musicPlayer.userCommandAudioPlaying{
 			musicPlayer.musicPlayer.pause()
-			musicPlayer.isAudioPlayerPlaying = false
+			musicPlayer.userCommandAudioPlaying = false
 		}else if musicPlayer.playerItems.isEmpty{
-			musicPlayer.isAudioPlayerPlaying = false
+			musicPlayer.userCommandAudioPlaying = false
 		}else{
 			musicPlayer.musicPlayer.play()
-			musicPlayer.isAudioPlayerPlaying = true
+			musicPlayer.userCommandAudioPlaying = true
 		}
 		controlsUpdater()
 		

@@ -79,13 +79,13 @@ class StationListVC: UIViewController {
 	
 	func controlsUpdater() {
 		if bgColor != .black{
-			if musicPlayer.isAudioPlayerPlaying{
+			if musicPlayer.userCommandAudioPlaying{
 				skipNextOutlet.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
 			}else{
 				skipNextOutlet.setImage(UIImage.init(named: "DarkPause"), for: .normal)
 			}
 		}else{
-			if musicPlayer.isAudioPlayerPlaying{
+			if musicPlayer.userCommandAudioPlaying{
 				skipNextOutlet.setImage(UIImage.init(named: "SkipNext"), for: .normal)
 			}else{
 				skipNextOutlet.setImage(UIImage.init(named: "Pause"), for: .normal)
@@ -95,21 +95,21 @@ class StationListVC: UIViewController {
 	
 	
 	@objc func controlOnTap(){
-		if musicPlayer.isAudioPlayerPlaying{
+		if musicPlayer.userCommandAudioPlaying{
 			musicPlayer.playNextItem()
 		}else if musicPlayer.playerItems.isEmpty{
 			
 		}else{
 			
 			musicPlayer.musicPlayer.play()
-			musicPlayer.isAudioPlayerPlaying = true
+			musicPlayer.userCommandAudioPlaying = true
 		}
 		controlsUpdater()
 	}
 	@objc func controlOnHold(){
-		if musicPlayer.isAudioPlayerPlaying{
+		if musicPlayer.userCommandAudioPlaying{
 			musicPlayer.musicPlayer.pause()
-			musicPlayer.isAudioPlayerPlaying = false
+			musicPlayer.userCommandAudioPlaying = false
 		}
 		controlsUpdater()
 	}
@@ -157,7 +157,7 @@ class StationListVC: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if toMusicPlayer {
-			let playerVC = segue.destination as! MusicPlayerVC
+			let playerVC = segue.destination as! PlayerVC
 			
 			playerVC.acColor = acColor
 			playerVC.bgcolor = bgColor

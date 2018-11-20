@@ -14,7 +14,8 @@ class MusicPlayerObject: NSObject{
 	
 	var currentTrack = ""
 	var progress:Float = 0.0
-	var isAudioPlayerPlaying = false
+	var userCommandAudioPlaying = false
+	var audioPlayingStatus = false
 	
 	let jetsetradio = "https://jetsetradio.live/"
 	let stationPath = "audioplayer/stations/"
@@ -79,6 +80,10 @@ class MusicPlayerObject: NSObject{
 	var nextItem:AVPlayerItem?
 	var nextItemisLoaded = false
 	
+	var forcePlay = 0
+	
+	var observer:Any?
+	
 	// MARK: - Init
 	// Register Audio Session
 	// Initialize Static Player
@@ -113,9 +118,12 @@ class MusicPlayerObject: NSObject{
 		
 		MusicPlayerObjectTimer.resume()
 	}
-	// Checks the progress of music in background, and update to this object
+	
+	// Background music checker on another thread
 	func musicProgressChecker(){
 		if currentTrack != "" || currentTrack != "Loading"{
+			
+			// Checks the progress of music in background, and update to this object
 			guard let currentTime = musicPlayer.currentItem?.currentTime() else{return}
 			guard let totalTime = musicPlayer.currentItem?.duration else{return}
 			
@@ -123,6 +131,29 @@ class MusicPlayerObject: NSObject{
 			let total = CMTimeGetSeconds(totalTime)
 			
 			progress = Float(current / total)
+			
+			
+			if self.musicPlayer.timeControlStatus == AVPlayerTimeControlStatus.paused{
+				self.audioPlayingStatus = false
+			}else{
+				self.audioPlayingStatus = true
+			}
+			
+			if let curItem  = self.musicPlayer.currentItem, curItem.error == nil{
+				
+				if audioPlayingStatus == false && userCommandAudioPlaying == true && forcePlay >= 25{
+					print("I FORCE YOU TO PLAY")
+					musicPlayer.play()
+					forcePlay = 0
+				}
+				
+				if audioPlayingStatus == false && userCommandAudioPlaying == true{
+					forcePlay += 1
+				}
+			}
+			//print("\(self.index)/\(self.playerItems.count) ~ \(Date()) ~ Playing: \(self.userCommandAudioPlaying)/\(self.audioPlayingStatus) ~ Force Play Count \(forcePlay)")
+			
+			// Checks if Meida
 			
 			// Plays Next Music when completed
 			/*
@@ -164,7 +195,7 @@ class MusicPlayerObject: NSObject{
 		}
 		// Checks if Next item isn't index out of bound
 		if index + 1 >= playerItems.count{
-			isAudioPlayerPlaying = false
+			userCommandAudioPlaying = false
 			playerItems.removeAll()
 			index = 0
 		}else{
@@ -198,7 +229,7 @@ class MusicPlayerObject: NSObject{
 					self.playerItems.remove(at: self.index - 1)
 					//musicPlayer.seek(to: kCMTimeZero)
 					self.musicPlayer.replaceCurrentItem(with: nextPlayerItem)
-					//self.musicPlayer.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+					self.musicPlayer.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
 					
 					// Show updated Music Track name to User
 					guard let itemURL = self.musicPlayer.currentItem?.asset as? AVURLAsset else{return}
@@ -208,6 +239,7 @@ class MusicPlayerObject: NSObject{
 					print("\(self.index)/\(self.playerItems.count) ~ \(Date()) ~ \(self.currentTrack)")
 					self.updateMediaRemoteState()
 					self.musicPlayer.play()
+					self.userCommandAudioPlaying = true
 				}
 				
 				
@@ -238,23 +270,33 @@ class MusicPlayerObject: NSObject{
 			//musicPlayer.addObserver(self, forKeyPath: "rate", options: [.new, .initial], context: nil)
 
 			NotificationCenter.default.removeObserver(self)
+			/*
+			if let observer = self.observer{
+				
+				self.musicPlayer.removeTimeObserver(observer)
+				//self.avPlayer?.removeTimeObserver(observer)
+			}
 			// Adds Observer over time.
-			
-			musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 600), queue: DispatchQueue.main, using: { time in
-				
-				if self.musicPlayer.timeControlStatus == AVPlayerTimeControlStatus.paused{
-					self.isAudioPlayerPlaying = false
-				}else{
-					self.isAudioPlayerPlaying = true
-				}
-				
+			*/
+			observer = musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 10), queue: DispatchQueue.main, using: { time in
 				
 				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
+					//print("here I am")
 					if self.staticPlayer.isPlaying{
 						//print("Stopping Static Player")
 						self.musicPlayer.play()
 						self.staticPlayer.stop()
 					}
+					/*
+					if self.musicPlayer.currentItem?.isPlaybackLikelyToKeepUp == true{
+						likelyToKeepUp = true
+						if self.userCommandAudioPlaying == true && self.audioPlayingStatus == false{
+							print("I forced the player to play")
+							self.musicPlayer.play()
+						}
+					}
+					*/
+					
 					/*
 					guard let playbackIsKeepUp = self.musicPlayer.currentItem?.isPlaybackLikelyToKeepUp else {return}
 					print("K: \(playbackIsKeepUp)")
@@ -272,6 +314,7 @@ class MusicPlayerObject: NSObject{
 					}
 					*/
 				}else{
+					//print("don't thread on me")
 					if !self.staticPlayer.isPlaying{
 						//print("Playing Static")
 						self.staticPlayer.play()
@@ -295,6 +338,8 @@ class MusicPlayerObject: NSObject{
 					*/
 				}
 				
+				
+				
 			})
 			
 			guard let itemURL = musicPlayer.currentItem?.asset as? AVURLAsset else{return}
@@ -313,7 +358,7 @@ class MusicPlayerObject: NSObject{
 			
 			musicPlayer.play()
 			updateMediaRemoteState()
-			isAudioPlayerPlaying = true
+			userCommandAudioPlaying = true
 		}
 		
 	}
@@ -342,11 +387,11 @@ class MusicPlayerObject: NSObject{
 		let remote = MPRemoteCommandCenter.shared()
 		
 		remote.togglePlayPauseCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-			if self.isAudioPlayerPlaying{
-				self.isAudioPlayerPlaying = false
+			if self.userCommandAudioPlaying{
+				self.userCommandAudioPlaying = false
 				self.musicPlayer.pause()
 			}else{
-				self.isAudioPlayerPlaying = true
+				self.userCommandAudioPlaying = true
 				self.musicPlayer.play()
 			}
 			
@@ -355,7 +400,7 @@ class MusicPlayerObject: NSObject{
 		}
 		
 		remote.playCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-			self.isAudioPlayerPlaying = true
+			self.userCommandAudioPlaying = true
 			self.musicPlayer.play()
 			
 			
@@ -364,7 +409,7 @@ class MusicPlayerObject: NSObject{
 		}
 		
 		remote.pauseCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-			self.isAudioPlayerPlaying = false
+			self.userCommandAudioPlaying = false
 			self.musicPlayer.pause()
 			self.updateMediaRemoteState()
 			return MPRemoteCommandHandlerStatus.success
@@ -386,6 +431,7 @@ class MusicPlayerObject: NSObject{
 					if !self.staticPlayer.isPlaying{
 						self.staticPlayer.play()
 					}
+					self.userCommandAudioPlaying = true
 				})
 				
 				return MPRemoteCommandHandlerStatus.success
@@ -409,7 +455,7 @@ class MusicPlayerObject: NSObject{
 			MPMediaItemPropertyTitle: data[0],
 			MPMediaItemPropertyArtist: data[1],
 			MPMediaItemPropertyArtwork: artwork,
-			MPNowPlayingInfoPropertyPlaybackRate: (isAudioPlayerPlaying ? 1 : 0),
+			MPNowPlayingInfoPropertyPlaybackRate: (userCommandAudioPlaying ? 1 : 0),
 			MPNowPlayingInfoPropertyIsLiveStream: true
 		]
 
