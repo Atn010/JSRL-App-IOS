@@ -226,7 +226,7 @@ class MusicPlayerObject: NSObject{
 					let nextPlayerItem:AVPlayerItem = self.playerItems[self.index]
 					
 					// Remove previous item
-					self.playerItems.remove(at: self.index - 1)
+					//self.playerItems.remove(at: self.index - 1)
 					//musicPlayer.seek(to: kCMTimeZero)
 					self.musicPlayer.replaceCurrentItem(with: nextPlayerItem)
 					self.musicPlayer.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
