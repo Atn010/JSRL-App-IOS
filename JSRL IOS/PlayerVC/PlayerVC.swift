@@ -48,7 +48,7 @@ class PlayerVC: UIViewController {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
-		musicPlayer.initializeMusicChecker()
+		
 		musicPlayerPageTimer.eventHandler = {
 			self.musicChecker()
 		}
@@ -185,10 +185,15 @@ class PlayerVC: UIViewController {
 		
 	}
 	@IBAction func skipNextClicked(_ sender: UIButton) {
-		musicPlayer.playNextItem()
+		//musicPlayer.playNextItem()
+		if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
+			musicPlayer.musicPlayer.pause()
 			
-		
-
+			curItem.seek(to: curItem.duration) { (bol) in
+				self.musicPlayer.musicPlayer.play()
+				self.musicPlayer.userCommandAudioPlaying = true
+			}
+		}
 	}
 	
 	

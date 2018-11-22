@@ -53,7 +53,7 @@ class StationListVC: UIViewController {
 		
 		songNameScrollText.addGestureRecognizer(open)
 		
-		musicPlayer.initializeMusicChecker()
+		//musicPlayer.initializeMusicChecker()
 		stationListTimer.eventHandler = {
 			self.musicChecker()
 		}
@@ -96,7 +96,16 @@ class StationListVC: UIViewController {
 	
 	@objc func controlOnTap(){
 		if musicPlayer.userCommandAudioPlaying{
-			musicPlayer.playNextItem()
+			
+			if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
+				musicPlayer.musicPlayer.pause()
+				
+				curItem.seek(to: curItem.duration) { (bol) in
+					self.musicPlayer.musicPlayer.play()
+					self.musicPlayer.userCommandAudioPlaying = true
+				}
+			}
+			
 		}else if musicPlayer.playerItems.isEmpty{
 			
 		}else{

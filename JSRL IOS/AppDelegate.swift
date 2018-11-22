@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Fabric.with([Crashlytics.self])
 		dataUpdater.checkForUpdate()
 		musicPlayer.requestAuth()
+		musicPlayer.initializeMusicChecker()
 		
 		return true
     }

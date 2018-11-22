@@ -240,6 +240,8 @@ class MusicPlayerObject: NSObject{
 					self.updateMediaRemoteState()
 					self.musicPlayer.play()
 					self.userCommandAudioPlaying = true
+					
+					self.progress = 0
 				}
 				
 				
@@ -482,9 +484,6 @@ class MusicPlayerObject: NSObject{
 			self.staticPlayer.play()
 		}
 		musicPlayer.pause()
-		musicPlayer.cancelPendingPrerolls()
-		musicPlayer.currentItem?.cancelPendingSeeks()
-
 		playNextItem()
 	}
 	// Remove Observer
