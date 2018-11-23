@@ -97,6 +97,12 @@ class ListUpdater: NSObject {
 		
 		DispatchQueue.global(qos: .userInitiated).sync {
 			URLSession.shared.downloadTask(with: url) { localURL, urlResponse, error in
+				
+				if let isError = error{
+					print(isError.localizedDescription)
+					return
+				}
+
 				if let localURL = localURL {
 					if let string = try? String(contentsOf: localURL) {
 						

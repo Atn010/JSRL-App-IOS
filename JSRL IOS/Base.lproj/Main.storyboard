@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jiu-Op-Qjo">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,20 +15,20 @@
             <objects>
                 <viewController title="Station" id="zwx-Iw-qbo" customClass="StationListVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ShZ-hI-R13">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvC-tC-1z3">
-                                <rect key="frame" x="0.0" y="548" width="600" height="52"/>
+                                <rect key="frame" x="0.0" y="726" width="375" height="52"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-pA-xVb">
-                                        <rect key="frame" x="0.0" y="0.0" width="596" height="5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="371" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="R5P-VY-fBK"/>
                                         </constraints>
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ude-oO-0KL">
-                                        <rect key="frame" x="548" y="4" width="48" height="48"/>
+                                        <rect key="frame" x="323" y="4" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ude-oO-0KL" secondAttribute="height" multiplier="1:1" id="Jv1-Cr-XxG"/>
                                             <constraint firstAttribute="width" constant="48" id="ixd-JX-rvW"/>
@@ -32,7 +36,7 @@
                                         <state key="normal" image="SkipNext"/>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKl-5P-blQ" customClass="ScrollText" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="4" width="548" height="48"/>
+                                        <rect key="frame" x="0.0" y="4" width="323" height="48"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -51,20 +55,20 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="50O-hn-kai">
-                                <rect key="frame" x="0.0" y="64" width="600" height="484"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="638"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="50" maxX="0.0" maxY="50"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="52" id="T1h-iH-b9U" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="52"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Cell" rowHeight="60" id="T1h-iH-b9U" customClass="MusicStationCell" customModule="JSRL_IOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T1h-iH-b9U" id="Dq0-o8-KqC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qxi-Ol-nLg">
-                                                    <rect key="frame" x="16" y="4" width="343" height="44"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="44"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Preloadlogo" translatesAutoresizingMaskIntoConstraints="NO" id="Lsr-eS-I6A">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -78,29 +82,42 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-4B-gML" customClass="SVBSoundBars" customModule="JSRL_IOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdw-YG-GSB">
                                                             <rect key="frame" x="299" y="0.0" width="44" height="44"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRf-4B-gML" customClass="SVBSoundBars" customModule="JSRL_IOS" customModuleProvider="target">
+                                                                    <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="CRf-4B-gML" secondAttribute="height" multiplier="1:1" id="01Q-Ha-ncC"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="CRf-4B-gML" secondAttribute="height" multiplier="1:1" id="01Q-Ha-ncC"/>
+                                                                <constraint firstAttribute="trailing" secondItem="CRf-4B-gML" secondAttribute="trailing" constant="8" id="Det-aD-s8A"/>
+                                                                <constraint firstAttribute="width" secondItem="cdw-YG-GSB" secondAttribute="height" multiplier="1:1" id="IFS-83-c3Q"/>
+                                                                <constraint firstItem="CRf-4B-gML" firstAttribute="top" secondItem="cdw-YG-GSB" secondAttribute="top" constant="8" id="L0T-xd-O0p"/>
+                                                                <constraint firstItem="CRf-4B-gML" firstAttribute="leading" secondItem="cdw-YG-GSB" secondAttribute="leading" constant="8" id="N7A-hx-GaA"/>
+                                                                <constraint firstAttribute="bottom" secondItem="CRf-4B-gML" secondAttribute="bottom" constant="8" id="fBh-Hx-cN6"/>
+                                                                <constraint firstAttribute="width" constant="44" id="jLS-BK-jsb"/>
+                                                                <constraint firstAttribute="height" constant="44" id="oyY-z7-NMH"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="barColor">
-                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="vpj-Nd-Frq"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="qxi-Ol-nLg" secondAttribute="trailing" constant="16" id="6MW-EP-kFT"/>
                                                 <constraint firstItem="qxi-Ol-nLg" firstAttribute="leading" secondItem="Dq0-o8-KqC" secondAttribute="leading" constant="16" id="FDy-bF-dR5"/>
-                                                <constraint firstAttribute="bottom" secondItem="qxi-Ol-nLg" secondAttribute="bottom" constant="4" id="Xr9-5x-d8V"/>
+                                                <constraint firstAttribute="bottom" secondItem="qxi-Ol-nLg" secondAttribute="bottom" constant="8" id="Xr9-5x-d8V"/>
+                                                <constraint firstItem="qxi-Ol-nLg" firstAttribute="top" secondItem="Dq0-o8-KqC" secondAttribute="top" constant="8" id="od4-ia-mg6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -113,7 +130,7 @@
                                 <sections/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7E-tJ-hkX">
-                                <rect key="frame" x="0.0" y="600" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="778" width="375" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="mzg-aZ-A7U"/>
@@ -158,30 +175,30 @@
             <objects>
                 <viewController title="Player" id="BYf-vc-Gf8" customClass="PlayerVC" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5mr-6f-uPI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Preloadlogo" translatesAutoresizingMaskIntoConstraints="NO" id="aUE-W0-CKz">
-                                <rect key="frame" x="57" y="121" width="486" height="486"/>
+                                <rect key="frame" x="57" y="145" width="261" height="261"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aUE-W0-CKz" secondAttribute="height" multiplier="1:1" id="Rlm-zt-lDF"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Oei-0L-xcV">
-                                <rect key="frame" x="0.0" y="272" width="600" height="288"/>
+                                <rect key="frame" x="0.0" y="525" width="375" height="213"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NLM-wU-RZG">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZC-4G-tHG" customClass="ScrollText" customModule="JSRL_IOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="XTw-Xk-3g6"/>
                                                 </constraints>
                                             </view>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cMm-Sx-7or">
-                                                <rect key="frame" x="0.0" y="48" width="600" height="9"/>
+                                                <rect key="frame" x="0.0" y="48" width="375" height="9"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="8" id="0Xn-2W-htG"/>
                                                 </constraints>
@@ -189,10 +206,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="15P-j4-Hs4">
-                                        <rect key="frame" x="40" y="120" width="520" height="168"/>
+                                        <rect key="frame" x="40" y="120" width="295" height="93"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZK-aH-Lcz">
-                                                <rect key="frame" x="0.0" y="0.0" width="168" height="168"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="LZK-aH-Lcz" secondAttribute="height" multiplier="1:1" id="YTY-zs-xdi"/>
@@ -204,7 +221,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnj-Fx-Ow2">
-                                                <rect key="frame" x="176" y="0.0" width="168" height="168"/>
+                                                <rect key="frame" x="101" y="0.0" width="93" height="93"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="nnj-Fx-Ow2" secondAttribute="height" multiplier="1:1" id="26c-YX-hBG"/>
                                                 </constraints>
@@ -214,7 +231,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtW-67-Z12">
-                                                <rect key="frame" x="352" y="0.0" width="168" height="168"/>
+                                                <rect key="frame" x="202" y="0.0" width="93" height="93"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="TtW-67-Z12" secondAttribute="height" multiplier="1:1" id="KwR-Ct-7eD"/>
                                                 </constraints>

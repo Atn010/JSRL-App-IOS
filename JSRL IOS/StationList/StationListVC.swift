@@ -96,16 +96,18 @@ class StationListVC: UIViewController {
 	
 	@objc func controlOnTap(){
 		if musicPlayer.userCommandAudioPlaying{
-			
+			musicPlayer.playNextItem()
+			/*
 			if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
 				musicPlayer.musicPlayer.pause()
+				
 				
 				curItem.seek(to: curItem.duration) { (bol) in
 					self.musicPlayer.musicPlayer.play()
 					self.musicPlayer.userCommandAudioPlaying = true
 				}
 			}
-			
+			*/
 		}else if musicPlayer.playerItems.isEmpty{
 			
 		}else{
@@ -132,7 +134,7 @@ class StationListVC: UIViewController {
 			tnColor = UIColor.white
 		}
 		
-		trackProgressBar.progress = 0.3
+		//trackProgressBar.progress = 0.0
 		trackProgressBar.tintColor = acColor
 		
 		skipNextOutlet.tintColor = tnColor
@@ -230,17 +232,7 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			}
 			
 			
-			/*
-			if indexPath.row == 0 {
-				trackName = "Daft Punk - One More Time (Frenssu Remix)"
-			}else if indexPath.row == 1 {
-				trackName = "Gogol Bordello vs Tamir Muskat - Balkanization of Amerikanization"
-			}else if indexPath.row == 2 {
-				trackName = "Guitar Vader - I Love Love You (Love Love Super Dimension Mix)"
-			}else{
-				trackName = "Bon Jovi - It's My Life"
-			}
-			*/
+
 			miniPlayer.backgroundColor = bgColor
 			skipNextOutlet.backgroundColor = bgColor
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo

@@ -43,7 +43,8 @@ class PlayerVC: UIViewController {
 		
 		
 		stationLogo.image = logo
-		revLogo = logo.imageFlippedForRightToLeftLayoutDirection()
+		revLogo = logo.withHorizontallyFlippedOrientation()
+		//revLogo = logo.image
 		self.title = station
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		
@@ -99,16 +100,16 @@ class PlayerVC: UIViewController {
 		
 		if isTopRight{
 			isTopRight = false
-			stationLogo.image = revLogo
-			UIView.transition(with: stationLogo, duration: 5, options: .transitionFlipFromRight, animations: {
+			stationLogo.image = logo
+			UIView.transition(with: stationLogo, duration: 5, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: {
 				
 			}) { (bol) in
 				self.animateLogo()
 			}
 		}else{
 			isTopRight = true
-			stationLogo.image = logo
-			UIView.transition(with: stationLogo, duration: 5, options: .transitionFlipFromRight, animations: {
+			stationLogo.image = revLogo
+			UIView.transition(with: stationLogo, duration: 5, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: {
 				
 			}) { (bol) in
 				self.animateLogo()
@@ -155,7 +156,7 @@ class PlayerVC: UIViewController {
 			self.navigationController?.navigationBar.barTintColor = .black
 			self.navigationController?.navigationBar.tintColor = .white
 		}
-		trackProgressBar.progress = 0.7
+		//trackProgressBar.progress = 0.0
 		trackProgressBar.tintColor = acColor
 		
 		scrollingTrackName.setup(text: trackName, BackgroundColor: bgColor, TextColor: tnColor)
@@ -185,7 +186,8 @@ class PlayerVC: UIViewController {
 		
 	}
 	@IBAction func skipNextClicked(_ sender: UIButton) {
-		//musicPlayer.playNextItem()
+		musicPlayer.playNextItem()
+		/*
 		if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
 			musicPlayer.musicPlayer.pause()
 			
@@ -194,6 +196,8 @@ class PlayerVC: UIViewController {
 				self.musicPlayer.userCommandAudioPlaying = true
 			}
 		}
+		*/
+		
 	}
 	
 	

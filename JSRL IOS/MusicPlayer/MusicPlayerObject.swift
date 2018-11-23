@@ -418,8 +418,8 @@ class MusicPlayerObject: NSObject{
 		}
 		
 		remote.nextTrackCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
-			//self.playNextItem()
-			
+			self.playNextItem()
+			/*
 			
 			if let curItem  = self.musicPlayer.currentItem, self.progress > 0{
 
@@ -441,6 +441,9 @@ class MusicPlayerObject: NSObject{
 			}else{
 				return MPRemoteCommandHandlerStatus.noSuchContent
 			}
+			*/
+			
+			return MPRemoteCommandHandlerStatus.success
 		}
 	}
 	
