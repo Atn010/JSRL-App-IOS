@@ -73,13 +73,14 @@ class PlayerVC: UIViewController {
 				self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
 			}
 			
-			self.trackProgressBar.progress = self.musicPlayer.progress
+			self.trackProgressBar.setProgress(self.musicPlayer.progress, animated: true)
 		}
 		
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		musicPlayerPageTimer.suspend()
+		scrollingTrackName.destroy()
 		controlsUpdater()
 	}
 	
@@ -93,6 +94,14 @@ class PlayerVC: UIViewController {
 			return .default
 		}else{
 			return .lightContent
+		}
+	}
+	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // change 2 to desired number of seconds
+			self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
+			self.viewLayoutMarginsDidChange()
+
 		}
 	}
 	

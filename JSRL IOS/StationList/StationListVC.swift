@@ -154,7 +154,8 @@ class StationListVC: UIViewController {
 				self.initMiniPlayer(trackName: self.trackName, bgColor: self.bgColor, acColor: self.acColor)
 			}
 			
-			self.trackProgressBar.progress = self.musicPlayer.progress
+			//self.trackProgressBar.progress = self.musicPlayer.progress
+			self.trackProgressBar.setProgress(self.musicPlayer.progress, animated: true)
 		}
 		
 	}
@@ -191,6 +192,13 @@ class StationListVC: UIViewController {
 		stationList.reloadData()
 		stationListTimer.resume()
 		controlsUpdater()
+	}
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // change 2 to desired number of seconds
+			self.initMiniPlayer(trackName: self.trackName, bgColor: self.bgColor, acColor: self.acColor)
+			self.viewLayoutMarginsDidChange()
+			
+		}
 	}
 	
 }
