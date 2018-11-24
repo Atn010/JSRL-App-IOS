@@ -26,6 +26,8 @@ class PlayerVC: UIViewController {
 	@IBOutlet weak var skipNextButton: UIButton!
 	@IBOutlet weak var deadButton: UIButton!
 	
+	@IBOutlet weak var playerControlsBG: UIView!
+	@IBOutlet weak var playerControlsBGExtra: UIView!
 	// MARK: - Variable
 	var bgcolor:UIColor = .black
 	var acColor:UIColor = .white
@@ -46,6 +48,14 @@ class PlayerVC: UIViewController {
 		revLogo = logo.withHorizontallyFlippedOrientation()
 		//revLogo = logo.image
 		self.title = station
+		if bgcolor == .black{
+			playerControlsBG.backgroundColor = .black
+			playerControlsBGExtra.backgroundColor = .black
+		}else{
+			let playerControlBGColor = bgcolor.lighter(by: 5)
+			playerControlsBG.backgroundColor = playerControlBGColor
+			playerControlsBGExtra.backgroundColor = playerControlBGColor
+		}
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
@@ -57,9 +67,12 @@ class PlayerVC: UIViewController {
 		musicPlayerPageTimer.resume()
 		
 		controlsUpdater()
+		trackProgressBar.progress = musicPlayer.progress
 		//testPlayButton.isEnabled = true
 		//testPlayButton.setTitle("Loading List", for: .normal)
 		//loadingStatus = true
+		
+		
 		
 		//clearTempFolder()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -98,7 +111,7 @@ class PlayerVC: UIViewController {
 	}
 	
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // change 2 to desired number of seconds
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { // change 2 to desired number of seconds
 			self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
 			self.viewLayoutMarginsDidChange()
 
@@ -156,7 +169,7 @@ class PlayerVC: UIViewController {
 		if bgColor != .black{
 			tnColor = UIColor.black
 			self.view.backgroundColor = bgColor
-			deadButton.backgroundColor = bgColor
+			//deadButton.backgroundColor = bgColor
 		}else{
 			tnColor = UIColor.white
 			self.view.backgroundColor = .black
@@ -168,7 +181,7 @@ class PlayerVC: UIViewController {
 		//trackProgressBar.progress = 0.0
 		trackProgressBar.tintColor = acColor
 		
-		scrollingTrackName.setup(text: trackName, BackgroundColor: bgColor, TextColor: tnColor)
+		scrollingTrackName.setup(text: trackName, TextColor: tnColor)
 		
 	}
 	@objc func returnToList(){

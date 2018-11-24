@@ -38,18 +38,20 @@ class ScrollText:UIView{
         initialize()
     }
     
-    func setup(text:String, TextColor:UIColor) {
-        labelText = text
-        self.TextColor = TextColor
-        initialize()
-    }
-    
     func setup(text:String, BackgroundColor: UIColor, TextColor:UIColor) {
         labelText = text
         BGColor = BackgroundColor
+		BGColor = .clear
         self.TextColor = TextColor
         initialize()
     }
+	
+	func setup(text:String, TextColor:UIColor) {
+		labelText = text
+		BGColor = .clear
+		self.TextColor = TextColor
+		initialize()
+	}
 	func destroy(){
 		if let viewWithTag = self.viewWithTag(100) {
 			viewWithTag.removeFromSuperview()
