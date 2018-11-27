@@ -17,72 +17,24 @@ class MusicPlayerObject: NSObject{
 	var userCommandAudioPlaying = false
 	var audioPlayingStatus = false
 	
-	let jetsetradio = "https://jetsetradio.live/"
-	let stationPath = "audioplayer/stations/"
-	let fileExtension = ".mp3"
-	
-	// Station Playlist Path
-	//Station Bumps
-	let bumpPath = "bumps/"
-	
-	//Soundtrack
-	let classicPath = "classic/"
-	let futurePath = "future/"
-	
-	//Seasonal
-	let summerPath = "summer/"
-	let christmasPath = "christmas/"
-	
-	//Gang
-	let ggsPath = "ggs/"
-	let poisonJamPath = "poisonjam/"
-	let noiseTanksPath = "noisetanks/"
-	let loveShockersPath = "loveshockers/"
-	let rapid99Path = "rapid99/"
-	let theImmortalsPath = "immortals/"
-	let doomRidersPath = "doomriders/"
-	let goldenRhinosPath = "goldenrhinos/"
-	
-	
-	//Station Bumps
-	let bump = "Bump"
-	
-	//Soundtrack
-	let classic = "Classic"
-	let future = "Future"
-	
-	//Seasonal
-	let summer = "Summer"
-	let christmas = "Christmas"
-	
-	//Gang
-	let ggs = "GG's"
-	let poisonJam = "Poison Jam"
-	let noiseTanks = "Noise Tanks"
-	let loveShockers = "Love Shockers"
-	let rapid99 = "Rapid 99"
-	let theImmortals = "The Immortals"
-	let doomRiders = "Doom Riders"
-	let goldenRhinos = "Golden Rhinos"
-	
 	
 	static let shared = MusicPlayerObject()
 	let MusicPlayerObjectTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
-	var audioPlayer =  AVQueuePlayer()
 	var staticPlayer = AVAudioPlayer()
 	var playerItems: [AVPlayerItem] = []
 	var musicPlayer = AVPlayer()
-	var index = 0
+	private var index = 0
 	
-	var logo:UIImage = UIImage.init(named: "Preloadlogo")!
+	private var logo:UIImage = UIImage.init(named: "Preloadlogo")!
 	
-	var loadingNextItem = false
-	var nextItem:AVPlayerItem?
-	var nextItemisLoaded = false
+	private var loadingNextItem = false
+	private var nextItem:AVPlayerItem?
+	private var nextItemisLoaded = false
 	
-	var forcePlay = 0
+	private var forcePlay = 0
+	private var observer:Any?
 	
-	var observer:Any?
+	private let stationInfo = StationListInfo()
 	
 	// MARK: - Init
 	// Register Audio Session
@@ -249,9 +201,9 @@ class MusicPlayerObject: NSObject{
 		}
 	}
 	
-	func bufferNextItem(){
+	@objc private func bufferNextItem(){
 		// TODO
-		
+		print("Buffering Next Here Maybe")
 
 	}
 	
@@ -357,7 +309,12 @@ class MusicPlayerObject: NSObject{
 												   selector: #selector(playerItemDidReachEnd),
 												   name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
 												   object: nil) // Add observer
-			
+			/*
+			NotificationCenter.default.addObserver(self,
+												   selector: #selector(bufferNextItem),
+												   name: NSNotification.Name.AVPlayer,
+												   object: nil) // Add observer
+			*/
 			musicPlayer.play()
 			updateMediaRemoteState()
 			userCommandAudioPlaying = true
@@ -385,7 +342,7 @@ class MusicPlayerObject: NSObject{
 		}
 	}
 	
-	func initialiseMediaRemote() {
+	private func initialiseMediaRemote() {
 		let remote = MPRemoteCommandCenter.shared()
 		
 		remote.togglePlayPauseCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
@@ -419,35 +376,11 @@ class MusicPlayerObject: NSObject{
 		
 		remote.nextTrackCommand.addTarget { (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
 			self.playNextItem()
-			/*
-			
-			if let curItem  = self.musicPlayer.currentItem, self.progress > 0{
-
-				self.musicPlayer.pause()
-				if !self.staticPlayer.isPlaying{
-					self.staticPlayer.play()
-				}
-				
-				curItem.seek(to: curItem.duration, completionHandler: { (bol) in
-					self.musicPlayer.play()
-					if !self.staticPlayer.isPlaying{
-						self.staticPlayer.play()
-					}
-					self.userCommandAudioPlaying = true
-				})
-				
-				return MPRemoteCommandHandlerStatus.success
-				
-			}else{
-				return MPRemoteCommandHandlerStatus.noSuchContent
-			}
-			*/
-			
 			return MPRemoteCommandHandlerStatus.success
 		}
 	}
 	
-	func updateMediaRemoteState() {
+	private func updateMediaRemoteState() {
 		//let metadata = JSRLSongMetadata(currentTrack!)
 		var data:[String] = currentTrack.components(separatedBy: " - ")
 		if data.count == 1{
@@ -466,18 +399,6 @@ class MusicPlayerObject: NSObject{
 
 	}
 	
-	/*
-	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-	
-	if keyPath == "currentItem",
-	let player = object as? AVPlayer,
-	let currentItem = player.currentItem?.asset as? AVURLAsset {
-	
-	currentTrack = currentItem.url.lastPathComponent
-	currentTrack.removeLast(4)
-	}
-	}
-	*/
 	
 	// Notification Handling
 	@objc func playerItemDidReachEnd(notification: NSNotification) {
@@ -489,6 +410,7 @@ class MusicPlayerObject: NSObject{
 		musicPlayer.pause()
 		playNextItem()
 	}
+	
 	// Remove Observer
 	deinit {
 		NotificationCenter.default.removeObserver(self)
@@ -509,7 +431,7 @@ class MusicPlayerObject: NSObject{
 		playList.shuffle()
 		
 		// Load radio bumps
-		var bumpSet = stationPlayListRetriever(stationSelected: bump)
+		var bumpSet = stationPlayListRetriever(stationSelected: stationInfo.bump)
 		//bumpSet.shuffle()
 		
 		
@@ -517,6 +439,8 @@ class MusicPlayerObject: NSObject{
 		var counting = 0
 		var itemCount = 0
 		var randomInterval = Int.random(in: 3 ... 5)
+		
+		if bumpSet.count != 0 || playList.count != 0 {
 		
 		playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: 0)
 		while itemCount < playList.count {
@@ -531,68 +455,24 @@ class MusicPlayerObject: NSObject{
 			
 			itemCount+=1
 		}
+			
+		}else{
+			UserDefaults.standard.removeObject(forKey: "date")
+			ListUpdater.shared.checkForUpdate()
+			
+			playList.append(AVPlayerItem.init(url: staticPlayer.url!))
+		}
 		
 		
 		return playList
 	}
 	
-	// Translate from station to path
-	func getStationPath(station:String) -> String {
-		
-		if station == bump{
-			return bumpPath
-		}
-			
-		else if station == classic{
-			logo = UIImage(named: "Classic")!
-			return classicPath
-		}else if station == future{
-			logo = UIImage(named: "Future")!
-			return futurePath
-		}else if station == summer{
-			logo = UIImage(named: "Summer")!
-			return summerPath
-		}else if station == christmas{
-			logo = UIImage(named: "Christmas")!
-			return christmasPath
-		}
-			
-			
-		else if station == ggs{
-			logo = UIImage(named: "GG's")!
-			return ggsPath
-		}else if station == poisonJam{
-			logo = UIImage(named: "PoisonJam")!
-			return poisonJamPath
-		}else if station == noiseTanks{
-			logo = UIImage(named: "NoiseTanks")!
-			return noiseTanksPath
-		}else if station == loveShockers{
-			logo = UIImage(named: "LoveShockers")!
-			return loveShockersPath
-		}
-			
-		else if station == rapid99{
-			logo = UIImage(named: "Rapid99")!
-			return rapid99Path
-		}else if station == theImmortals{
-			logo = UIImage(named: "TheImmortals")!
-			return theImmortals
-		}else if station == doomRiders{
-			logo = UIImage(named: "DoomRiders")!
-			return doomRidersPath
-		}else if station == goldenRhinos{
-			logo = UIImage(named: "GoldenRhinos")!
-			return goldenRhinosPath
-		}
-		
-		logo = UIImage(named: "PreloadImage")!
-		return ""
-	}
+
 	
 	
 	private func stationPlayListRetriever(stationSelected:String) -> [AVPlayerItem]{
-		let station = getStationPath(station: stationSelected)
+		let station = stationInfo.getStationPath(station: stationSelected)
+		logo = stationInfo.getStationImage(station: stationSelected)
 		
 		var stationPlayList: [AVPlayerItem] = []
 		//var musicList: [String] = []
@@ -603,7 +483,7 @@ class MusicPlayerObject: NSObject{
 				print(stationSelected)
 				list.forEach { (item) in
 					
-					let stringURL = jetsetradio + stationPath + station + item + fileExtension
+					let stringURL = stationInfo.jetsetradio + stationInfo.stationPath + station + item + stationInfo.fileExtension
 					//print(stringURL)
 					if let readyString = stringURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
 						if let validURL = URL(string: readyString){

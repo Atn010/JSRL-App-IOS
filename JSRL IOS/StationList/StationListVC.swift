@@ -194,7 +194,7 @@ class StationListVC: UIViewController {
 		controlsUpdater()
 	}
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // change 2 to desired number of seconds
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { // change 2 to desired number of seconds
 			self.initMiniPlayer(trackName: self.trackName, bgColor: self.bgColor, acColor: self.acColor)
 			self.viewLayoutMarginsDidChange()
 			
@@ -244,7 +244,12 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			miniPlayer.backgroundColor = bgColor
 			skipNextOutlet.backgroundColor = bgColor
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
-			musicPlayer.playMusic(station: [trackStation])
+			
+			DispatchQueue.main.async {
+				self.musicPlayer.playMusic(station: [self.trackStation])
+			}
+			
+			
 			controlsUpdater()
 			stationList.reloadData()
 		}

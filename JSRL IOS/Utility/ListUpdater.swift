@@ -10,59 +10,11 @@ import UIKit
 
 class ListUpdater: NSObject {
 	
-	let dateNow = Date()
+	private let dateNow = Date()
+	private let stationInfo = StationListInfo()
 	
-	// Base URL Path
-	let jetsetradio = "https://jetsetradio.live/"
-	let stationPath = "audioplayer/stations/"
-	let listPath = "/~list.js"
-	
-	// Station Playlist Path
-	//Station Bumps
-	let bumpPath = "bumps"
-	
-	//Soundtrack
-	let classicPath = "classic"
-	let futurePath = "future"
-	
-	//Seasonal
-	let summerPath = "summer"
-	let christmasPath = "christmas"
-	
-	//Gang
-	let ggsPath = "ggs"
-	let poisonJamPath = "poisonjam"
-	let noiseTanksPath = "noisetanks"
-	let loveShockersPath = "loveshockers"
-	let rapid99Path = "rapid99"
-	let theImmortalsPath = "immortals"
-	let doomRidersPath = "doomriders"
-	let goldenRhinosPath = "goldenrhinos"
-	
-	
-	// Station Name
-	//Station Bumps
-	let bump = "Bump"
-	
-	//Soundtrack
-	let classic = "Classic"
-	let future = "Future"
-	
-	//Seasonal
-	let summer = "Summer"
-	let christmas = "Christmas"
-	
-	//Gang
-	let ggs = "GG's"
-	let poisonJam = "Poison Jam"
-	let noiseTanks = "Noise Tanks"
-	let loveShockers = "Love Shockers"
-	let rapid99 = "Rapid 99"
-	let theImmortals = "The Immortals"
-	let doomRiders = "Doom Riders"
-	let goldenRhinos = "Golden Rhinos"
-	
-	var updateList:[String:String] = [:]
+
+	private var updateList:[String:String] = [:]
 	
 	static let shared = ListUpdater()
 	
@@ -80,17 +32,17 @@ class ListUpdater: NSObject {
 		}
 	}
 	
-	func getAndUpdateList() {
+	private func getAndUpdateList() {
 		updateList = loadUpdateList()
 		
 		for (key,value) in updateList{
-			downloadList(fileUrl: "\(jetsetradio)\(stationPath)\(value)\(listPath)", fileKey: key)
+			downloadList(fileUrl: "\(stationInfo.jetsetradio)\(stationInfo.stationPath)\(value)\(stationInfo.listPath)", fileKey: key)
 		}
 		
 		
 	}
 	
-	func downloadList(fileUrl:String, fileKey:String){
+	private func downloadList(fileUrl:String, fileKey:String){
 		let url = URL(string: fileUrl)!
 		var fileList:[String] = []
 		
@@ -115,6 +67,7 @@ class ListUpdater: NSObject {
 						}
 						UserDefaults.standard.set(self.dateNow, forKey:"date")
 						UserDefaults.standard.set(fileList, forKey: fileKey)
+						print(fileList)
 						
 					}
 				}
@@ -123,30 +76,30 @@ class ListUpdater: NSObject {
 		
 	}
 	
-	func loadUpdateList() -> [String:String] {
+	private func loadUpdateList() -> [String:String] {
 		var tempList:[String:String] = [:]
 		
-		tempList[bump] = bumpPath
+		tempList[stationInfo.bump] = stationInfo.bumpPath
 		
-		tempList[classic] = classicPath
-		tempList[future] = futurePath
-		tempList[summer] = summerPath
-		tempList[christmas] = christmasPath
+		tempList[stationInfo.classic] = stationInfo.classicPath
+		tempList[stationInfo.future] = stationInfo.futurePath
+		tempList[stationInfo.summer] = stationInfo.summerPath
+		tempList[stationInfo.christmas] = stationInfo.christmasPath
 		
-		tempList[ggs] = ggsPath
-		tempList[poisonJam] = poisonJamPath
-		tempList[noiseTanks] = noiseTanksPath
-		tempList[loveShockers] = loveShockersPath
+		tempList[stationInfo.ggs] = stationInfo.ggsPath
+		tempList[stationInfo.poisonJam] = stationInfo.poisonJamPath
+		tempList[stationInfo.noiseTanks] = stationInfo.noiseTanksPath
+		tempList[stationInfo.loveShockers] = stationInfo.loveShockersPath
 		
-		tempList[rapid99] = rapid99Path
-		tempList[theImmortals] = theImmortalsPath
-		tempList[doomRiders] = doomRidersPath
-		tempList[goldenRhinos] = goldenRhinosPath
+		tempList[stationInfo.rapid99] = stationInfo.rapid99Path
+		tempList[stationInfo.theImmortals] = stationInfo.theImmortalsPath
+		tempList[stationInfo.doomRiders] = stationInfo.doomRidersPath
+		tempList[stationInfo.goldenRhinos] = stationInfo.goldenRhinosPath
 		
 		return tempList
 	}
 	
-	func daysBetweenDates(startDate: Date, endDate: Date) -> Int {
+	private func daysBetweenDates(startDate: Date, endDate: Date) -> Int {
 		let calendar = Calendar.current
 		let components = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
 		return components.day!

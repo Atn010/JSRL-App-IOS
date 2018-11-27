@@ -29,6 +29,7 @@
 		FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CE9218971280086CD32 /* StationListCreator.swift */; };
 		FBB95CEC21898DDD0086CD32 /* AnimatedBars.gif in Resources */ = {isa = PBXBuildFile; fileRef = FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */; };
 		FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */; };
+		FBEA431821ACDECD003BA479 /* StationListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA431721ACDECD003BA479 /* StationListInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FBB95CE9218971280086CD32 /* StationListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListCreator.swift; sourceTree = "<group>"; };
 		FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AnimatedBars.gif; sourceTree = "<group>"; };
 		FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVBSoundBars.swift; sourceTree = "<group>"; };
+		FBEA431721ACDECD003BA479 /* StationListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListInfo.swift; sourceTree = "<group>"; };
 		FBF25F28219E7A24006F9217 /* JSRL IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JSRL IOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,8 +157,9 @@
 				FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */,
 				FBB95CEB21898DDD0086CD32 /* AnimatedBars.gif */,
 				FB9E9BEB2187F3E800066A18 /* ScrollText.swift */,
-				FBB95CE9218971280086CD32 /* StationListCreator.swift */,
 				FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */,
+				FBEA431721ACDECD003BA479 /* StationListInfo.swift */,
+				FBB95CE9218971280086CD32 /* StationListCreator.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBEA431821ACDECD003BA479 /* StationListInfo.swift in Sources */,
 				FB8248B42187FD070050A382 /* MusicStation.swift in Sources */,
 				FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */,
 				FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */,

@@ -16,7 +16,7 @@ class ScrollText:UIView{
     private var labelArray = [UILabel]()
     private var isStop = false
     private var timeInterval: TimeInterval!
-    private let leadingBuffer = CGFloat(25.0)
+    private let leadingBuffer = CGFloat(8.0)
     private let loopStartDelay = 2.0
 	var currentText:String? = ""
     
@@ -79,7 +79,7 @@ class ScrollText:UIView{
         let textIsTooLong = sizeOfText.width >= frame.size.width ? true : false
 		
         rect0 = CGRect(x: leadingBuffer, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
-        rect1 = CGRect(x: rect0.origin.x + rect0.size.width + 25, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
+        rect1 = CGRect(x: rect0.origin.x + rect0.size.width + leadingBuffer, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
 		rect2 = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.bounds.size.height)
 
 		//isStop = true
@@ -117,7 +117,7 @@ class ScrollText:UIView{
             
             UIView.animate(withDuration: timeInterval, delay: loopStartDelay, options: [.curveLinear], animations: {
                 labelAtIndex0.frame = CGRect(x: -self.rect0.size.width,y: 0,width: self.rect0.size.width,height: self.rect0.size.height)
-                labelAtIndex1.frame = CGRect(x: labelAtIndex0.frame.origin.x + labelAtIndex0.frame.size.width + 25,y: 0,width: labelAtIndex1.frame.size.width,height: labelAtIndex1.frame.size.height)
+				labelAtIndex1.frame = CGRect(x: labelAtIndex0.frame.origin.x + labelAtIndex0.frame.size.width + self.leadingBuffer,y: 0,width: labelAtIndex1.frame.size.width,height: labelAtIndex1.frame.size.height)
             }, completion: { finishied in
                 labelAtIndex0.frame = self.rect1
                 labelAtIndex1.frame = self.rect0

@@ -56,7 +56,7 @@ class PlayerVC: UIViewController {
 			playerControlsBG.backgroundColor = playerControlBGColor
 			playerControlsBGExtra.backgroundColor = playerControlBGColor
 		}
-		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
+		initMusicPlayer(trackName: "", bgColor: bgcolor, acColor: acColor)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
 		
