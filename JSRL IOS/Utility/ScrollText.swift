@@ -16,7 +16,7 @@ class ScrollText:UIView{
     private var labelArray = [UILabel]()
     private var isStop = false
     private var timeInterval: TimeInterval!
-    private let leadingBuffer = CGFloat(8.0)
+    private let leadingBuffer = CGFloat(16.0)
     private let loopStartDelay = 2.0
 	var currentText:String? = ""
     
@@ -31,6 +31,12 @@ class ScrollText:UIView{
         labelText = text
         initialize()
     }
+	
+	func setup(text:String, TextColor:UIColor) {
+		labelText = text
+		self.TextColor = TextColor
+		initialize()
+	}
     
     func setup(text:String, BackgroundColor: UIColor) {
         labelText = text
@@ -46,12 +52,7 @@ class ScrollText:UIView{
         initialize()
     }
 	
-	func setup(text:String, TextColor:UIColor) {
-		labelText = text
-		BGColor = .clear
-		self.TextColor = TextColor
-		initialize()
-	}
+	
 	func destroy(){
 		if let viewWithTag = self.viewWithTag(100) {
 			viewWithTag.removeFromSuperview()
@@ -67,16 +68,18 @@ class ScrollText:UIView{
 	}
     
     private func initialize() {
-        self.backgroundColor = BGColor ?? UIColor.white
+        self.backgroundColor = BGColor ?? UIColor.clear
         let label = UILabel()
         label.text = labelText
+		label.font = UIFont.preferredFont(forTextStyle: .callout)
+		label.adjustsFontForContentSizeCategory = true
 		currentText = labelText
         label.textColor = TextColor ?? UIColor.black
         label.frame = CGRect.zero
         
         timeInterval = TimeInterval((labelText?.count)! / 4)
         let sizeOfText = label.sizeThatFits(CGSize.zero)
-        let textIsTooLong = sizeOfText.width >= frame.size.width ? true : false
+        let textIsTooLong = sizeOfText.width + (leadingBuffer * 2) >= frame.size.width ? true : false
 		
         rect0 = CGRect(x: leadingBuffer, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
         rect1 = CGRect(x: rect0.origin.x + rect0.size.width + leadingBuffer, y: 0, width: sizeOfText.width, height: self.bounds.size.height)
@@ -91,9 +94,11 @@ class ScrollText:UIView{
 			self.addSubview(label)
 			
             let additionalLabel = UILabel(frame: rect1)
-            additionalLabel.text = labelText
-            additionalLabel.textColor = TextColor
+            additionalLabel.text = label.text
+            additionalLabel.textColor = label.textColor
 			additionalLabel.tag = 101
+			additionalLabel.font = label.font
+			additionalLabel.adjustsFontForContentSizeCategory = true
             self.addSubview(additionalLabel)
             
             labelArray.append(additionalLabel)

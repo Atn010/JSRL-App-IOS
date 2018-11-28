@@ -48,14 +48,18 @@ class PlayerVC: UIViewController {
 		revLogo = logo.withHorizontallyFlippedOrientation()
 		//revLogo = logo.image
 		self.title = station
-		if bgcolor == .black{
-			playerControlsBG.backgroundColor = .black
-			playerControlsBGExtra.backgroundColor = .black
-		}else{
-			let playerControlBGColor = bgcolor.lighter(by: 5)
-			playerControlsBG.backgroundColor = playerControlBGColor
-			playerControlsBGExtra.backgroundColor = playerControlBGColor
-		}
+		/*
+		//if bgcolor == .black{
+		//let playerControlBGColor:UIColor = bgcolor.lighter(by: 15) ?? .black
+		let playerControlBGColor:UIColor = bgcolor
+		playerControlsBG.backgroundColor = playerControlBGColor
+		playerControlsBGExtra.backgroundColor = playerControlBGColor
+		*/
+		//}else{
+		let playerControlBGColor = bgcolor//.lighter(by: 5)
+		playerControlsBG.backgroundColor = playerControlBGColor
+		playerControlsBGExtra.backgroundColor = playerControlBGColor
+		//}
 		initMusicPlayer(trackName: "", bgColor: bgcolor, acColor: acColor)
 		
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
@@ -68,13 +72,7 @@ class PlayerVC: UIViewController {
 		
 		controlsUpdater()
 		trackProgressBar.progress = musicPlayer.progress
-		//testPlayButton.isEnabled = true
-		//testPlayButton.setTitle("Loading List", for: .normal)
-		//loadingStatus = true
-		
-		
-		
-		//clearTempFolder()
+		initDeadButton()
 		// Do any additional setup after loading the view, typically from a nib.
 		//animateLogo()
 	}
@@ -103,19 +101,26 @@ class PlayerVC: UIViewController {
 		controlsUpdater()
 	}
 	override var preferredStatusBarStyle: UIStatusBarStyle {
+		/*
 		if bgcolor != .black{
-			return .default
+		return .default
 		}else{
-			return .lightContent
-		}
+		*/
+		return .lightContent
+		//}
+	}
+	override func prefersHomeIndicatorAutoHidden() -> Bool {
+		return true
 	}
 	
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { // change 2 to desired number of seconds
 			self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
 			self.viewLayoutMarginsDidChange()
-
+			
 		}
+		
+		initDeadButton()
 	}
 	
 	func animateLogo(){
@@ -140,44 +145,67 @@ class PlayerVC: UIViewController {
 		
 	}
 	
-	func controlsUpdater() {
-		if bgcolor != .black{
-			self.navigationController?.navigationBar.barStyle = .default
-			if musicPlayer.userCommandAudioPlaying{
-				playPauseButton.setImage(UIImage.init(named: "DarkCirclePause"), for: .normal)
-			}else{
-				playPauseButton.setImage(UIImage.init(named: "DarkCirclePlay"), for: .normal)
+	private func initDeadButton() {
+		if UIDevice.current.orientation.isLandscape {
+			
+			switch self.sizeClass() {
+			case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.regular):
+				deadButton.backgroundColor = .clear
+				deadButton.setImage(nil, for: .normal)
+			default:
+				deadButton.backgroundColor = bgcolor
+				deadButton.setImage(stationLogo.image!, for: .normal)
 			}
 			
-			skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
-		}else{
-			self.navigationController?.navigationBar.barStyle = .black
-			if musicPlayer.userCommandAudioPlaying{
-				playPauseButton.setImage(UIImage.init(named: "CirclePause"), for: .normal)
-			}else{
-				playPauseButton.setImage(UIImage.init(named: "CirclePlay"), for: .normal)
-			}
-			skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
+		} else {
+			deadButton.backgroundColor = .clear
+			deadButton.setImage(nil, for: .normal)
 		}
+	}
+	
+	func controlsUpdater() {
+		/*
+		if bgcolor != .black{
+		self.navigationController?.navigationBar.barStyle = .default
+		if musicPlayer.userCommandAudioPlaying{
+		playPauseButton.setImage(UIImage.init(named: "LDarkPause"), for: .normal)
+		}else{
+		playPauseButton.setImage(UIImage.init(named: "DarkPlay"), for: .normal)
+		}
+		
+		skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
+		*/
+		//}else{
+		self.navigationController?.navigationBar.barStyle = .black
+		if musicPlayer.userCommandAudioPlaying{
+			playPauseButton.setImage(UIImage.init(named: "LPause"), for: .normal)
+		}else{
+			playPauseButton.setImage(UIImage.init(named: "Play"), for: .normal)
+		}
+		skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
+		//}
+		
 	}
 	
 	
 	func initMusicPlayer(trackName:String, bgColor:UIColor,acColor:UIColor){
 		scrollingTrackName.destroy()
-		
 		var tnColor = UIColor.purple
+		/*
 		if bgColor != .black{
-			tnColor = UIColor.black
-			self.view.backgroundColor = bgColor
-			//deadButton.backgroundColor = bgColor
+		tnColor = UIColor.black
+		self.view.backgroundColor = bgColor
+		//deadButton.backgroundColor = bgColor
 		}else{
-			tnColor = UIColor.white
-			self.view.backgroundColor = .black
-			
-			self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-			self.navigationController?.navigationBar.barTintColor = .black
-			self.navigationController?.navigationBar.tintColor = .white
-		}
+		*/
+		tnColor = UIColor.white
+		self.view.backgroundColor = .black
+		
+		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		self.navigationController?.navigationBar.barTintColor = .black
+		self.navigationController?.navigationBar.tintColor = .white
+		//self.deadButton.backgroundColor = bgColor
+		//}
 		//trackProgressBar.progress = 0.0
 		trackProgressBar.tintColor = acColor
 		
@@ -211,12 +239,12 @@ class PlayerVC: UIViewController {
 		musicPlayer.playNextItem()
 		/*
 		if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
-			musicPlayer.musicPlayer.pause()
-			
-			curItem.seek(to: curItem.duration) { (bol) in
-				self.musicPlayer.musicPlayer.play()
-				self.musicPlayer.userCommandAudioPlaying = true
-			}
+		musicPlayer.musicPlayer.pause()
+		
+		curItem.seek(to: curItem.duration) { (bol) in
+		self.musicPlayer.musicPlayer.play()
+		self.musicPlayer.userCommandAudioPlaying = true
+		}
 		}
 		*/
 		
@@ -224,5 +252,11 @@ class PlayerVC: UIViewController {
 	
 	
 	
+}
+
+extension UIViewController {
+	func sizeClass() -> (UIUserInterfaceSizeClass, UIUserInterfaceSizeClass) {
+		return (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass)
+	}
 }
 

@@ -201,6 +201,10 @@ class StationListVC: UIViewController {
 		}
 	}
 	
+	override func prefersHomeIndicatorAutoHidden() -> Bool {
+		return true
+	}
+	
 }
 
 extension StationListVC: UITableViewDelegate, UITableViewDataSource{
@@ -229,28 +233,28 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 		
 		if playingAt != indexPath{
 		
-			//trackName = "Gogol Bordello vs Tamir Muskat - Balkanization of Amerikanization"
 			trackStation = musicStationList[indexPath.section].musicStation[indexPath.row].name
 			bgColor = .black
 			acColor = musicStationList[indexPath.section].musicStation[indexPath.row].acLogoColor
 			playingAt = indexPath
 			
-			if musicStationList[indexPath.section].group == "Seasonal"{
-				bgColor = musicStationList[indexPath.section].musicStation[indexPath.row].bgLogoColor
-			}
+			//if musicStationList[indexPath.section].group == "Seasonal"{
+			//	bgColor = musicStationList[indexPath.section].musicStation[indexPath.row].bgLogoColor
+			//}
 			
+			self.miniPlayer.backgroundColor = self.bgColor
+			self.skipNextOutlet.backgroundColor = self.bgColor
+			self.bottomCover.backgroundColor = self.bgColor
 			
 
-			miniPlayer.backgroundColor = bgColor
-			skipNextOutlet.backgroundColor = bgColor
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
 			
 			DispatchQueue.main.async {
 				self.musicPlayer.playMusic(station: [self.trackStation])
+				self.controlsUpdater()
 			}
 			
 			
-			controlsUpdater()
 			stationList.reloadData()
 		}
 	}
