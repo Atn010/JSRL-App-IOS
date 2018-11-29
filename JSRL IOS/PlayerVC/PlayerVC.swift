@@ -45,7 +45,7 @@ class PlayerVC: UIViewController {
 		
 		
 		stationLogo.image = logo
-		revLogo = logo.withHorizontallyFlippedOrientation()
+		//revLogo = logo.withHorizontallyFlippedOrientation()
 		//revLogo = logo.image
 		self.title = station
 		/*
@@ -73,6 +73,9 @@ class PlayerVC: UIViewController {
 		controlsUpdater()
 		trackProgressBar.progress = musicPlayer.progress
 		initDeadButton()
+		//DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // change 2 to desired number of seconds
+			self.initDeadButton()
+		//}
 		// Do any additional setup after loading the view, typically from a nib.
 		//animateLogo()
 	}
@@ -99,6 +102,9 @@ class PlayerVC: UIViewController {
 		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		musicPlayerPageTimer.resume()
 		controlsUpdater()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // change 2 to desired number of seconds
+			self.initDeadButton()
+		}
 	}
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		/*
