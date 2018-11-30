@@ -28,23 +28,27 @@ class ScrollText:UIView{
     
     
     func setup(text:String) {
+		destroy()
         labelText = text
         initialize()
     }
 	
 	func setup(text:String, TextColor:UIColor) {
+		destroy()
 		labelText = text
 		self.TextColor = TextColor
 		initialize()
 	}
     
     func setup(text:String, BackgroundColor: UIColor) {
+		destroy()
         labelText = text
         BGColor = BackgroundColor
         initialize()
     }
     
     func setup(text:String, BackgroundColor: UIColor, TextColor:UIColor) {
+		destroy()
         labelText = text
         BGColor = BackgroundColor
 		BGColor = .clear
@@ -68,6 +72,7 @@ class ScrollText:UIView{
 	}
     
     private func initialize() {
+		destroy() // destroy previous object if available
         self.backgroundColor = BGColor ?? UIColor.clear
         let label = UILabel()
         label.text = labelText
@@ -129,6 +134,10 @@ class ScrollText:UIView{
 				if self.isStop || animatedText != self.currentText{
 					self.layer.removeAllAnimations()
 				}else{
+					if UIApplication.shared.applicationState != .active {
+						self.isStop = true
+					}
+					
 					self.labelArray[0] = labelAtIndex1
 					self.labelArray[1] = labelAtIndex0
 					self.animateLabelText(animatedText: animatedText)

@@ -404,10 +404,10 @@ class MusicPlayerObject: NSObject{
 	@objc func playerItemDidReachEnd(notification: NSNotification) {
 		//player.seek(to: CMTime.zero)
 		//player.play()
-		if !self.staticPlayer.isPlaying{
-			self.staticPlayer.play()
-		}
-		musicPlayer.pause()
+//		if !self.staticPlayer.isPlaying{
+//			self.staticPlayer.play()
+//		}
+//		//musicPlayer.pause()
 		playNextItem()
 	}
 	
