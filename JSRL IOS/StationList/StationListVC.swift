@@ -32,6 +32,7 @@ class StationListVC: UIViewController {
 	var toMusicPlayer = true
 	var isPlayingSomething = false
 	let musicStationList = StationListCreator().StationList()
+	let stationInfo = StationListInfo()
 	
 	var trackName = ""
 	var trackStation = ""
@@ -41,6 +42,9 @@ class StationListVC: UIViewController {
 	var opColor = UIColor.white
 	
 	var playingAt:IndexPath?
+	
+	// MARK: - Constant
+	var shuffleList: [String] = []
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +76,15 @@ class StationListVC: UIViewController {
 		
 		//stationList.rowHeight = 58
 		//stationList.backgroundColor = .black
+		
+		shuffleList = [
+		stationInfo.classic, stationInfo.future,
+		stationInfo.ggs, stationInfo.poisonJam,
+		stationInfo.noiseTanks, stationInfo.loveShockers,
+		stationInfo.rapid99, stationInfo.theImmortals,
+		stationInfo.doomRiders, stationInfo.goldenRhinos
+		
+		]
 		
 		
         // Do any additional setup after loading the view.
@@ -205,6 +218,47 @@ class StationListVC: UIViewController {
 		return true
 	}
 	
+	@IBAction func ShuffleallStation(_ sender: UIButton) {
+		
+		if miniPlayerBottom.constant != 0{
+			miniPlayerBottom.constant = 0
+			bottomList.isActive = false
+			UIView.animate(withDuration: 0.3) {
+				self.view.layoutIfNeeded()
+			}
+		}
+		
+		trackStation = StationListInfo().classic
+		bgColor = .black
+		acColor = .blue
+		
+		//if musicStationList[indexPath.section].group == "Seasonal"{
+		//	bgColor = musicStationList[indexPath.section].musicStation[indexPath.row].bgLogoColor
+		//}
+		
+		self.miniPlayer.backgroundColor = self.bgColor
+		self.skipNextOutlet.backgroundColor = self.bgColor
+		self.bottomCover.backgroundColor = self.bgColor
+		
+		
+		trackLogo = UIImage.init(named: StationListInfo().classic)!
+		
+		let shuffleList = [
+		stationInfo.classic, stationInfo.future,
+		stationInfo.ggs, stationInfo.poisonJam,
+		stationInfo.noiseTanks, stationInfo.loveShockers,
+		stationInfo.rapid99, stationInfo.theImmortals,
+		stationInfo.doomRiders, stationInfo.goldenRhinos
+		
+		]
+		
+		DispatchQueue.main.async {
+			self.musicPlayer.userCommandAudioPlaying = false
+			self.musicPlayer.playMusic(station: shuffleList)
+			self.controlsUpdater()
+		}
+	}
+	
 }
 
 extension StationListVC: UITableViewDelegate, UITableViewDataSource{
@@ -250,7 +304,15 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
 			
 			DispatchQueue.main.async {
-				self.musicPlayer.playMusic(station: [self.trackStation])
+			self.musicPlayer.userCommandAudioPlaying = false
+				
+				if self.trackStation == "Shuffle"{
+					self.musicPlayer.playMusic(station: self.shuffleList)
+				}else{
+					self.musicPlayer.playMusic(station: [self.trackStation])
+				}
+				
+				
 				self.controlsUpdater()
 			}
 			

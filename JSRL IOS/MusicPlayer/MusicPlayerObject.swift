@@ -421,7 +421,7 @@ class MusicPlayerObject: NSObject{
 		// Load Playlist from the selected Stations
 		var playList:[AVPlayerItem] = []
 		
-		logo = stationInfo.getStationImage(station: stationSelected.first ?? "Classic")
+		logo = stationInfo.getStationImage(station: stationSelected.first ?? "Shuffle")
 		stationSelected.forEach { (station) in
 			//stationPlayListRetriever(stationSelected: stationSelected)
 			stationPlayListRetriever(stationSelected: station).forEach({ (playListItem) in

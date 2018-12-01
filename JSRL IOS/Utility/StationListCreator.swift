@@ -51,7 +51,15 @@ class StationListCreator{
 		var seasonalStationSet: [MusicStation] = []
 		
 		seasonalStationSet.append(prepareStations(name: "Summer", logo: UIImage.init(named: "Summer")!, bgColor: UIColor.init(hexString: "00CA96"), acColor: UIColor.init(hexString: "FFE800") ) )
-		seasonalStationSet.append(prepareStations(name: "Christmas", logo: UIImage.init(named: "Christmas")!, bgColor: UIColor.init(hexString: "8CAFB0"), acColor: UIColor.init(hexString: "FFFFFF") ) )
+		seasonalStationSet.append(prepareStations(name: "Christmas", logo: UIImage.init(named: "Christmas")!, bgColor: UIColor.init(hexString: "D70000"), acColor: UIColor.init(hexString: "D70000") ) )
+		
+		return seasonalStationSet
+	}
+	
+	private func prepareShuffleStationSet() -> [MusicStation]{
+		var seasonalStationSet: [MusicStation] = []
+		
+		seasonalStationSet.append(prepareStations(name: "Shuffle", logo: UIImage.init(named: "Shuffle")!, bgColor: UIColor.init(hexString: "000000"), acColor: UIColor.blue ) )
 		
 		return seasonalStationSet
 	}
@@ -62,12 +70,14 @@ class StationListCreator{
 			musicList["Soundtrack"] = prepareSoundtrackStationSet()
 			musicList["Gang"] = prepareGangStationSet()
 			musicList["Seasonal"] = prepareSeasonalStationSet()
+			musicList["Shuffle"] = prepareShuffleStationSet()
 		
 		var objectArray: [object] = []
 		
 		objectArray.append(object.init(group: "Soundtrack", musicStation: musicList["Soundtrack"]!))
 		objectArray.append(object.init(group: "Gang", musicStation: musicList["Gang"]!))
 		objectArray.append(object.init(group: "Seasonal", musicStation: musicList["Seasonal"]!))
+		objectArray.append(object.init(group: "Shuffle", musicStation: musicList["Shuffle"]!))
 		/*
 		for (key, value) in musicList{
 			objectArray.append(object.init(group: key, musicStation: value))
