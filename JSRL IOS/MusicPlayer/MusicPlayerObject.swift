@@ -19,7 +19,7 @@ class MusicPlayerObject: NSObject{
 	
 	
 	static let shared = MusicPlayerObject()
-	let MusicPlayerObjectTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
+	let MusicPlayerObjectTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.5)!)
 	var staticPlayer = AVAudioPlayer()
 	var playerItems: [AVPlayerItem] = []
 	var musicPlayer = AVPlayer()
@@ -93,7 +93,7 @@ class MusicPlayerObject: NSObject{
 			
 			if let curItem  = self.musicPlayer.currentItem, curItem.error == nil{
 				
-				if audioPlayingStatus == false && userCommandAudioPlaying == true && forcePlay >= 25{
+				if audioPlayingStatus == false && userCommandAudioPlaying == true && forcePlay >= 5{
 					print("I FORCE YOU TO PLAY")
 					musicPlayer.play()
 					forcePlay = 0
@@ -232,7 +232,7 @@ class MusicPlayerObject: NSObject{
 			}
 			// Adds Observer over time.
 			*/
-			observer = musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 10), queue: DispatchQueue.main, using: { time in
+			observer = musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main, using: { time in
 				
 				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
 					//print("here I am")

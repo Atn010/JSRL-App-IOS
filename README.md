@@ -1,23 +1,30 @@
 # JSRL IOS App
 
-Jetsetradio.live for IOS
+[JetSetRadio.live](https://jetsetradio.live) for IOS
 
-Stream Music, tune in and Enjoy!
+Strapped on, tune in and Enjoy!
+
+Be playing games, Washing dishes, or Tearing up the streets, All the sounds playing in the background just a few clicks away...
+
+This is a quick project for the iOS after the other app (link below) stopped working.
+
+Do send me a merge/pull request when you have any improvements or bug fixes!
 
 ## Prerequisites
 
 - MacOS, preferrably able to run latest version of XCode
 - XCode, preferrably able to run latest version of IOS
-- iPhone, preferrable running latest version of IOS
-  - If unable to do so, please create compatibility with lower versions
+- iPhone, preferrable running latest version of IOS (11 and above)
+  - please create compatibility with previous versions
 - Apple Developer Account
-  - Unable to do so, you can follow <https://9to5mac.com/2016/03/27/how-to-create-free-apple-developer-account-sideload-apps/>
+  - or you can follow <https://9to5mac.com/2016/03/27/how-to-create-free-apple-developer-account-sideload-apps/>
 - Know how to compile and build application to your phone.
+- Know How to use CocoaPod
 
 ## TODO
 
 - [ ] Implement prebuffering next item
-- [ ] Implement shuffle
+- [x] Implement shuffle
   - [ ] Implement selected shuffle
 - [ ] Able to pull mini player up to reveal full player
 - [ ] Vectorized Music Station Logo
@@ -27,11 +34,11 @@ Stream Music, tune in and Enjoy!
 
 ### WARNING
 
-I collect crash report using Crashanalytics. Other than that, I don't collect anything else.
+I collect crash report using Crashlytics. Other than that, I don't collect anything else.
 
 #### Details
 
-started by Atn010 of <https://www.atn010.com>
+started by Atn010 of [Atn010.com](https://www.atn010.com)
 
 not affiliated with <https://github.com/fiskie/jsrl>
 also not affiliated with <https://jetsetradio.live> too
