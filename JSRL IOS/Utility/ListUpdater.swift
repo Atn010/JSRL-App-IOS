@@ -64,10 +64,11 @@ class ListUpdater: NSObject {
 						}
 						for line in lines{
 							fileList.append(line.components(separatedBy: "\"")[1])
+							print( "\(fileKey) ~ \(line.components(separatedBy: "\"")[1])")
 						}
 						UserDefaults.standard.set(self.dateNow, forKey:"date")
 						UserDefaults.standard.set(fileList, forKey: fileKey)
-						print(fileList)
+						//print(fileList)
 						
 					}
 				}

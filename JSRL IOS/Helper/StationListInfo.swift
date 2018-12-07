@@ -144,6 +144,10 @@ class StationListInfo{
 			logo = UIImage(named: "GoldenRhinos")!
 		}
 		
+		else if station == "Shuffle"{
+			logo = UIImage(named: "Shuffle")!
+		}
+		
 		
 		return logo
 	}

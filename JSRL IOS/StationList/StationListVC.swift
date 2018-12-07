@@ -11,11 +11,11 @@ import Fabric
 import Crashlytics
 
 class StationListVC: UIViewController {
-
+	
 	// MARK: - Object
 	let musicPlayer = MusicPlayerObject.shared
 	let stationListTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
-
+	
 	// MARK: - Outlet
 	@IBOutlet weak var stationList: UITableView!
 	@IBOutlet weak var miniPlayer: UIView!
@@ -47,7 +47,7 @@ class StationListVC: UIViewController {
 	var shuffleList: [String] = []
 	
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		stationList.delegate = self
 		stationList.dataSource = self
 		
@@ -78,17 +78,17 @@ class StationListVC: UIViewController {
 		//stationList.backgroundColor = .black
 		
 		shuffleList = [
-		stationInfo.classic, stationInfo.future,
-		stationInfo.ggs, stationInfo.poisonJam,
-		stationInfo.noiseTanks, stationInfo.loveShockers,
-		stationInfo.rapid99, stationInfo.theImmortals,
-		stationInfo.doomRiders, stationInfo.goldenRhinos
-		
+			stationInfo.classic, stationInfo.future,
+			stationInfo.ggs, stationInfo.poisonJam,
+			stationInfo.noiseTanks, stationInfo.loveShockers,
+			stationInfo.rapid99, stationInfo.theImmortals,
+			stationInfo.doomRiders, stationInfo.goldenRhinos
+			
 		]
 		
 		
-        // Do any additional setup after loading the view.
-    }
+		// Do any additional setup after loading the view.
+	}
 	
 	func controlsUpdater() {
 		if bgColor != .black{
@@ -110,15 +110,16 @@ class StationListVC: UIViewController {
 	@objc func controlOnTap(){
 		if musicPlayer.userCommandAudioPlaying{
 			musicPlayer.playNextItem()
+			songNameScrollText.destroy()
 			/*
 			if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
-				musicPlayer.musicPlayer.pause()
-				
-				
-				curItem.seek(to: curItem.duration) { (bol) in
-					self.musicPlayer.musicPlayer.play()
-					self.musicPlayer.userCommandAudioPlaying = true
-				}
+			musicPlayer.musicPlayer.pause()
+			
+			
+			curItem.seek(to: curItem.duration) { (bol) in
+			self.musicPlayer.musicPlayer.play()
+			self.musicPlayer.userCommandAudioPlaying = true
+			}
 			}
 			*/
 		}else if musicPlayer.playerItems.isEmpty{
@@ -176,11 +177,11 @@ class StationListVC: UIViewController {
 	@objc func openPlayer(){
 		performSegue(withIdentifier: "toPlayer", sender: self)
 	}
-
 	
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	
+	// MARK: - Navigation
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if toMusicPlayer {
 			let playerVC = segue.destination as! PlayerVC
 			
@@ -191,13 +192,13 @@ class StationListVC: UIViewController {
 			playerVC.station = trackStation
 			playerVC.logo = trackLogo
 		}
-    }
+	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		songNameScrollText.destroy()
 		stationListTimer.suspend()
 	}
-
+	
 	override func viewDidAppear(_ animated: Bool) {
 		controlsUpdater()
 		UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -244,12 +245,12 @@ class StationListVC: UIViewController {
 		trackLogo = UIImage.init(named: StationListInfo().classic)!
 		
 		let shuffleList = [
-		stationInfo.classic, stationInfo.future,
-		stationInfo.ggs, stationInfo.poisonJam,
-		stationInfo.noiseTanks, stationInfo.loveShockers,
-		stationInfo.rapid99, stationInfo.theImmortals,
-		stationInfo.doomRiders, stationInfo.goldenRhinos
-		
+			stationInfo.classic, stationInfo.future,
+			stationInfo.ggs, stationInfo.poisonJam,
+			stationInfo.noiseTanks, stationInfo.loveShockers,
+			stationInfo.rapid99, stationInfo.theImmortals,
+			stationInfo.doomRiders, stationInfo.goldenRhinos
+			
 		]
 		
 		DispatchQueue.main.async {
@@ -266,7 +267,7 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 40
 	}
-
+	
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return musicStationList.count
@@ -286,7 +287,7 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 		}
 		
 		if playingAt != indexPath{
-		
+			
 			trackStation = musicStationList[indexPath.section].musicStation[indexPath.row].name
 			bgColor = .black
 			acColor = musicStationList[indexPath.section].musicStation[indexPath.row].acLogoColor
@@ -300,21 +301,26 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			self.skipNextOutlet.backgroundColor = self.bgColor
 			self.bottomCover.backgroundColor = self.bgColor
 			
-
+			
 			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
 			
-			DispatchQueue.main.async {
+			
+			
 			self.musicPlayer.userCommandAudioPlaying = false
-				
+			DispatchQueue.main.async {
 				if self.trackStation == "Shuffle"{
 					self.musicPlayer.playMusic(station: self.shuffleList)
+					
 				}else{
 					self.musicPlayer.playMusic(station: [self.trackStation])
+					
 				}
 				
 				
-				self.controlsUpdater()
 			}
+			
+			initMiniPlayer(trackName: "Tuning in to: \(trackStation) Station, Please Wait", bgColor: bgColor, acColor: acColor)
+			self.controlsUpdater()
 			
 			
 			stationList.reloadData()

@@ -243,6 +243,7 @@ class PlayerVC: UIViewController {
 	}
 	@IBAction func skipNextClicked(_ sender: UIButton) {
 		musicPlayer.playNextItem()
+		scrollingTrackName.destroy()
 		/*
 		if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
 		musicPlayer.musicPlayer.pause()

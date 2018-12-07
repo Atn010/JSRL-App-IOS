@@ -110,7 +110,7 @@ class MusicPlayerObject: NSObject{
 			// Plays Next Music when completed
 			/*
 			if progress >= 0.999{
-				playNextItem()
+			playNextItem()
 			}
 			*/
 		}
@@ -204,7 +204,7 @@ class MusicPlayerObject: NSObject{
 	@objc private func bufferNextItem(){
 		// TODO
 		print("Buffering Next Here Maybe")
-
+		
 	}
 	
 	// MARK: - Initialize Music Player
@@ -220,18 +220,8 @@ class MusicPlayerObject: NSObject{
 		if playerItems.count > 0{
 			musicPlayer = AVPlayer(playerItem: playerItems[index])
 			
-			//musicPlayer.addObserver(self, forKeyPath: "currentItem", options: [.new, .initial] , context: nil)
-			//musicPlayer.addObserver(self, forKeyPath: "rate", options: [.new, .initial], context: nil)
-
+			
 			NotificationCenter.default.removeObserver(self)
-			/*
-			if let observer = self.observer{
-				
-				self.musicPlayer.removeTimeObserver(observer)
-				//self.avPlayer?.removeTimeObserver(observer)
-			}
-			// Adds Observer over time.
-			*/
 			observer = musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main, using: { time in
 				
 				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
@@ -322,25 +312,6 @@ class MusicPlayerObject: NSObject{
 		
 	}
 	
-	// MARK: - Permission
-	func requestAuth() {
-		
-		// Request Permission to play in background
-		MPMediaLibrary.requestAuthorization { (authStatus) in
-			switch authStatus {
-			case .notDetermined:
-				self.requestAuth()
-				break
-			case .authorized:
-				//self.querySongs()
-				break
-			default:
-				//self.displayPermissionsError()
-				break
-				
-			}
-		}
-	}
 	
 	private func initialiseMediaRemote() {
 		let remote = MPRemoteCommandCenter.shared()
@@ -387,7 +358,9 @@ class MusicPlayerObject: NSObject{
 			data.append("Professor K")
 		}
 		
-		let artwork = MPMediaItemArtwork(boundsSize: CGSize(), requestHandler: {size in self.logo})
+		let MPLogo = logo
+		
+		let artwork = MPMediaItemArtwork(boundsSize: CGSize(), requestHandler: {size in MPLogo})
 		
 		MPNowPlayingInfoCenter.default().nowPlayingInfo = [
 			MPMediaItemPropertyTitle: data[0],
@@ -396,7 +369,7 @@ class MusicPlayerObject: NSObject{
 			MPNowPlayingInfoPropertyPlaybackRate: (userCommandAudioPlaying ? 1 : 0),
 			MPNowPlayingInfoPropertyIsLiveStream: true
 		]
-
+		
 	}
 	
 	
@@ -404,10 +377,10 @@ class MusicPlayerObject: NSObject{
 	@objc func playerItemDidReachEnd(notification: NSNotification) {
 		//player.seek(to: CMTime.zero)
 		//player.play()
-//		if !self.staticPlayer.isPlaying{
-//			self.staticPlayer.play()
-//		}
-//		//musicPlayer.pause()
+		//		if !self.staticPlayer.isPlaying{
+		//			self.staticPlayer.play()
+		//		}
+		//		//musicPlayer.pause()
 		playNextItem()
 	}
 	
@@ -442,20 +415,20 @@ class MusicPlayerObject: NSObject{
 		var randomInterval = Int.random(in: 3 ... 5)
 		
 		if bumpSet.count != 0 || playList.count != 0 {
-		
-		playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: 0)
-		while itemCount < playList.count {
-			counting += 1
-			if counting == randomInterval{
-				
-				playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: itemCount)
-				//print(playList[itemCount])
-				counting = 0
-				randomInterval = Int.random(in: 3 ... 5)
-			}
 			
-			itemCount+=1
-		}
+			playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: 0)
+			while itemCount < playList.count {
+				counting += 1
+				if counting == randomInterval{
+					
+					playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: itemCount)
+					//print(playList[itemCount])
+					counting = 0
+					randomInterval = Int.random(in: 3 ... 5)
+				}
+				
+				itemCount+=1
+			}
 			
 		}else{
 			UserDefaults.standard.removeObject(forKey: "date")
@@ -468,7 +441,7 @@ class MusicPlayerObject: NSObject{
 		return playList
 	}
 	
-
+	
 	
 	
 	private func stationPlayListRetriever(stationSelected:String) -> [AVPlayerItem]{

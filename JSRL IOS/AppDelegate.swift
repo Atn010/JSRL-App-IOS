@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 		Fabric.with([Crashlytics.self])
 		dataUpdater.checkForUpdate()
-		musicPlayer.requestAuth()
 		musicPlayer.initializeMusicChecker()
 		
 		return true
