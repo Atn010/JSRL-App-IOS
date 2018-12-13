@@ -11,34 +11,15 @@ import UIKit
 class CustomNavigationTransition: UINavigationController {
 
 	private var interactionController: UIPercentDrivenInteractiveTransition?
-	private var edgeSwipeGestureRecognizer: UISwipeGestureRecognizer?
+	private var edgeSwipeGestureRecognizer: UIPanGestureRecognizer?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		delegate = self
-		
-		edgeSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
-		edgeSwipeGestureRecognizer!.direction = .down
-		view.addGestureRecognizer(edgeSwipeGestureRecognizer!)
 	}
 	
-	@objc func handleSwipe(_ gestureRecognizer: UISwipeGestureRecognizer) {
-		
-		if gestureRecognizer.state == .began {
-			interactionController = UIPercentDrivenInteractiveTransition()
-			popViewController(animated: true)
-		} else if gestureRecognizer.state == .changed {
-			//interactionController?.update(percent)
-		} else if gestureRecognizer.state == .ended {
-			//if percent > 0.5 && gestureRecognizer.state != .cancelled {
-				interactionController?.finish()
-			//} else {
-			//	interactionController?.cancel()
-			//}
-			interactionController = nil
-		}
-	}
+
 }
 
 extension CustomNavigationTransition: UINavigationControllerDelegate {
