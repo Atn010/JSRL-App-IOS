@@ -11,6 +11,8 @@
 		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
 		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
 		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
+		FB38633321BF58A400D5AB5F /* CustomNavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38633221BF58A400D5AB5F /* CustomNavigationTransition.swift */; };
+		FB38633521BF58AF00D5AB5F /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38633421BF58AF00D5AB5F /* FadeAnimationController.swift */; };
 		FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5739082186C0DE009C3970 /* MusicStationCell.swift */; };
 		FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA3C218BE21700CCE20D /* MusicFile.swift */; };
 		FB5BDA41218BE64B00CCE20D /* ListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */; };
@@ -38,6 +40,8 @@
 		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
 		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
 		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
+		FB38633221BF58A400D5AB5F /* CustomNavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTransition.swift; sourceTree = "<group>"; };
+		FB38633421BF58AF00D5AB5F /* FadeAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FadeAnimationController.swift; path = ../../../../../../../../../Downloads/CustomTransitionDemo/CustomTransitionDemo/FadeAnimationController.swift; sourceTree = "<group>"; };
 		FB5739082186C0DE009C3970 /* MusicStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStationCell.swift; sourceTree = "<group>"; };
 		FB5BDA3C218BE21700CCE20D /* MusicFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFile.swift; sourceTree = "<group>"; };
 		FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpdater.swift; sourceTree = "<group>"; };
@@ -79,6 +83,15 @@
 				66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB38633121BF586E00D5AB5F /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				FB38633221BF58A400D5AB5F /* CustomNavigationTransition.swift */,
+				FB38633421BF58AF00D5AB5F /* FadeAnimationController.swift */,
+			);
+			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		FB4AA271213E24F0009B62AD /* Model */ = {
@@ -198,6 +211,7 @@
 				FB5739072186C0B6009C3970 /* MusicPlayer */,
 				FBE12E5021A452DA00BA8AA0 /* PlayerVC */,
 				FB5739062186C0A7009C3970 /* StationList */,
+				FB38633121BF586E00D5AB5F /* NavigationController */,
 				FB669B32213FAB8E0088105A /* Unused */,
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
 				FB4AA271213E24F0009B62AD /* Model */,
@@ -348,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB38633521BF58AF00D5AB5F /* FadeAnimationController.swift in Sources */,
 				FBEA431821ACDECD003BA479 /* StationListInfo.swift in Sources */,
 				FB8248B42187FD070050A382 /* MusicStation.swift in Sources */,
 				FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */,
@@ -360,6 +375,7 @@
 				FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */,
 				FBA5AB1C2131526000684308 /* PlayerVC.swift in Sources */,
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
+				FB38633321BF58A400D5AB5F /* CustomNavigationTransition.swift in Sources */,
 				FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */,
 				FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */,
 				FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */,

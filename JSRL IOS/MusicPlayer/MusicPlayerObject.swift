@@ -193,7 +193,7 @@ class MusicPlayerObject: NSObject{
 					self.musicPlayer.play()
 					self.userCommandAudioPlaying = true
 					
-					self.progress = 0
+					//self.progress = 0
 				}
 				
 				
