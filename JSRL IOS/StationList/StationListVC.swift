@@ -43,8 +43,11 @@ class StationListVC: UIViewController {
 	
 	var playingAt:IndexPath?
 	
-	// MARK: - Constant
 	var shuffleList: [String] = []
+	
+	
+	// MARK: - Constant
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -73,6 +76,11 @@ class StationListVC: UIViewController {
 		skipNextOutlet.addGestureRecognizer(controlHold)
 		
 		
+		let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(openPlayer))
+		
+		swipeUpGesture.direction = .up
+		
+		miniPlayer.addGestureRecognizer(swipeUpGesture)
 		
 		//stationList.rowHeight = 58
 		//stationList.backgroundColor = .black

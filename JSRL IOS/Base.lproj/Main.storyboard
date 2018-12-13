@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="427" width="320" height="53"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-pA-xVb">
-                                        <rect key="frame" x="0.0" y="0.0" width="316" height="5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="R5P-VY-fBK"/>
                                         </constraints>
@@ -44,7 +44,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ude-oO-0KL" secondAttribute="bottom" id="10A-c4-eXS"/>
                                     <constraint firstItem="ude-oO-0KL" firstAttribute="top" secondItem="Ab4-pA-xVb" secondAttribute="bottom" constant="1" id="4iR-r2-lh9"/>
-                                    <constraint firstItem="Ab4-pA-xVb" firstAttribute="trailing" secondItem="ude-oO-0KL" secondAttribute="trailing" id="9jJ-2Q-s7n"/>
+                                    <constraint firstItem="Ab4-pA-xVb" firstAttribute="trailing" secondItem="cvC-tC-1z3" secondAttribute="trailing" id="9jJ-2Q-s7n"/>
                                     <constraint firstAttribute="trailing" secondItem="ude-oO-0KL" secondAttribute="trailing" constant="4" id="D4u-nd-i7t"/>
                                     <constraint firstItem="Ab4-pA-xVb" firstAttribute="top" secondItem="cvC-tC-1z3" secondAttribute="top" id="OdL-tR-8JD"/>
                                     <constraint firstItem="MKl-5P-blQ" firstAttribute="top" secondItem="Ab4-pA-xVb" secondAttribute="bottom" id="XVz-3b-6zw"/>
@@ -348,7 +348,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jiu-Op-Qjo" customClass="CustomNavigationTransition" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NkB-kP-izz">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

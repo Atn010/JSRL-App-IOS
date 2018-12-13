@@ -62,7 +62,7 @@ class PlayerVC: UIViewController {
 		//}
 		initMusicPlayer(trackName: "", bgColor: bgcolor, acColor: acColor)
 		
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "  ▼  ", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
 		
 		musicPlayerPageTimer.eventHandler = {
 			self.musicChecker()
