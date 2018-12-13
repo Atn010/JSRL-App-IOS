@@ -218,7 +218,11 @@ class StationListVC: UIViewController {
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { // change 2 to desired number of seconds
 			self.initMiniPlayer(trackName: self.trackName, bgColor: self.bgColor, acColor: self.acColor)
-			self.viewLayoutMarginsDidChange()
+			if #available(iOS 11.0, *) {
+				self.viewLayoutMarginsDidChange()
+			} else {
+				// Fallback on earlier versions
+			}
 			
 		}
 	}
