@@ -24,6 +24,7 @@ class StationListVC: UIViewController {
 	@IBOutlet weak var trackProgressBar: UIProgressView!
 	@IBOutlet weak var songNameScrollText: ScrollText!
 	
+	@IBOutlet weak var openPlayerOutlet: UIButton!
 	@IBOutlet weak var bottomList: NSLayoutConstraint!
 	@IBOutlet weak var miniPlayerBottom: NSLayoutConstraint!
 	@IBOutlet weak var bottomCover: UIView!
@@ -59,6 +60,7 @@ class StationListVC: UIViewController {
 		let open = UITapGestureRecognizer(target: self, action: #selector(openPlayer))
 		
 		songNameScrollText.addGestureRecognizer(open)
+		openPlayerOutlet.addGestureRecognizer(open)
 		
 		//musicPlayer.initializeMusicChecker()
 		stationListTimer.eventHandler = {

@@ -35,23 +35,36 @@
                                         </constraints>
                                         <state key="normal" image="SkipNext"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycm-Yt-nFG">
+                                        <rect key="frame" x="4" y="5" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="CzR-WM-MIr"/>
+                                            <constraint firstAttribute="width" secondItem="ycm-Yt-nFG" secondAttribute="height" multiplier="1:1" id="xcY-Xe-u1Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="▲"/>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKl-5P-blQ" customClass="ScrollText" customModule="JSRL_IOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="4" width="268" height="49"/>
+                                        <rect key="frame" x="52" y="4" width="216" height="49"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ude-oO-0KL" secondAttribute="bottom" id="10A-c4-eXS"/>
+                                    <constraint firstItem="ycm-Yt-nFG" firstAttribute="width" secondItem="ycm-Yt-nFG" secondAttribute="height" multiplier="1:1" id="1hM-hq-3Ld"/>
+                                    <constraint firstItem="ycm-Yt-nFG" firstAttribute="leading" secondItem="cvC-tC-1z3" secondAttribute="leading" constant="4" id="48z-KL-HVJ"/>
                                     <constraint firstItem="ude-oO-0KL" firstAttribute="top" secondItem="Ab4-pA-xVb" secondAttribute="bottom" constant="1" id="4iR-r2-lh9"/>
+                                    <constraint firstAttribute="bottom" secondItem="ycm-Yt-nFG" secondAttribute="bottom" id="9Td-et-vV4"/>
                                     <constraint firstItem="Ab4-pA-xVb" firstAttribute="trailing" secondItem="cvC-tC-1z3" secondAttribute="trailing" id="9jJ-2Q-s7n"/>
                                     <constraint firstAttribute="trailing" secondItem="ude-oO-0KL" secondAttribute="trailing" constant="4" id="D4u-nd-i7t"/>
                                     <constraint firstItem="Ab4-pA-xVb" firstAttribute="top" secondItem="cvC-tC-1z3" secondAttribute="top" id="OdL-tR-8JD"/>
                                     <constraint firstItem="MKl-5P-blQ" firstAttribute="top" secondItem="Ab4-pA-xVb" secondAttribute="bottom" id="XVz-3b-6zw"/>
-                                    <constraint firstItem="MKl-5P-blQ" firstAttribute="leading" secondItem="cvC-tC-1z3" secondAttribute="leading" id="eyR-8L-L5J"/>
+                                    <constraint firstItem="MKl-5P-blQ" firstAttribute="leading" secondItem="ycm-Yt-nFG" secondAttribute="trailing" id="eyR-8L-L5J"/>
                                     <constraint firstAttribute="bottom" secondItem="MKl-5P-blQ" secondAttribute="bottom" id="fSh-fN-a0a"/>
                                     <constraint firstItem="ude-oO-0KL" firstAttribute="leading" secondItem="MKl-5P-blQ" secondAttribute="trailing" id="iTi-I1-T1Y"/>
                                     <constraint firstItem="Ab4-pA-xVb" firstAttribute="leading" secondItem="cvC-tC-1z3" secondAttribute="leading" id="m5N-be-hIT"/>
+                                    <constraint firstItem="ycm-Yt-nFG" firstAttribute="top" secondItem="Ab4-pA-xVb" secondAttribute="bottom" constant="1" id="xbi-oL-v2V"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="50O-hn-kai">
@@ -183,6 +196,7 @@
                         <outlet property="bottomList" destination="FLk-oz-NXr" id="DEt-ts-KJ6"/>
                         <outlet property="miniPlayer" destination="cvC-tC-1z3" id="BnJ-D3-7Bj"/>
                         <outlet property="miniPlayerBottom" destination="kej-2X-nBb" id="arf-hr-9NI"/>
+                        <outlet property="openPlayerOutlet" destination="ycm-Yt-nFG" id="vwY-GU-WoV"/>
                         <outlet property="skipNextOutlet" destination="ude-oO-0KL" id="lKT-LO-FKf"/>
                         <outlet property="songNameScrollText" destination="MKl-5P-blQ" id="kFU-Ym-Ibx"/>
                         <outlet property="stationList" destination="50O-hn-kai" id="XKb-OI-VUk"/>
