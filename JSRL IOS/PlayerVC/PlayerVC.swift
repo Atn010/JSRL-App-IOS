@@ -62,7 +62,7 @@ class PlayerVC: UIViewController {
 		//}
 		initMusicPlayer(trackName: "", bgColor: bgcolor, acColor: acColor)
 		
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "  ▼  ", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToList))
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "  ▼  ", style: UIBarButtonItem.Style.plain, target: self, action: #selector(returnToList))
 		
 		musicPlayerPageTimer.eventHandler = {
 			self.musicChecker()
@@ -115,7 +115,7 @@ class PlayerVC: UIViewController {
 		return .lightContent
 		//}
 	}
-	override func prefersHomeIndicatorAutoHidden() -> Bool {
+	override var prefersHomeIndicatorAutoHidden: Bool {
 		return true
 	}
 	
@@ -211,7 +211,7 @@ class PlayerVC: UIViewController {
 		tnColor = UIColor.white
 		self.view.backgroundColor = .black
 		
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 		self.navigationController?.navigationBar.barTintColor = .black
 		self.navigationController?.navigationBar.tintColor = .white
 		//self.deadButton.backgroundColor = bgColor
@@ -225,7 +225,7 @@ class PlayerVC: UIViewController {
 	@objc func returnToList(){
 		scrollingTrackName.destroy()
 		self.navigationController?.navigationBar.barStyle = .default
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 		self.navigationController?.navigationBar.barTintColor = .white
 		self.navigationController?.navigationBar.tintColor = .black
 		self.navigationController?.popViewController(animated: true)

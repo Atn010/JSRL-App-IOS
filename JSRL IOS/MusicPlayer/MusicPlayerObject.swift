@@ -42,7 +42,7 @@ class MusicPlayerObject: NSObject{
 	override private init() {
 		do {
 			UIApplication.shared.beginReceivingRemoteControlEvents()
-			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
 			
 			do {
 				try AVAudioSession.sharedInstance().setActive(true)
@@ -85,7 +85,7 @@ class MusicPlayerObject: NSObject{
 			progress = Float(current / total)
 			
 			
-			if self.musicPlayer.timeControlStatus == AVPlayerTimeControlStatus.paused{
+			if self.musicPlayer.timeControlStatus == AVPlayer.TimeControlStatus.paused{
 				self.audioPlayingStatus = false
 			}else{
 				self.audioPlayingStatus = true
@@ -167,7 +167,7 @@ class MusicPlayerObject: NSObject{
 				}
 				self.musicPlayer.pause()
 				// Restart Music Player to Zero
-				musicPlayer.seek(to: kCMTimeZero) { (bol) in
+				musicPlayer.seek(to: CMTime.zero) { (bol) in
 					// On Completion:
 					self.musicPlayer.pause()
 					if !self.staticPlayer.isPlaying{
@@ -222,7 +222,7 @@ class MusicPlayerObject: NSObject{
 			
 			
 			NotificationCenter.default.removeObserver(self)
-			observer = musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main, using: { time in
+			observer = musicPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 1, timescale: 1), queue: DispatchQueue.main, using: { time in
 				
 				if self.musicPlayer.currentItem?.status == AVPlayerItem.Status.readyToPlay {
 					//print("here I am")
@@ -508,3 +508,8 @@ func stopRequestingMediaData() {
 
 }
 */
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}
