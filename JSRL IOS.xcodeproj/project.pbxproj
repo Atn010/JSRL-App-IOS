@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8FE37FA543002EC262119284 /* Pods_JSRL_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */; };
 		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
 		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
 		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
@@ -34,9 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19E8A05D0B370E63D93075FA /* Pods-JSRL IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSRL IOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS.debug.xcconfig"; sourceTree = "<group>"; };
-		21F324411D31C9EFDAF922F9 /* Pods-JSRL IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSRL IOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS.release.xcconfig"; sourceTree = "<group>"; };
-		66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSRL_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
 		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
 		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
@@ -70,21 +66,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FE37FA543002EC262119284 /* Pods_JSRL_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F261397CD415A9A6B67F8DAC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				66F6558C0792755D9B759D26 /* Pods_JSRL_IOS.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		FB38633121BF586E00D5AB5F /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,8 +173,6 @@
 			children = (
 				FBA5AB182131526000684308 /* JSRL IOS */,
 				FBA5AB172131526000684308 /* Products */,
-				FFF4BA8754BE77F69D7F8846 /* Pods */,
-				F261397CD415A9A6B67F8DAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -232,15 +217,6 @@
 			path = PlayerVC;
 			sourceTree = "<group>";
 		};
-		FFF4BA8754BE77F69D7F8846 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				19E8A05D0B370E63D93075FA /* Pods-JSRL IOS.debug.xcconfig */,
-				21F324411D31C9EFDAF922F9 /* Pods-JSRL IOS.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,7 +224,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBA5AB282131526200684308 /* Build configuration list for PBXNativeTarget "JSRL IOS" */;
 			buildPhases = (
-				180BCD40D2D3A1748D6276B3 /* [CP] Check Pods Manifest.lock */,
 				FBA5AB122131526000684308 /* Sources */,
 				FBA5AB132131526000684308 /* Frameworks */,
 				FBA5AB142131526000684308 /* Resources */,
@@ -320,24 +295,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		180BCD40D2D3A1748D6276B3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JSRL IOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FB7E8E0C219016F4006088C6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -523,11 +480,10 @@
 		};
 		FBA5AB292131526200684308 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19E8A05D0B370E63D93075FA /* Pods-JSRL IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 016;
+				CURRENT_PROJECT_VERSION = 017;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
@@ -536,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.16;
+				MARKETING_VERSION = 0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atn010.JSRL-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -546,11 +502,10 @@
 		};
 		FBA5AB2A2131526200684308 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21F324411D31C9EFDAF922F9 /* Pods-JSRL IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 016;
+				CURRENT_PROJECT_VERSION = 017;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -558,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.16;
+				MARKETING_VERSION = 0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atn010.JSRL-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

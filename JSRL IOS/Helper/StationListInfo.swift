@@ -12,8 +12,8 @@ class StationListInfo{
 	
 	
 	let jetsetradio = "https://jetsetradio.live/"
-	let stationPath = "audioplayer/stations/"
-	let listPath = "/~list.js"
+	let stationPath = "radio/stations/"
+	let listPath = "~list.js"
 	let fileExtension = ".mp3"
 	
 	// Station Playlist Path

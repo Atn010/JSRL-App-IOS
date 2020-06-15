@@ -52,6 +52,8 @@ class StationListVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.title = "JSRL iOS"
+		
 		stationList.delegate = self
 		stationList.dataSource = self
 		

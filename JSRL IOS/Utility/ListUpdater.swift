@@ -60,7 +60,9 @@ class ListUpdater: NSObject {
 						
 						var lines: [String] = []
 						string.enumerateLines { line, _ in
-							lines.append(line)
+							if line.contains("\"") {
+								lines.append(line)
+							}
 						}
 						for line in lines{
 							fileList.append(line.components(separatedBy: "\"")[1])
