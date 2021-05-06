@@ -8,9 +8,6 @@
 
 import UIKit
 import AVFoundation
-import Fabric
-import Crashlytics
-
 class PlayerVC: UIViewController {
 	
 	// MARK: - Object

@@ -227,7 +227,6 @@
 				FBA5AB122131526000684308 /* Sources */,
 				FBA5AB132131526000684308 /* Frameworks */,
 				FBA5AB142131526000684308 /* Resources */,
-				FB7E8E0C219016F4006088C6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -293,27 +292,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		FB7E8E0C219016F4006088C6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" e2f91483c94217ff3e141cda751f285d0415b76f 1c23c898731551cb25790803bfe04b0cda6440eb33e65fa9d581614f2100fc64\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FBA5AB122131526000684308 /* Sources */ = {
