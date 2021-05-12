@@ -26,14 +26,14 @@ class PlayerVC: UIViewController {
 	@IBOutlet weak var playerControlsBG: UIView!
 	@IBOutlet weak var playerControlsBGExtra: UIView!
 	// MARK: - Variable
-	var bgcolor:UIColor = .black
-	var acColor:UIColor = .white
+	var bgcolor: UIColor = .black
+	var acColor: UIColor = .white
 	
-	var station:String = ""
-	var logo:UIImage = UIImage.init(named: "Preloadlogo")!
-	var revLogo:UIImage = UIImage.init(named: "Preloadlogo")!
+	var station: StationListInfo.Name = .classic
+	var logo: UIImage = UIImage.init(named: "Preloadlogo")!
+	var revLogo: UIImage = UIImage.init(named: "Preloadlogo")!
 	
-	var track:String = ""
+	var track: String = ""
 	var isTopRight = true
 	
 	
@@ -44,7 +44,7 @@ class PlayerVC: UIViewController {
 		stationLogo.image = logo
 		//revLogo = logo.withHorizontallyFlippedOrientation()
 		//revLogo = logo.image
-		self.title = station
+		self.title = station.rawValue
 		/*
 		//if bgcolor == .black{
 		//let playerControlBGColor:UIColor = bgcolor.lighter(by: 15) ?? .black

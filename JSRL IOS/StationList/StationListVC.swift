@@ -31,10 +31,9 @@ class StationListVC: UIViewController {
 	var toMusicPlayer = true
 	var isPlayingSomething = false
 	let musicStationList = StationListCreator().StationList()
-	let stationInfo = StationListInfo()
 	
 	var trackName = ""
-	var trackStation = ""
+	var trackStation: StationListInfo.Name = .classic
 	var trackLogo:UIImage = UIImage.init(named: "Preloadlogo")!
 	var bgColor = UIColor.black
 	var acColor = UIColor.black
@@ -42,7 +41,7 @@ class StationListVC: UIViewController {
 	
 	var playingAt:IndexPath?
 	
-	var shuffleList: [String] = []
+	var shuffleList: [StationListInfo.Name] = []
 	
 	
 	// MARK: - Constant
@@ -88,11 +87,16 @@ class StationListVC: UIViewController {
 		//stationList.backgroundColor = .black
 		
 		shuffleList = [
-			stationInfo.classic, stationInfo.future,
-			stationInfo.ggs, stationInfo.poisonJam,
-			stationInfo.noiseTanks, stationInfo.loveShockers,
-			stationInfo.rapid99, stationInfo.theImmortals,
-			stationInfo.doomRiders, stationInfo.goldenRhinos
+			StationListInfo.Name.classic,
+			StationListInfo.Name.future,
+			StationListInfo.Name.ggs,
+			StationListInfo.Name.poisonJam,
+			StationListInfo.Name.noiseTanks,
+			StationListInfo.Name.loveShockers,
+			StationListInfo.Name.rapid99,
+			StationListInfo.Name.theImmortals,
+			StationListInfo.Name.doomRiders,
+			StationListInfo.Name.goldenRhinos
 			
 		]
 		
@@ -243,7 +247,7 @@ class StationListVC: UIViewController {
 			}
 		}
 		
-		trackStation = StationListInfo().classic
+		trackStation = StationListInfo.Name.shuffle
 		bgColor = .black
 		acColor = .blue
 		
@@ -256,14 +260,19 @@ class StationListVC: UIViewController {
 		self.bottomCover.backgroundColor = self.bgColor
 		
 		
-		trackLogo = UIImage.init(named: StationListInfo().classic)!
+		trackLogo = UIImage.init(named: StationListInfo.Name.classic.rawValue)!
 		
 		let shuffleList = [
-			stationInfo.classic, stationInfo.future,
-			stationInfo.ggs, stationInfo.poisonJam,
-			stationInfo.noiseTanks, stationInfo.loveShockers,
-			stationInfo.rapid99, stationInfo.theImmortals,
-			stationInfo.doomRiders, stationInfo.goldenRhinos
+			StationListInfo.Name.classic,
+			StationListInfo.Name.future,
+			StationListInfo.Name.ggs,
+			StationListInfo.Name.poisonJam,
+			StationListInfo.Name.noiseTanks,
+			StationListInfo.Name.loveShockers,
+			StationListInfo.Name.rapid99,
+			StationListInfo.Name.theImmortals,
+			StationListInfo.Name.doomRiders,
+			StationListInfo.Name.goldenRhinos
 			
 		]
 		
@@ -304,7 +313,7 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			
 			trackStation = musicStationList[indexPath.section].musicStation[indexPath.row].name
 			bgColor = .black
-			acColor = musicStationList[indexPath.section].musicStation[indexPath.row].acLogoColor
+			acColor = musicStationList[indexPath.section].musicStation[indexPath.row].accent
 			playingAt = indexPath
 			
 			//if musicStationList[indexPath.section].group == "Seasonal"{
@@ -322,12 +331,10 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 			
 			self.musicPlayer.userCommandAudioPlaying = false
 			DispatchQueue.main.async {
-				if self.trackStation == "Shuffle"{
+				if self.trackStation == .shuffle{
 					self.musicPlayer.playMusic(station: self.shuffleList)
-					
-				}else{
+				} else {
 					self.musicPlayer.playMusic(station: [self.trackStation])
-					
 				}
 				
 				
@@ -350,9 +357,9 @@ extension StationListVC: UITableViewDelegate, UITableViewDataSource{
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MusicStationCell
 		
 		cell.stationImage.image = musicStationList[indexPath.section].musicStation[indexPath.row].logo
-		cell.stationImage.backgroundColor = musicStationList[indexPath.section].musicStation[indexPath.row].bgLogoColor
+		cell.stationImage.backgroundColor = .black
 		
-		cell.stationName.text = musicStationList[indexPath.section].musicStation[indexPath.row].name
+		cell.stationName.text = musicStationList[indexPath.section].musicStation[indexPath.row].name.rawValue
 		cell.stationPlayingIndicator.animating = false
 		cell.stationPlayingIndicator.alpha = 0
 		

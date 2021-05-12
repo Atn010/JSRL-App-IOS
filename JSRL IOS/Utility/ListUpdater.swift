@@ -11,7 +11,6 @@ import UIKit
 class ListUpdater: NSObject {
 	
 	private let dateNow = Date()
-	private let stationInfo = StationListInfo()
 	
 
 	private var updateList:[String:String] = [:]
@@ -35,8 +34,8 @@ class ListUpdater: NSObject {
 	private func getAndUpdateList() {
 		updateList = loadUpdateList()
 		
-		for (key,value) in updateList{
-			downloadList(fileUrl: "\(stationInfo.jetsetradio)\(stationInfo.stationPath)\(value)\(stationInfo.listPath)", fileKey: key)
+		for (key, value) in updateList{
+			downloadList(fileUrl: "\(StationListInfo.jetsetradio.rawValue)\(StationListInfo.stationPath.rawValue)\(value)\(StationListInfo.listPath.rawValue)", fileKey: key)
 		}
 		
 		
@@ -79,25 +78,25 @@ class ListUpdater: NSObject {
 		
 	}
 	
-	private func loadUpdateList() -> [String:String] {
-		var tempList:[String:String] = [:]
+	private func loadUpdateList() -> [String: String] {
+		var tempList: [String: String] = [:]
 		
-		tempList[stationInfo.bump] = stationInfo.bumpPath
+		tempList[StationListInfo.Name.bump.rawValue] = StationListInfo.Path.bump.rawValue
 		
-		tempList[stationInfo.classic] = stationInfo.classicPath
-		tempList[stationInfo.future] = stationInfo.futurePath
-		tempList[stationInfo.summer] = stationInfo.summerPath
-		tempList[stationInfo.christmas] = stationInfo.christmasPath
+		tempList[StationListInfo.Name.classic.rawValue] = StationListInfo.Path.classic.rawValue
+		tempList[StationListInfo.Name.future.rawValue] = StationListInfo.Path.future.rawValue
+		tempList[StationListInfo.Name.summer.rawValue] = StationListInfo.Path.summer.rawValue
+		tempList[StationListInfo.Name.christmas.rawValue] = StationListInfo.Path.christmas.rawValue
 		
-		tempList[stationInfo.ggs] = stationInfo.ggsPath
-		tempList[stationInfo.poisonJam] = stationInfo.poisonJamPath
-		tempList[stationInfo.noiseTanks] = stationInfo.noiseTanksPath
-		tempList[stationInfo.loveShockers] = stationInfo.loveShockersPath
+		tempList[StationListInfo.Name.ggs.rawValue] = StationListInfo.Path.ggs.rawValue
+		tempList[StationListInfo.Name.poisonJam.rawValue] = StationListInfo.Path.poisonJam.rawValue
+		tempList[StationListInfo.Name.noiseTanks.rawValue] = StationListInfo.Path.noiseTanks.rawValue
+		tempList[StationListInfo.Name.loveShockers.rawValue] = StationListInfo.Path.loveShockers.rawValue
 		
-		tempList[stationInfo.rapid99] = stationInfo.rapid99Path
-		tempList[stationInfo.theImmortals] = stationInfo.theImmortalsPath
-		tempList[stationInfo.doomRiders] = stationInfo.doomRidersPath
-		tempList[stationInfo.goldenRhinos] = stationInfo.goldenRhinosPath
+		tempList[StationListInfo.Name.rapid99.rawValue] = StationListInfo.Path.rapid99.rawValue
+		tempList[StationListInfo.Name.theImmortals.rawValue] = StationListInfo.Path.theImmortals.rawValue
+		tempList[StationListInfo.Name.doomRiders.rawValue] = StationListInfo.Path.doomRiders.rawValue
+		tempList[StationListInfo.Name.goldenRhinos.rawValue] = StationListInfo.Path.goldenRhinos.rawValue
 		
 		return tempList
 	}

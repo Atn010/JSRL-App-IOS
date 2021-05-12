@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D5BFED177E0525A1BE3CE5D /* Pods_JSRL_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FB2647F1614A4FC0777F70 /* Pods_JSRL_IOS.framework */; };
 		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
 		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
 		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
@@ -33,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E21D3887607B01322C75979 /* Pods-JSRL IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSRL IOS.release.xcconfig"; path = "Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS.release.xcconfig"; sourceTree = "<group>"; };
+		1EA060106008A25C9921DF37 /* Pods-JSRL IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSRL IOS.debug.xcconfig"; path = "Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F6FB2647F1614A4FC0777F70 /* Pods_JSRL_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSRL_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
 		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
 		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
@@ -66,12 +70,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5BFED177E0525A1BE3CE5D /* Pods_JSRL_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9AFC31E0C834A89551594B5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6FB2647F1614A4FC0777F70 /* Pods_JSRL_IOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A07B010EACD9049C16DBA1DC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1EA060106008A25C9921DF37 /* Pods-JSRL IOS.debug.xcconfig */,
+				1E21D3887607B01322C75979 /* Pods-JSRL IOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FB38633121BF586E00D5AB5F /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +195,8 @@
 			children = (
 				FBA5AB182131526000684308 /* JSRL IOS */,
 				FBA5AB172131526000684308 /* Products */,
+				A07B010EACD9049C16DBA1DC /* Pods */,
+				9AFC31E0C834A89551594B5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -224,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBA5AB282131526200684308 /* Build configuration list for PBXNativeTarget "JSRL IOS" */;
 			buildPhases = (
+				55DE205D901C109C6371D5FA /* [CP] Check Pods Manifest.lock */,
 				FBA5AB122131526000684308 /* Sources */,
 				FBA5AB132131526000684308 /* Frameworks */,
 				FBA5AB142131526000684308 /* Resources */,
+				4F7216B056C2DCEA74A00DDB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,7 +270,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Atn010.com;
 				TargetAttributes = {
 					FBA5AB152131526000684308 = {
@@ -292,6 +318,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F7216B056C2DCEA74A00DDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSRL IOS/Pods-JSRL IOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55DE205D901C109C6371D5FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JSRL IOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FBA5AB122131526000684308 /* Sources */ = {
@@ -368,6 +436,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -393,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -428,6 +497,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -447,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -458,6 +528,7 @@
 		};
 		FBA5AB292131526200684308 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EA060106008A25C9921DF37 /* Pods-JSRL IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -480,6 +551,7 @@
 		};
 		FBA5AB2A2131526200684308 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E21D3887607B01322C75979 /* Pods-JSRL IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

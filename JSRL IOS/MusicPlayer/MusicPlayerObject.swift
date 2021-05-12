@@ -10,6 +10,8 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
+import SwiftAudioPlayer
+
 class MusicPlayerObject: NSObject{
 	
 	var currentTrack = ""
@@ -33,8 +35,6 @@ class MusicPlayerObject: NSObject{
 	
 	private var forcePlay = 0
 	private var observer:Any?
-	
-	private let stationInfo = StationListInfo()
 	
 	// MARK: - Init
 	// Register Audio Session
@@ -208,7 +208,7 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	// MARK: - Initialize Music Player
-	func playMusic(station:[String]){
+	func playMusic(station:[StationListInfo.Name]){
 		// Restart Music player
 		musicPlayer.pause()
 		if !self.staticPlayer.isPlaying{
@@ -390,11 +390,11 @@ class MusicPlayerObject: NSObject{
 	}
 	
 	// MARK: - Play List Maker
-	private func playListMaker(stationSelected:[String]) -> [AVPlayerItem]{
+	private func playListMaker(stationSelected:[StationListInfo.Name]) -> [AVPlayerItem]{
 		// Load Playlist from the selected Stations
 		var playList:[AVPlayerItem] = []
 		
-		logo = stationInfo.getStationImage(station: stationSelected.first ?? "Shuffle")
+		logo = StationListInfo.getStationImage(station: stationSelected.first ?? StationListInfo.Name.shuffle)
 		stationSelected.forEach { (station) in
 			//stationPlayListRetriever(stationSelected: stationSelected)
 			stationPlayListRetriever(stationSelected: station).forEach({ (playListItem) in
@@ -405,8 +405,7 @@ class MusicPlayerObject: NSObject{
 		playList.shuffle()
 		
 		// Load radio bumps
-		var bumpSet = stationPlayListRetriever(stationSelected: stationInfo.bump)
-		//bumpSet.shuffle()
+		let bumpSet = stationPlayListRetriever(stationSelected: StationListInfo.Name.bump)
 		
 		
 		// fill the playlist with bumps inbetween
@@ -444,19 +443,19 @@ class MusicPlayerObject: NSObject{
 	
 	
 	
-	private func stationPlayListRetriever(stationSelected:String) -> [AVPlayerItem]{
-		let station = stationInfo.getStationPath(station: stationSelected)
+	private func stationPlayListRetriever(stationSelected: StationListInfo.Name) -> [AVPlayerItem]{
+		let station = StationListInfo.getStationPath(station: stationSelected)
 		
 		var stationPlayList: [AVPlayerItem] = []
 		//var musicList: [String] = []
 		if station != ""{
 			
 			
-			if let list = UserDefaults.standard.stringArray(forKey: stationSelected) {
+			if let list = UserDefaults.standard.stringArray(forKey: stationSelected.rawValue) {
 				print(stationSelected)
 				list.forEach { (item) in
 					
-					let stringURL = stationInfo.jetsetradio + stationInfo.stationPath + station + item + stationInfo.fileExtension
+					let stringURL = StationListInfo.jetsetradio.rawValue + StationListInfo.stationPath.rawValue + station + item + StationListInfo.fileExtension.rawValue
 					//print(stringURL)
 					if let readyString = stringURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
 						if let validURL = URL(string: readyString){

@@ -8,16 +8,16 @@
 
 import UIKit
 
-class MusicStation{
-	var name:String
-	var logo:UIImage
-	var bgLogoColor:UIColor
-	var acLogoColor:UIColor
+struct MusicStation {
+	var name: StationListInfo.Name
+	var desc: StationListInfo.Desc
+	var logo: UIImage
+	var accent: UIColor
 	
-	init(name:String,logo:UIImage,bgLogoColor:UIColor,acLogoColor:UIColor) {
+	init(name: StationListInfo.Name, desc: StationListInfo.Desc, logo: UIImage, accent: UIColor) {
 		self.name = name
+		self.desc = desc
 		self.logo = logo
-		self.bgLogoColor = bgLogoColor
-		self.acLogoColor = acLogoColor
+		self.accent = accent
 	}
 }

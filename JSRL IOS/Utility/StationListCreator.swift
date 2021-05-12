@@ -16,15 +16,15 @@ class StationListCreator{
 	}
 	
 	
-	private func prepareStations(name:String, logo:UIImage, bgColor:UIColor, acColor:UIColor) -> MusicStation{
-		return MusicStation.init(name: name, logo: logo, bgLogoColor: bgColor, acLogoColor: acColor)
+	private func prepareStations(name: StationListInfo.Name, desc: StationListInfo.Desc, accent: UIColor) -> MusicStation{
+		return MusicStation.init(name: name, desc: desc, logo: StationListInfo.getStationImage(station: name), accent: accent)
 	}
 	
 	private func prepareSoundtrackStationSet() -> [MusicStation]{
 		var soundtrackStationSet: [MusicStation] = []
 		
-		soundtrackStationSet.append(prepareStations(name: "Classic", logo: UIImage.init(named: "Classic")!, bgColor: UIColor.init(hexString: "00CA96"), acColor: UIColor.init(hexString: "FFED00") ) )
-		soundtrackStationSet.append(prepareStations(name: "Future", logo: UIImage.init(named: "Future")!, bgColor: UIColor.init(hexString: "8CAFB0"), acColor: UIColor.init(hexString: "FFFFFF") ) )
+		soundtrackStationSet.append(prepareStations(name: .classic, desc: .classicDesc, accent: UIColor.init(hexString: "FFED00")))
+		soundtrackStationSet.append(prepareStations(name: .future, desc: .futureDesc, accent: UIColor.init(hexString: "FFFFFF") ) )
 		
 		return soundtrackStationSet
 	}
@@ -32,17 +32,17 @@ class StationListCreator{
 	private func prepareGangStationSet() -> [MusicStation]{
 		var gangStationSet: [MusicStation] = []
 		
-		gangStationSet.append(prepareStations(name: "GG's", logo: UIImage.init(named: "GG's")!, bgColor: UIColor.init(hexString: "F8E71C"), acColor: UIColor.init(hexString: "23E2AB") ) )
-		gangStationSet.append(prepareStations(name: "Poison Jam", logo: UIImage.init(named: "PoisonJam")!, bgColor: UIColor.init(hexString: "6400E5"), acColor: UIColor.init(hexString: "00C8D8") ) )
+		gangStationSet.append(prepareStations(name: .ggs, desc: .ggsDesc, accent: UIColor.init(hexString: "23E2AB") ) )
+		gangStationSet.append(prepareStations(name: .poisonJam, desc: .poisonJamDesc, accent: UIColor.init(hexString: "00C8D8") ) )
 		
-		gangStationSet.append(prepareStations(name: "Noise Tanks", logo: UIImage.init(named: "NoiseTanks")!, bgColor: UIColor.init(hexString: "60BEE8"), acColor: UIColor.init(hexString: "FFFFFF") ) )
-		gangStationSet.append(prepareStations(name: "Love Shockers", logo: UIImage.init(named: "LoveShockers")!, bgColor: UIColor.init(hexString: "FF0086"), acColor: UIColor.init(hexString: "00F5B0") ) )
+		gangStationSet.append(prepareStations(name: .noiseTanks, desc: .noiseTanksDesc, accent: UIColor.init(hexString: "FFFFFF") ) )
+		gangStationSet.append(prepareStations(name: .loveShockers, desc: .classicDesc, accent: UIColor.init(hexString: "00F5B0") ) )
 		
-		gangStationSet.append(prepareStations(name: "Rapid 99", logo: UIImage.init(named: "Rapid99")!, bgColor: UIColor.init(hexString: "FF61E8"), acColor: UIColor.init(hexString: "53FFD9") ) )
-		gangStationSet.append(prepareStations(name: "The Immortals", logo: UIImage.init(named: "TheImmortals")!, bgColor: UIColor.init(hexString: "9E977C"), acColor: UIColor.init(hexString: "FFDF4D") ) )
+		gangStationSet.append(prepareStations(name: .rapid99, desc: .rapid99Desc, accent: UIColor.init(hexString: "53FFD9") ) )
+		gangStationSet.append(prepareStations(name: .theImmortals, desc: .theImmortalsDesc , accent: UIColor.init(hexString: "FFDF4D") ) )
 		
-		gangStationSet.append(prepareStations(name: "Doom Riders", logo: UIImage.init(named: "DoomRiders")!, bgColor: UIColor.init(hexString: "8B0000"), acColor: UIColor.init(hexString: "BD0002") ) )
-		gangStationSet.append(prepareStations(name: "Golden Rhinos", logo: UIImage.init(named: "GoldenRhinos")!, bgColor: UIColor.init(hexString: "000000"), acColor: UIColor.init(hexString: "FFF000") ) )
+		gangStationSet.append(prepareStations(name: .doomRiders, desc: .doomRidersDesc , accent: UIColor.init(hexString: "BD0002") ) )
+		gangStationSet.append(prepareStations(name: .goldenRhinos, desc: .goldenRhinosDesc, accent: UIColor.init(hexString: "FFF000") ) )
 		
 		return gangStationSet
 	}
@@ -50,8 +50,8 @@ class StationListCreator{
 	private func prepareSeasonalStationSet() -> [MusicStation]{
 		var seasonalStationSet: [MusicStation] = []
 		
-		seasonalStationSet.append(prepareStations(name: "Summer", logo: UIImage.init(named: "Summer")!, bgColor: UIColor.init(hexString: "00CA96"), acColor: UIColor.init(hexString: "FFE800") ) )
-		seasonalStationSet.append(prepareStations(name: "Christmas", logo: UIImage.init(named: "Christmas")!, bgColor: UIColor.init(hexString: "D70000"), acColor: UIColor.init(hexString: "D70000") ) )
+		seasonalStationSet.append(prepareStations(name: .summer, desc: .summerDesc, accent: UIColor.init(hexString: "FFE800") ) )
+		seasonalStationSet.append(prepareStations(name: .christmas, desc: .christmasDesc, accent: UIColor.init(hexString: "D70000") ) )
 		
 		return seasonalStationSet
 	}
@@ -59,7 +59,7 @@ class StationListCreator{
 	private func prepareShuffleStationSet() -> [MusicStation]{
 		var seasonalStationSet: [MusicStation] = []
 		
-		seasonalStationSet.append(prepareStations(name: "Shuffle", logo: UIImage.init(named: "Shuffle")!, bgColor: UIColor.init(hexString: "000000"), acColor: UIColor.blue ) )
+		seasonalStationSet.append(prepareStations(name: .shuffle, desc: .shuffle, accent: UIColor.blue ) )
 		
 		return seasonalStationSet
 	}
@@ -67,17 +67,17 @@ class StationListCreator{
 	func StationList() -> [object] {
 		var musicList:[String:[MusicStation]] = [:]
 		
-			musicList["Soundtrack"] = prepareSoundtrackStationSet()
-			musicList["Gang"] = prepareGangStationSet()
-			musicList["Seasonal"] = prepareSeasonalStationSet()
-			musicList["Shuffle"] = prepareShuffleStationSet()
+			musicList[StationListInfo.Gang.soundtrack.rawValue] = prepareSoundtrackStationSet()
+			musicList[StationListInfo.Gang.gang.rawValue] = prepareGangStationSet()
+			musicList[StationListInfo.Gang.seasonal.rawValue] = prepareSeasonalStationSet()
+			musicList[StationListInfo.Gang.shuffle.rawValue] = prepareShuffleStationSet()
 		
 		var objectArray: [object] = []
 		
-		objectArray.append(object.init(group: "Soundtrack", musicStation: musicList["Soundtrack"]!))
-		objectArray.append(object.init(group: "Gang", musicStation: musicList["Gang"]!))
-		objectArray.append(object.init(group: "Seasonal", musicStation: musicList["Seasonal"]!))
-		objectArray.append(object.init(group: "Shuffle", musicStation: musicList["Shuffle"]!))
+		objectArray.append(object.init(group: StationListInfo.Gang.soundtrack.rawValue, musicStation: musicList[StationListInfo.Gang.soundtrack.rawValue]!))
+		objectArray.append(object.init(group: StationListInfo.Gang.gang.rawValue, musicStation: musicList[StationListInfo.Gang.gang.rawValue]!))
+		objectArray.append(object.init(group: StationListInfo.Gang.seasonal.rawValue, musicStation: musicList[StationListInfo.Gang.seasonal.rawValue]!))
+		objectArray.append(object.init(group: StationListInfo.Gang.shuffle.rawValue, musicStation: musicList[StationListInfo.Gang.shuffle.rawValue]!))
 		/*
 		for (key, value) in musicList{
 			objectArray.append(object.init(group: key, musicStation: value))

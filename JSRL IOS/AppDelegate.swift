@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftAudioPlayer
 import CoreData
 
 @UIApplicationMain
@@ -31,11 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		print("does this work? \(rc.rawValue)")
 	}
 */
+	
+	func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+		SAPlayer.Downloader.setBackgroundCompletionHandler(completionHandler)
+	}
+	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 		dataUpdater.checkForUpdate()
 		musicPlayer.initializeMusicChecker()
-		
+		SAPlayer.Downloader.allowUsingCellularData = false
 		return true
     }
 
