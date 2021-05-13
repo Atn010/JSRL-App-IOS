@@ -29,7 +29,6 @@ class PlayerVC: UIViewController {
 	// MARK: - Variable
 	
 	var track: String = "Loading..."
-	var isFirstLoad = true
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -54,6 +53,19 @@ class PlayerVC: UIViewController {
 		trackProgressBar.progress = musicPlayer.progress
 		initDeadButton()
 		
+		if let stationString = UserDefaults.standard.object(forKey: "LastPlayed") as? String {
+			let station = StationListInfo.getStationName(from: stationString)
+			if station == .shuffle {
+				self.musicPlayer.playMusic(station: StationListInfo.shuffleList)
+			} else {
+				self.musicPlayer.playMusic(station: [station])
+			}
+		} else {
+			self.musicPlayer.playMusic(station: [.classic])
+		}
+		
+		self.initMusicPlayer(trackName: "")
+		
 	}
 	
 	func musicChecker(){
@@ -73,23 +85,6 @@ class PlayerVC: UIViewController {
 		musicPlayerPageTimer.resume()
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
 			self.initDeadButton()
-		}
-		
-		if self.isFirstLoad {
-			self.isFirstLoad = false
-			DispatchQueue.main.async {
-				if let stationString = UserDefaults.standard.object(forKey: "LastPlayed") as? String {
-					let station = StationListInfo.getStationName(from: stationString)
-					if station == .shuffle {
-						self.musicPlayer.playMusic(station: StationListInfo.shuffleList)
-					} else {
-						self.musicPlayer.playMusic(station: [station])
-					}
-				} else {
-					self.musicPlayer.playMusic(station: [.classic])
-				}
-				   
-			}
 		}
 	}
 	

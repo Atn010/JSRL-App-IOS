@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 		dataUpdater.checkForUpdate()
 		musicPlayer.initializeMusicChecker()
-		SAPlayer.Downloader.allowUsingCellularData = false
+		SAPlayer.Downloader.allowUsingCellularData = true
 		return true
     }
 

@@ -637,7 +637,7 @@ public enum StationListInfo: String {
 		case .garage:
 			logo = UIImage(named: "Garage")
 		case .ultraRemixes:
-			logo = UIImage(named: "UltraRemix")
+			logo = UIImage(named: "UltraRemixes")
 		
 			
 		case .summer: // Seasonal
@@ -677,7 +677,7 @@ public enum StationListInfo: String {
 		case .retroRemix:
 			logo = UIImage(named: "RetroRemix")
 		case .classical:
-			logo = UIImage(named: "ClassicalRemix")
+			logo = UIImage(named: "Classical")
 		case .revolution:
 			logo = UIImage(named: "Revolution")
 		case .endOfDays:
