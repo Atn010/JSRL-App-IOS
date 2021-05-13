@@ -25,41 +25,24 @@ class PlayerVC: UIViewController {
 	
 	@IBOutlet weak var playerControlsBG: UIView!
 	@IBOutlet weak var playerControlsBGExtra: UIView!
+	
 	// MARK: - Variable
-	var bgcolor: UIColor = .black
-	var acColor: UIColor = .white
 	
-	var station: StationListInfo.Name = .classic
-	var logo: UIImage = UIImage.init(named: "Preloadlogo")!
-	var revLogo: UIImage = UIImage.init(named: "Preloadlogo")!
-	
-	var track: String = ""
-	var isTopRight = true
-	
+	var track: String = "Loading..."
+	var isFirstLoad = true
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		
-		stationLogo.image = logo
-		//revLogo = logo.withHorizontallyFlippedOrientation()
-		//revLogo = logo.image
-		self.title = station.rawValue
-		/*
-		//if bgcolor == .black{
-		//let playerControlBGColor:UIColor = bgcolor.lighter(by: 15) ?? .black
-		let playerControlBGColor:UIColor = bgcolor
-		playerControlsBG.backgroundColor = playerControlBGColor
-		playerControlsBGExtra.backgroundColor = playerControlBGColor
-		*/
-		//}else{
-		let playerControlBGColor = bgcolor//.lighter(by: 5)
-		playerControlsBG.backgroundColor = playerControlBGColor
-		playerControlsBGExtra.backgroundColor = playerControlBGColor
-		//}
-		initMusicPlayer(trackName: "", bgColor: bgcolor, acColor: acColor)
+		self.navigationController?.navigationBar.barStyle = .black
+		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+		self.addRightBarButtonItem(image: UIImage.init(named: "station")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openList))
 		
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "  ▼  ", style: UIBarButtonItem.Style.plain, target: self, action: #selector(returnToList))
+		self.title = musicPlayer.currentStation.rawValue
+		playerControlsBG.backgroundColor = .black
+		playerControlsBGExtra.backgroundColor = .black
+		initMusicPlayer(trackName: "")
 		
 		musicPlayerPageTimer.eventHandler = {
 			self.musicChecker()
@@ -70,86 +53,52 @@ class PlayerVC: UIViewController {
 		controlsUpdater()
 		trackProgressBar.progress = musicPlayer.progress
 		initDeadButton()
-		//DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // change 2 to desired number of seconds
-			self.initDeadButton()
-		//}
-		// Do any additional setup after loading the view, typically from a nib.
-		//animateLogo()
+		
 	}
 	
 	func musicChecker(){
 		DispatchQueue.main.async {
 			if self.track != self.musicPlayer.currentTrack{
 				self.track = self.musicPlayer.currentTrack
-				self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
+				self.initMusicPlayer(trackName: self.track)
 			}
 			
 			self.trackProgressBar.setProgress(self.musicPlayer.progress, animated: true)
+			self.controlsUpdater()
 		}
 		
-	}
-	
-	override func viewDidDisappear(_ animated: Bool) {
-		musicPlayerPageTimer.suspend()
-		scrollingTrackName.destroy()
-		controlsUpdater()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
-		initMusicPlayer(trackName: track, bgColor: bgcolor, acColor: acColor)
 		musicPlayerPageTimer.resume()
-		controlsUpdater()
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // change 2 to desired number of seconds
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
 			self.initDeadButton()
 		}
+		
+		if self.isFirstLoad {
+			self.isFirstLoad = false
+			DispatchQueue.main.async {
+				if let stationString = UserDefaults.standard.object(forKey: "LastPlayed") as? String {
+					let station = StationListInfo.getStationName(from: stationString)
+					if station == .shuffle {
+						self.musicPlayer.playMusic(station: StationListInfo.shuffleList)
+					} else {
+						self.musicPlayer.playMusic(station: [station])
+					}
+				} else {
+					self.musicPlayer.playMusic(station: [.classic])
+				}
+				   
+			}
+		}
 	}
+	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		/*
-		if bgcolor != .black{
-		return .default
-		}else{
-		*/
 		return .lightContent
-		//}
 	}
+	
 	override var prefersHomeIndicatorAutoHidden: Bool {
 		return true
-	}
-	
-	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { // change 2 to desired number of seconds
-			self.initMusicPlayer(trackName: self.track, bgColor: self.bgcolor, acColor: self.acColor)
-			if #available(iOS 11.0, *) {
-				self.viewLayoutMarginsDidChange()
-			} else {
-				// Fallback on earlier versions
-			}
-			
-		}
-		
-		initDeadButton()
-	}
-	
-	func animateLogo(){
-		
-		if isTopRight{
-			isTopRight = false
-			stationLogo.image = logo
-			UIView.transition(with: stationLogo, duration: 5, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: {
-				
-			}) { (bol) in
-				self.animateLogo()
-			}
-		}else{
-			isTopRight = true
-			stationLogo.image = revLogo
-			UIView.transition(with: stationLogo, duration: 5, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: {
-				
-			}) { (bol) in
-				self.animateLogo()
-			}
-		}
-		
 	}
 	
 	private func initDeadButton() {
@@ -160,7 +109,6 @@ class PlayerVC: UIViewController {
 				deadButton.backgroundColor = .clear
 				deadButton.setImage(nil, for: .normal)
 			default:
-				deadButton.backgroundColor = bgcolor
 				deadButton.setImage(stationLogo.image!, for: .normal)
 			}
 			
@@ -171,61 +119,32 @@ class PlayerVC: UIViewController {
 	}
 	
 	func controlsUpdater() {
-		/*
-		if bgcolor != .black{
-		self.navigationController?.navigationBar.barStyle = .default
-		if musicPlayer.userCommandAudioPlaying{
-		playPauseButton.setImage(UIImage.init(named: "LDarkPause"), for: .normal)
-		}else{
-		playPauseButton.setImage(UIImage.init(named: "DarkPlay"), for: .normal)
-		}
-		
-		skipNextButton.setImage(UIImage.init(named: "DarkSkipNext"), for: .normal)
-		*/
-		//}else{
-		self.navigationController?.navigationBar.barStyle = .black
 		if musicPlayer.userCommandAudioPlaying{
 			playPauseButton.setImage(UIImage.init(named: "LPause"), for: .normal)
-		}else{
+		} else {
 			playPauseButton.setImage(UIImage.init(named: "Play"), for: .normal)
 		}
 		skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
-		//}
+		
 		
 	}
 	
 	
-	func initMusicPlayer(trackName:String, bgColor:UIColor,acColor:UIColor){
+	func initMusicPlayer(trackName: String) {
 		scrollingTrackName.destroy()
-		var tnColor = UIColor.purple
-		/*
-		if bgColor != .black{
-		tnColor = UIColor.black
-		self.view.backgroundColor = bgColor
-		//deadButton.backgroundColor = bgColor
-		}else{
-		*/
-		tnColor = UIColor.white
 		self.view.backgroundColor = .black
+		self.title = musicPlayer.currentStation.rawValue
+		self.stationLogo.image = StationListInfo.getStationImage(station: musicPlayer.currentStation)
+		trackProgressBar.tintColor = StationListInfo.getStationAccent(station: musicPlayer.currentStation)
 		
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-		self.navigationController?.navigationBar.barTintColor = .black
-		self.navigationController?.navigationBar.tintColor = .white
-		//self.deadButton.backgroundColor = bgColor
-		//}
-		//trackProgressBar.progress = 0.0
-		trackProgressBar.tintColor = acColor
-		
-		scrollingTrackName.setup(text: trackName, TextColor: tnColor)
+		scrollingTrackName.setup(text: trackName, TextColor: UIColor.white)
 		
 	}
-	@objc func returnToList(){
-		scrollingTrackName.destroy()
-		self.navigationController?.navigationBar.barStyle = .default
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-		self.navigationController?.navigationBar.barTintColor = .white
-		self.navigationController?.navigationBar.tintColor = .black
-		self.navigationController?.popViewController(animated: true)
+	@objc func openList(){
+		let vc = StationListViewController.init()
+		vc.modalTransitionStyle = .coverVertical
+		self.present(UINavigationController.init(rootViewController: vc), animated: true, completion: nil)
+		
 	}
 	
 	@IBAction func playPauseClicked(_ sender: UIButton) {
@@ -245,17 +164,6 @@ class PlayerVC: UIViewController {
 	@IBAction func skipNextClicked(_ sender: UIButton) {
 		musicPlayer.playNextItem()
 		scrollingTrackName.destroy()
-		/*
-		if let curItem = musicPlayer.musicPlayer.currentItem, musicPlayer.progress > 0{
-		musicPlayer.musicPlayer.pause()
-		
-		curItem.seek(to: curItem.duration) { (bol) in
-		self.musicPlayer.musicPlayer.play()
-		self.musicPlayer.userCommandAudioPlaying = true
-		}
-		}
-		*/
-		
 	}
 	
 	

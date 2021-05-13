@@ -15,6 +15,19 @@ public enum StationListInfo: String {
 	case listPath = "~list.js"
 	case fileExtension = ".mp3"
 	
+	static let shuffleList = [
+		StationListInfo.Name.classic,
+		StationListInfo.Name.future,
+		StationListInfo.Name.ggs,
+		StationListInfo.Name.poisonJam,
+		StationListInfo.Name.noiseTanks,
+		StationListInfo.Name.loveShockers,
+		StationListInfo.Name.rapid99,
+		StationListInfo.Name.theImmortals,
+		StationListInfo.Name.doomRiders,
+		StationListInfo.Name.goldenRhinos
+	]
+	
 	// Station Playlist Path
 	enum Path: String {
 		//Station Bumps
@@ -58,7 +71,7 @@ public enum StationListInfo: String {
 		
 		//Guest
 		case veraFX = "verafx/"
-		case djChido = "djchidow/"
+		case djChidow = "djchidow/"
 		
 		//Other Games
 		case hover = "hover/"
@@ -130,54 +143,109 @@ public enum StationListInfo: String {
 	// Station Description
 	enum Desc: String {
 		//Soundtrack
-		case classicDesc = "Classic"
-		case futureDesc = "Future"
-		case garageDesc = "Garage"
-		case ultraRemixesDesc = "Ultra Remixes"
+		case classic = "Classic"
+		case future = "Future"
+		case garage = "Garage"
+		case ultraRemixes = "Ultra Remixes"
 		
 		//Seasonal
-		case summerDesc = "Summer"
-		case christmasDesc = "Christmas"
-		case halloweenDesc = "Halloween"
-		case snowfiDesc = "snowfi"
+		case summer = "Summer"
+		case christmas = "Christmas"
+		case halloween = "Halloween"
+		case snowfi = "snowfi"
 		
 		//Gang
-		case ggsDesc = "GG's"
-		case poisonJamDesc = "Poison Jam"
-		case noiseTanksDesc = "Noise Tanks"
-		case loveShockersDesc = "Love Shockers"
-		case rapid99Desc = "Rapid 99"
-		case theImmortalsDesc = "The Immortals"
-		case doomRidersDesc = "Doom Riders"
-		case goldenRhinosDesc = "Golden Rhinos"
+		case ggs = "GG's"
+		case poisonJam = "Poison Jam"
+		case noiseTanks = "Noise Tanks"
+		case loveShockers = "Love Shockers"
+		case rapid99 = "Rapid 99"
+		case theImmortals = "The Immortals"
+		case doomRiders = "Doom Riders"
+		case goldenRhinos = "Golden Rhinos"
 		
 		//Playlist
-		case ganjahDesc = "Ganjah"
-		case lofiDesc = "Lo-Fi"
-		case chiptunesDesc = "Chiptunes"
-		case retroRemixDesc = "Retro Remix"
-		case classicalDesc = "Classical Remix"
-		case revolutionDesc = "Revolution"
-		case endOfDaysDesc = "End Of Days"
+		case ganjah = "Ganjah"
+		case lofi = "Lo-Fi"
+		case chiptunes = "Chiptunes"
+		case retroRemix = "Retro Remix"
+		case classical = "Classical Remix"
+		case revolution = "Revolution"
+		case endOfDays = "End Of Days"
 		
 		//Event
-		case silvaGunnerDesc = "SilvaGunner x JSR"
-		case futureGenerationDesc = "Future Generation"
-		case jetMashRadioDesc = "Jet Mash Radio"
+		case silvaGunner = "SilvaGunner x JSR"
+		case futureGeneration = "Future Generation"
+		case jetMashRadio = "Jet Mash Radio"
 		
 		//Guest
-		case veraFXDesc = "VeraFX"
-		case djChidowDesc = "DJ Chidow"
+		case veraFX = "VeraFX"
+		case djChidow = "DJ Chidow"
 		
 		//Other Games
-		case hoverDesc = "Hover"
-		case butterfliesDesc = "Butterflies"
-		case ollieKingDesc = "Ollie King"
-		case crazyTaxiDesc = "Crazy Taxi"
-		case toeJamAndEarlDesc = "Toe Jam and Earl"
+		case hover = "Hover"
+		case butterflies = "Butterflies"
+		case ollieKing = "Ollie King"
+		case crazyTaxi = "Crazy Taxi"
+		case toeJamAndEarl = "Toe Jam and Earl"
 		
 		//Shuffle
 		case shuffle = "All Stations, Ready"
+	}
+	
+	// Station Accent
+	enum Accent {
+		
+		//Soundtrack
+		static let  classic = UIColor.init(hexString: "FFED00")
+		static let  future = UIColor.init(hexString: "949494")
+		static let  garage = UIColor.init(hexString: "D8D8DA")
+		static let  ultraRemixes = UIColor.init(hexString: "FFED00")
+		
+		//Seasonal
+		static let  summer = UIColor.init(hexString: "FFE800")
+		static let  christmas = UIColor.init(hexString: "82AD3A")
+		static let  halloween = UIColor.init(hexString: "FF3500")
+		static let  snowfi = UIColor.init(hexString: "FAABB0")
+		
+		
+		//Gang
+		static let  ggs = UIColor.init(hexString: "23E2AB")
+		static let  poisonJam = UIColor.init(hexString: "00C8D8")
+		static let  noiseTanks = UIColor.init(hexString: "FFFFFF")
+		static let  loveShockers = UIColor.init(hexString: "00F5B0")
+		static let  rapid99 = UIColor.init(hexString: "53FFD9")
+		static let  theImmortals = UIColor.init(hexString: "FFDF4D")
+		static let  doomRiders = UIColor.init(hexString: "BD0002")
+		static let  goldenRhinos = UIColor.init(hexString: "FFF000")
+		
+		//Playlist
+		static let ganjah = UIColor.init(hexString: "008D00")
+		static let lofi = UIColor.init(hexString: "FF747F")
+		static let chiptunes = UIColor.init(hexString: "0060FF")
+		static let retroRemix = UIColor.init(hexString: "FFE100")
+		static let classical = UIColor.init(hexString: "AC008D")
+		static let revolution = UIColor.init(hexString: "FF0000")
+		static let endOfDays = UIColor.init(hexString: "D76D2D")
+		
+		//Event
+		static let silvaGunner = UIColor.init(hexString: "A3A3A3")
+		static let futureGeneration = UIColor.init(hexString: "E3DCDD")
+		static let jetMashRadio = UIColor.init(hexString: "1E1CAF")
+		
+		//Guest
+		static let veraFX = UIColor.init(hexString: "56C0EF")
+		static let djChidow = UIColor.init(hexString: "C73BF4")
+		
+		//Other Games
+		static let hover = UIColor.init(hexString: "DE0056")
+		static let butterflies = UIColor.init(hexString: "FA43AD")
+		static let ollieKing = UIColor.init(hexString: "E5A619")
+		static let crazyTaxi = UIColor.init(hexString: "FDCE00")
+		static let toeJamAndEarl = UIColor.init(hexString: "FF9805")
+		
+		//Shuffle
+		static let shuffle = UIColor.blue
 	}
 	
 	enum Gang: String {
@@ -262,24 +330,294 @@ public enum StationListInfo: String {
 		
 		
 		case .veraFX: // Guest
-			return Path.classic.rawValue
+			return Path.veraFX.rawValue
 		case .djChidow:
-			return Path.classic.rawValue
+			return Path.djChidow.rawValue
 		
 		case .hover: // Other Games
-			return Path.classic.rawValue
+			return Path.hover.rawValue
 		case .butterflies:
-			return Path.classic.rawValue
+			return Path.butterflies.rawValue
 		case .ollieKing:
-			return Path.classic.rawValue
+			return Path.ollieKing.rawValue
 		case .crazyTaxi:
-			return Path.classic.rawValue
+			return Path.crazyTaxi.rawValue
 		case .toeJamAndEarl:
-			return Path.classic.rawValue
+			return Path.toeJamAndEarl.rawValue
 		
 		
 		case .shuffle: // Shuffle
-			return Path.classic.rawValue
+			return ""
+		}
+	}
+	
+	// Translate from station name to desc
+	static func getStationDesc(station: StationListInfo.Name) -> StationListInfo.Desc {
+		switch station {
+		case .bump:
+			return .shuffle
+			
+		case .classic: // Soundtrack
+			return Desc.classic
+		case .future:
+			return Desc.future
+		case .garage:
+			return Desc.garage
+		case .ultraRemixes:
+			return Desc.ultraRemixes
+		
+			
+		case .summer: // Seasonal
+			return Desc.summer
+		case .christmas:
+			return Desc.christmas
+		case .halloween:
+			return Desc.halloween
+		case .snowfi:
+			return Desc.snowfi
+		
+			
+		case .ggs: // Gang
+			return Desc.ggs
+		case .poisonJam:
+			return Desc.poisonJam
+		case .noiseTanks:
+			return Desc.noiseTanks
+		case .loveShockers:
+			return Desc.loveShockers
+		case .rapid99:
+			return Desc.rapid99
+		case .theImmortals:
+			return Desc.theImmortals
+		case .doomRiders:
+			return Desc.doomRiders
+		case .goldenRhinos:
+			return Desc.goldenRhinos
+		
+		
+		case .ganjah: // Playlist
+			return Desc.ganjah
+		case .lofi:
+			return Desc.lofi
+		case .chiptunes:
+			return Desc.chiptunes
+		case .retroRemix:
+			return Desc.retroRemix
+		case .classical:
+			return Desc.classical
+		case .revolution:
+			return Desc.revolution
+		case .endOfDays:
+			return Desc.endOfDays
+		
+		
+		case .silvaGunner: // Event
+			return Desc.silvaGunner
+		case .futureGeneration:
+			return Desc.futureGeneration
+		case .jetMashRadio:
+			return Desc.jetMashRadio
+		
+		
+		case .veraFX: // Guest
+			return Desc.veraFX
+		case .djChidow:
+			return Desc.djChidow
+		
+		case .hover: // Other Games
+			return Desc.hover
+		case .butterflies:
+			return Desc.butterflies
+		case .ollieKing:
+			return Desc.ollieKing
+		case .crazyTaxi:
+			return Desc.crazyTaxi
+		case .toeJamAndEarl:
+			return Desc.toeJamAndEarl
+		
+		
+		case .shuffle: // Shuffle
+			return Desc.shuffle
+		}
+	}
+	
+	// Translate from station name to accentColor
+	static func getStationAccent(station: StationListInfo.Name) -> UIColor {
+		switch station {
+		case .bump:
+			return StationListInfo.Accent.shuffle
+			
+		case .classic: // Soundtrack
+			return StationListInfo.Accent.classic
+		case .future:
+			return StationListInfo.Accent.future
+		case .garage:
+			return StationListInfo.Accent.garage
+		case .ultraRemixes:
+			return StationListInfo.Accent.ultraRemixes
+		
+			
+		case .summer: // Seasonal
+			return StationListInfo.Accent.summer
+		case .christmas:
+			return StationListInfo.Accent.christmas
+		case .halloween:
+			return StationListInfo.Accent.halloween
+		case .snowfi:
+			return StationListInfo.Accent.snowfi
+		
+			
+		case .ggs: // Gang
+			return StationListInfo.Accent.ggs
+		case .poisonJam:
+			return StationListInfo.Accent.poisonJam
+		case .noiseTanks:
+			return StationListInfo.Accent.noiseTanks
+		case .loveShockers:
+			return StationListInfo.Accent.loveShockers
+		case .rapid99:
+			return StationListInfo.Accent.rapid99
+		case .theImmortals:
+			return StationListInfo.Accent.theImmortals
+		case .doomRiders:
+			return StationListInfo.Accent.doomRiders
+		case .goldenRhinos:
+			return StationListInfo.Accent.goldenRhinos
+		
+		
+		case .ganjah: // Playlist
+			return StationListInfo.Accent.ganjah
+		case .lofi:
+			return StationListInfo.Accent.lofi
+		case .chiptunes:
+			return StationListInfo.Accent.chiptunes
+		case .retroRemix:
+			return StationListInfo.Accent.retroRemix
+		case .classical:
+			return StationListInfo.Accent.classical
+		case .revolution:
+			return StationListInfo.Accent.revolution
+		case .endOfDays:
+			return StationListInfo.Accent.endOfDays
+		
+		
+		case .silvaGunner: // Event
+			return StationListInfo.Accent.silvaGunner
+		case .futureGeneration:
+			return StationListInfo.Accent.futureGeneration
+		case .jetMashRadio:
+			return StationListInfo.Accent.jetMashRadio
+		
+		
+		case .veraFX: // Guest
+			return StationListInfo.Accent.veraFX
+		case .djChidow:
+			return StationListInfo.Accent.djChidow
+		
+		case .hover: // Other Games
+			return StationListInfo.Accent.hover
+		case .butterflies:
+			return StationListInfo.Accent.butterflies
+		case .ollieKing:
+			return StationListInfo.Accent.ollieKing
+		case .crazyTaxi:
+			return StationListInfo.Accent.crazyTaxi
+		case .toeJamAndEarl:
+			return StationListInfo.Accent.toeJamAndEarl
+		
+		
+		case .shuffle: // Shuffle
+			return StationListInfo.Accent.shuffle
+		}
+	}
+	
+	// Translate from String to station name
+	static func getStationName(from string: String) -> StationListInfo.Name {
+		switch string {
+		case StationListInfo.Name.bump.rawValue, StationListInfo.Name.bump.rawValue:
+			return StationListInfo.Name.shuffle
+			
+		case StationListInfo.Name.classic.rawValue: // Soundtrack
+			return StationListInfo.Name.classic
+		case StationListInfo.Name.future.rawValue:
+			return StationListInfo.Name.future
+		case StationListInfo.Name.garage.rawValue:
+			return StationListInfo.Name.garage
+		case StationListInfo.Name.ultraRemixes.rawValue:
+			return StationListInfo.Name.ultraRemixes
+		
+			
+		case StationListInfo.Name.summer.rawValue: // Seasonal
+			return StationListInfo.Name.summer
+		case StationListInfo.Name.christmas.rawValue:
+			return StationListInfo.Name.christmas
+		case StationListInfo.Name.halloween.rawValue:
+			return StationListInfo.Name.halloween
+		case StationListInfo.Name.snowfi.rawValue:
+			return StationListInfo.Name.snowfi
+		
+			
+		case StationListInfo.Name.ggs.rawValue: // Gang
+			return StationListInfo.Name.ggs
+		case StationListInfo.Name.poisonJam.rawValue:
+			return StationListInfo.Name.poisonJam
+		case StationListInfo.Name.noiseTanks.rawValue:
+			return StationListInfo.Name.noiseTanks
+		case StationListInfo.Name.loveShockers.rawValue:
+			return StationListInfo.Name.loveShockers
+		case StationListInfo.Name.rapid99.rawValue:
+			return StationListInfo.Name.rapid99
+		case StationListInfo.Name.theImmortals.rawValue:
+			return StationListInfo.Name.theImmortals
+		case StationListInfo.Name.doomRiders.rawValue:
+			return StationListInfo.Name.doomRiders
+		case StationListInfo.Name.goldenRhinos.rawValue:
+			return StationListInfo.Name.goldenRhinos
+		
+		
+		case StationListInfo.Name.ganjah.rawValue: // Playlist
+			return StationListInfo.Name.ganjah
+		case StationListInfo.Name.lofi.rawValue:
+			return StationListInfo.Name.lofi
+		case StationListInfo.Name.chiptunes.rawValue:
+			return StationListInfo.Name.chiptunes
+		case StationListInfo.Name.retroRemix.rawValue:
+			return StationListInfo.Name.retroRemix
+		case StationListInfo.Name.classical.rawValue:
+			return StationListInfo.Name.classical
+		case StationListInfo.Name.revolution.rawValue:
+			return StationListInfo.Name.revolution
+		case StationListInfo.Name.endOfDays.rawValue:
+			return StationListInfo.Name.endOfDays
+		
+		
+		case StationListInfo.Name.silvaGunner.rawValue: // Event
+			return StationListInfo.Name.silvaGunner
+		case StationListInfo.Name.futureGeneration.rawValue:
+			return StationListInfo.Name.futureGeneration
+		case StationListInfo.Name.jetMashRadio.rawValue:
+			return StationListInfo.Name.jetMashRadio
+		
+		
+		case StationListInfo.Name.veraFX.rawValue: // Guest
+			return StationListInfo.Name.veraFX
+		case StationListInfo.Name.djChidow.rawValue:
+			return StationListInfo.Name.djChidow
+		
+		case StationListInfo.Name.hover.rawValue: // Other Games
+			return StationListInfo.Name.hover
+		case StationListInfo.Name.butterflies.rawValue:
+			return StationListInfo.Name.butterflies
+		case StationListInfo.Name.ollieKing.rawValue:
+			return StationListInfo.Name.ollieKing
+		case StationListInfo.Name.crazyTaxi.rawValue:
+			return StationListInfo.Name.crazyTaxi
+		case StationListInfo.Name.toeJamAndEarl.rawValue:
+			return StationListInfo.Name.toeJamAndEarl
+		
+		
+		default:
+			return StationListInfo.Name.shuffle
 		}
 	}
 	

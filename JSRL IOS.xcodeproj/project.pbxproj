@@ -11,14 +11,14 @@
 		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
 		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
 		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
-		FB38633321BF58A400D5AB5F /* CustomNavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38633221BF58A400D5AB5F /* CustomNavigationTransition.swift */; };
-		FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5739082186C0DE009C3970 /* MusicStationCell.swift */; };
+		FB51A458264CB86100992721 /* Station.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB51A457264CB86100992721 /* Station.storyboard */; };
+		FB51A45B264CBE1300992721 /* StationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51A459264CBE1300992721 /* StationListViewController.swift */; };
+		FB51A45C264CBE1300992721 /* StationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51A45A264CBE1300992721 /* StationListViewController.xib */; };
+		FB51A45E264D6B9B00992721 /* navbarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51A45D264D6B9B00992721 /* navbarButtons.swift */; };
 		FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA3C218BE21700CCE20D /* MusicFile.swift */; };
 		FB5BDA41218BE64B00CCE20D /* ListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */; };
 		FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB669B2E213F99A20088105A /* PlaylistObject.swift */; };
 		FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB669B34213FBFB30088105A /* CoreData.xcdatamodeld */; };
-		FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FC2186C81600CEB371 /* StationListVC.swift */; };
-		FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */; };
 		FB8248B42187FD070050A382 /* MusicStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8248B32187FD070050A382 /* MusicStation.swift */; };
 		FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8248B62187FD970050A382 /* UIColorExt.swift */; };
 		FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9E9BEB2187F3E800066A18 /* ScrollText.swift */; };
@@ -28,8 +28,6 @@
 		FBA5AB212131526200684308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB202131526200684308 /* Assets.xcassets */; };
 		FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB222131526200684308 /* LaunchScreen.storyboard */; };
 		FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CE9218971280086CD32 /* StationListCreator.swift */; };
-		FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */; };
-		FBB999ED21E4809400E12B78 /* FadeAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB999EC21E4809400E12B78 /* FadeAnimationController.swift */; };
 		FBEA431821ACDECD003BA479 /* StationListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA431721ACDECD003BA479 /* StationListInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,14 +38,14 @@
 		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
 		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
 		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
-		FB38633221BF58A400D5AB5F /* CustomNavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTransition.swift; sourceTree = "<group>"; };
-		FB5739082186C0DE009C3970 /* MusicStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStationCell.swift; sourceTree = "<group>"; };
+		FB51A457264CB86100992721 /* Station.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Station.storyboard; sourceTree = "<group>"; };
+		FB51A459264CBE1300992721 /* StationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListViewController.swift; sourceTree = "<group>"; };
+		FB51A45A264CBE1300992721 /* StationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationListViewController.xib; sourceTree = "<group>"; };
+		FB51A45D264D6B9B00992721 /* navbarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navbarButtons.swift; sourceTree = "<group>"; };
 		FB5BDA3C218BE21700CCE20D /* MusicFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFile.swift; sourceTree = "<group>"; };
 		FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpdater.swift; sourceTree = "<group>"; };
 		FB669B2E213F99A20088105A /* PlaylistObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistObject.swift; sourceTree = "<group>"; };
 		FB669B35213FBFB30088105A /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
-		FB8088FC2186C81600CEB371 /* StationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListVC.swift; sourceTree = "<group>"; };
-		FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToTopSegue.swift; sourceTree = "<group>"; };
 		FB8248B32187FD070050A382 /* MusicStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStation.swift; sourceTree = "<group>"; };
 		FB8248B62187FD970050A382 /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		FB9E9BEB2187F3E800066A18 /* ScrollText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollText.swift; sourceTree = "<group>"; };
@@ -59,8 +57,6 @@
 		FBA5AB232131526200684308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBA5AB252131526200684308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBB95CE9218971280086CD32 /* StationListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListCreator.swift; sourceTree = "<group>"; };
-		FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVBSoundBars.swift; sourceTree = "<group>"; };
-		FBB999EC21E4809400E12B78 /* FadeAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimationController.swift; sourceTree = "<group>"; };
 		FBEA431721ACDECD003BA479 /* StationListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListInfo.swift; sourceTree = "<group>"; };
 		FBF25F28219E7A24006F9217 /* JSRL IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JSRL IOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,15 +90,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FB38633121BF586E00D5AB5F /* NavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				FBB999EC21E4809400E12B78 /* FadeAnimationController.swift */,
-				FB38633221BF58A400D5AB5F /* CustomNavigationTransition.swift */,
-			);
-			path = NavigationController;
-			sourceTree = "<group>";
-		};
 		FB4AA271213E24F0009B62AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,9 +110,8 @@
 		FB5739062186C0A7009C3970 /* StationList */ = {
 			isa = PBXGroup;
 			children = (
-				FB5739082186C0DE009C3970 /* MusicStationCell.swift */,
-				FB8088FC2186C81600CEB371 /* StationListVC.swift */,
-				FB8088FE2186CADE00CEB371 /* BottomToTopSegue.swift */,
+				FB51A459264CBE1300992721 /* StationListViewController.swift */,
+				FB51A45A264CBE1300992721 /* StationListViewController.xib */,
 			);
 			path = StationList;
 			sourceTree = "<group>";
@@ -136,13 +122,6 @@
 				FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */,
 			);
 			path = MusicPlayer;
-			sourceTree = "<group>";
-		};
-		FB669B32213FAB8E0088105A /* Unused */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Unused;
 			sourceTree = "<group>";
 		};
 		FB669B33213FABFF0088105A /* Structure */ = {
@@ -166,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				FB8248B62187FD970050A382 /* UIColorExt.swift */,
+				FB51A45D264D6B9B00992721 /* navbarButtons.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -174,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				FB5BDA40218BE64B00CCE20D /* ListUpdater.swift */,
-				FBB95CED2189A7310086CD32 /* SVBSoundBars.swift */,
 				FB9E9BEB2187F3E800066A18 /* ScrollText.swift */,
 				FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */,
 				FBB95CE9218971280086CD32 /* StationListCreator.swift */,
@@ -220,11 +199,10 @@
 				FB5739072186C0B6009C3970 /* MusicPlayer */,
 				FBE12E5021A452DA00BA8AA0 /* PlayerVC */,
 				FB5739062186C0A7009C3970 /* StationList */,
-				FB38633121BF586E00D5AB5F /* NavigationController */,
-				FB669B32213FAB8E0088105A /* Unused */,
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
 				FB4AA271213E24F0009B62AD /* Model */,
 				FBA5AB1D2131526000684308 /* Main.storyboard */,
+				FB51A457264CB86100992721 /* Station.storyboard */,
 				FBA5AB202131526200684308 /* Assets.xcassets */,
 				FBA5AB222131526200684308 /* LaunchScreen.storyboard */,
 				FBA5AB252131526200684308 /* Info.plist */,
@@ -311,9 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */,
+				FB51A45C264CBE1300992721 /* StationListViewController.xib in Resources */,
 				FBA5AB212131526200684308 /* Assets.xcassets in Resources */,
 				FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */,
 				FBA5AB1F2131526000684308 /* Main.storyboard in Resources */,
+				FB51A458264CB86100992721 /* Station.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,20 +349,16 @@
 				FBEA431821ACDECD003BA479 /* StationListInfo.swift in Sources */,
 				FB8248B42187FD070050A382 /* MusicStation.swift in Sources */,
 				FB669B2F213F99A20088105A /* PlaylistObject.swift in Sources */,
-				FBB95CEE2189A7310086CD32 /* SVBSoundBars.swift in Sources */,
 				FB669B36213FBFB30088105A /* CoreData.xcdatamodeld in Sources */,
 				FB8248B72187FD970050A382 /* UIColorExt.swift in Sources */,
-				FB5739092186C0DE009C3970 /* MusicStationCell.swift in Sources */,
-				FB8088FF2186CADE00CEB371 /* BottomToTopSegue.swift in Sources */,
 				FB5BDA41218BE64B00CCE20D /* ListUpdater.swift in Sources */,
 				FB9E9BEC2187F3E800066A18 /* ScrollText.swift in Sources */,
 				FBA5AB1C2131526000684308 /* PlayerVC.swift in Sources */,
+				FB51A45B264CBE1300992721 /* StationListViewController.swift in Sources */,
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
-				FB38633321BF58A400D5AB5F /* CustomNavigationTransition.swift in Sources */,
 				FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */,
-				FB8088FD2186C81600CEB371 /* StationListVC.swift in Sources */,
-				FBB999ED21E4809400E12B78 /* FadeAnimationController.swift in Sources */,
 				FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */,
+				FB51A45E264D6B9B00992721 /* navbarButtons.swift in Sources */,
 				FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */,
 				FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */,
 			);

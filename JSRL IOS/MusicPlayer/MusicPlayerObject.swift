@@ -18,6 +18,7 @@ class MusicPlayerObject: NSObject{
 	var progress:Float = 0.0
 	var userCommandAudioPlaying = false
 	var audioPlayingStatus = false
+	var currentStation = StationListInfo.Name.classic
 	
 	
 	static let shared = MusicPlayerObject()
@@ -215,9 +216,18 @@ class MusicPlayerObject: NSObject{
 			self.staticPlayer.play()
 		}
 		
+		if station.count > 1 {
+			UserDefaults.standard.setValue(StationListInfo.Name.shuffle.rawValue, forKey: "LastPlayed")
+			currentStation = .shuffle
+		} else if let stationName = station.first {
+			currentStation = stationName
+			UserDefaults.standard.setValue(stationName.rawValue, forKey: "LastPlayed")
+		}
+		 
 		playerItems = playListMaker(stationSelected: station)
 		index = 0
-		if playerItems.count > 0{
+		
+		if playerItems.count > 0 {
 			musicPlayer = AVPlayer(playerItem: playerItems[index])
 			
 			
@@ -231,32 +241,6 @@ class MusicPlayerObject: NSObject{
 						self.musicPlayer.play()
 						self.staticPlayer.stop()
 					}
-					/*
-					if self.musicPlayer.currentItem?.isPlaybackLikelyToKeepUp == true{
-						likelyToKeepUp = true
-						if self.userCommandAudioPlaying == true && self.audioPlayingStatus == false{
-							print("I forced the player to play")
-							self.musicPlayer.play()
-						}
-					}
-					*/
-					
-					/*
-					guard let playbackIsKeepUp = self.musicPlayer.currentItem?.isPlaybackLikelyToKeepUp else {return}
-					print("K: \(playbackIsKeepUp)")
-					
-					guard let playbackIsFull = self.musicPlayer.currentItem?.isPlaybackBufferFull else {return}
-					print("F: \(playbackIsFull)")
-					
-					guard let playbackIsEmpty = self.musicPlayer.currentItem?.isPlaybackBufferEmpty else {return}
-					print("E: \(playbackIsEmpty)")
-					
-					if playbackIsFull {
-					// something here to Load next item
-					//bufferNextItem()
-					print("Buffer Next")
-					}
-					*/
 				}else{
 					//print("don't thread on me")
 					if !self.staticPlayer.isPlaying{

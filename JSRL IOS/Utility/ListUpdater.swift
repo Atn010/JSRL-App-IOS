@@ -85,8 +85,14 @@ class ListUpdater: NSObject {
 		
 		tempList[StationListInfo.Name.classic.rawValue] = StationListInfo.Path.classic.rawValue
 		tempList[StationListInfo.Name.future.rawValue] = StationListInfo.Path.future.rawValue
+		tempList[StationListInfo.Name.garage.rawValue] = StationListInfo.Path.garage.rawValue
+		tempList[StationListInfo.Name.ultraRemixes.rawValue] = StationListInfo.Path.ultraRemixes.rawValue
+		
+		
 		tempList[StationListInfo.Name.summer.rawValue] = StationListInfo.Path.summer.rawValue
 		tempList[StationListInfo.Name.christmas.rawValue] = StationListInfo.Path.christmas.rawValue
+		tempList[StationListInfo.Name.halloween.rawValue] = StationListInfo.Path.halloween.rawValue
+		tempList[StationListInfo.Name.snowfi.rawValue] = StationListInfo.Path.snowfi.rawValue
 		
 		tempList[StationListInfo.Name.ggs.rawValue] = StationListInfo.Path.ggs.rawValue
 		tempList[StationListInfo.Name.poisonJam.rawValue] = StationListInfo.Path.poisonJam.rawValue
@@ -97,6 +103,31 @@ class ListUpdater: NSObject {
 		tempList[StationListInfo.Name.theImmortals.rawValue] = StationListInfo.Path.theImmortals.rawValue
 		tempList[StationListInfo.Name.doomRiders.rawValue] = StationListInfo.Path.doomRiders.rawValue
 		tempList[StationListInfo.Name.goldenRhinos.rawValue] = StationListInfo.Path.goldenRhinos.rawValue
+		
+		
+		tempList[StationListInfo.Name.ganjah.rawValue] = StationListInfo.Path.ganjah.rawValue
+		tempList[StationListInfo.Name.lofi.rawValue] = StationListInfo.Path.lofi.rawValue
+		tempList[StationListInfo.Name.chiptunes.rawValue] = StationListInfo.Path.chiptunes.rawValue
+		tempList[StationListInfo.Name.retroRemix.rawValue] = StationListInfo.Path.retroRemix.rawValue
+		
+		tempList[StationListInfo.Name.classical.rawValue] = StationListInfo.Path.classical.rawValue
+		tempList[StationListInfo.Name.revolution.rawValue] = StationListInfo.Path.revolution.rawValue
+		tempList[StationListInfo.Name.endOfDays.rawValue] = StationListInfo.Path.endOfDays.rawValue
+		
+		tempList[StationListInfo.Name.silvaGunner.rawValue] = StationListInfo.Path.silvaGunner.rawValue
+		tempList[StationListInfo.Name.futureGeneration.rawValue] = StationListInfo.Path.futureGeneration.rawValue
+		tempList[StationListInfo.Name.jetMashRadio.rawValue] = StationListInfo.Path.jetMashRadio.rawValue
+		
+		
+		tempList[StationListInfo.Name.veraFX.rawValue] = StationListInfo.Path.veraFX.rawValue
+		tempList[StationListInfo.Name.djChidow.rawValue] = StationListInfo.Path.djChidow.rawValue
+		
+		
+		tempList[StationListInfo.Name.hover.rawValue] = StationListInfo.Path.hover.rawValue
+		tempList[StationListInfo.Name.butterflies.rawValue] = StationListInfo.Path.butterflies.rawValue
+		tempList[StationListInfo.Name.ollieKing.rawValue] = StationListInfo.Path.ollieKing.rawValue
+		tempList[StationListInfo.Name.crazyTaxi.rawValue] = StationListInfo.Path.crazyTaxi.rawValue
+		tempList[StationListInfo.Name.toeJamAndEarl.rawValue] = StationListInfo.Path.toeJamAndEarl.rawValue
 		
 		return tempList
 	}
