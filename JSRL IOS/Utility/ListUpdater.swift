@@ -35,13 +35,15 @@ class ListUpdater: NSObject {
 		updateList = loadUpdateList()
 		
 		for (key, value) in updateList{
-			downloadList(fileUrl: "\(StationListInfo.jetsetradio.rawValue)\(StationListInfo.stationPath.rawValue)\(value)\(StationListInfo.listPath.rawValue)", fileKey: key)
+			var stationPath = value
+			_ = stationPath.popLast()
+			downloadList(fileUrl: "\(StationListInfo.jetsetradio.rawValue)\(StationListInfo.stationPath.rawValue)\(value)\(StationListInfo.listPath.rawValue)", fileKey: key, stationPath: stationPath)
 		}
 		
 		
 	}
 	
-	private func downloadList(fileUrl: String, fileKey: String){
+	private func downloadList(fileUrl: String, fileKey: String, stationPath: String){
 		let url = URL(string: fileUrl)!
 		var fileList:[String] = []
 		
@@ -59,7 +61,9 @@ class ListUpdater: NSObject {
 						
 						var lines: [String] = []
 						string.enumerateLines { line, _ in
-							if line.contains("\"") {
+							if line.contains("\""),
+							   !line.contains("\"_tracks\""),
+							   !line.contains("stationName = \"") {
 								lines.append(line)
 							}
 						}

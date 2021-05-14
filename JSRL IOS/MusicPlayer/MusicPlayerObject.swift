@@ -128,18 +128,15 @@ class MusicPlayerObject: NSObject{
 	
 	// MARK: - Play Next Media Item
 	func playNextItem(){
-		//musicPlayer.removeTimeObserver(self)
-		//musicPlayer.seek(to: kCMTimeZero)
 		musicPlayer.pause()
 		
-		//musicPlayer.currentItem?.asset.cancelLoading()
-		//musicPlayer.currentItem?.cancelPendingSeeks()
-		//musicPlayer.seek(to: kCMTimeZero)
-		/*
-		musicPlayer.seek(to: kCMTimeZero) { (bol) in
-		self.musicPlayer.pause()
+		if let currentItem = musicPlayer.currentItem,
+		   currentItem.accessibilityLabel != "bump" {
+			DispatchQueue.main.async {
+				self.updateHistoryList(track: self.currentTrack)
+			}
 		}
-		*/
+		
 		
 		// Switch state to Loading
 		currentTrack = "Loading"
@@ -397,15 +394,16 @@ class MusicPlayerObject: NSObject{
 		var itemCount = 0
 		var randomInterval = Int.random(in: 3 ... 5)
 		
-		if bumpSet.count != 0 || playList.count != 0 {
+		let totalBump = bumpSet.count
+		
+		if totalBump != 0 || playList.count != 0 {
 			
-			playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: 0)
+			playList.insert(bumpSet[Int.random(in: 0 ... totalBump)], at: 0)
 			while itemCount < playList.count {
 				counting += 1
 				if counting == randomInterval{
 					
-					playList.insert(bumpSet[Int.random(in: 0 ... 48)], at: itemCount)
-					//print(playList[itemCount])
+					playList.insert(bumpSet[Int.random(in: 0 ... totalBump)], at: itemCount)
 					counting = 0
 					randomInterval = Int.random(in: 3 ... 5)
 				}
@@ -431,34 +429,35 @@ class MusicPlayerObject: NSObject{
 		let station = StationListInfo.getStationPath(station: stationSelected)
 		
 		var stationPlayList: [AVPlayerItem] = []
-		//var musicList: [String] = []
-		if station != ""{
+		guard station != "",
+			  let list = UserDefaults.standard.stringArray(forKey: stationSelected.rawValue)
+		else { return stationPlayList  }
+		print(stationSelected)
+		list.forEach { (item) in
 			
-			
-			if let list = UserDefaults.standard.stringArray(forKey: stationSelected.rawValue) {
-				print(stationSelected)
-				list.forEach { (item) in
-					
-					let stringURL = StationListInfo.jetsetradio.rawValue + StationListInfo.stationPath.rawValue + station + item + StationListInfo.fileExtension.rawValue
-					//print(stringURL)
-					if let readyString = stringURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
-						if let validURL = URL(string: readyString){
-							//print(validURL)
-							
-							let playItem = AVPlayerItem.init(url: validURL)
-							
-							stationPlayList.append(playItem)
-							return
-						}
-					}
+			let stringURL = StationListInfo.jetsetradio.rawValue + StationListInfo.stationPath.rawValue + station + item + StationListInfo.fileExtension.rawValue
+			if let readyString = stringURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+				if let validURL = URL(string: readyString){
+					let playItem = AVPlayerItem.init(url: validURL)
+					if stationSelected == .bump { playItem.accessibilityLabel = "bump" }
+					stationPlayList.append(playItem)
+					return
 				}
 			}
 		}
 		
 		
+		
 		return stationPlayList
 	}
 	
+	private func updateHistoryList(track: String){
+		var array = UserDefaults.standard.array(forKey: "MusicHistory") as? [String] ?? []
+		if array.last ?? "" == track || track == "Loading" { return }
+		array.append(track)
+		UserDefaults.standard.setValue(array, forKey: "MusicHistory")
+		NotificationCenter.default.post(name: .init("Update History"), object: nil)
+	}
 	
 }
 

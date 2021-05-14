@@ -38,12 +38,12 @@ class StationListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		self.title = "Stations"
 		self.navigationController?.navigationBar.barStyle = .black
 		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
 		
 		self.addLeftBarButtonItem(image: UIImage.init(named: "closeButton"), selector: #selector(closeStationList))
 		
-		self.title = "Stations"
 		
 		tableView.delegate = self
 		tableView.dataSource = self

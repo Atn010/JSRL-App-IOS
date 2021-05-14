@@ -29,6 +29,7 @@
 		FBA5AB242131526200684308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA5AB222131526200684308 /* LaunchScreen.storyboard */; };
 		FBB95CEA218971280086CD32 /* StationListCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB95CE9218971280086CD32 /* StationListCreator.swift */; };
 		FBEA431821ACDECD003BA479 /* StationListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA431721ACDECD003BA479 /* StationListInfo.swift */; };
+		FBFC034E264ECF4C00DA7B3D /* MusicHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFC034D264ECF4C00DA7B3D /* MusicHistoryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		FBB95CE9218971280086CD32 /* StationListCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListCreator.swift; sourceTree = "<group>"; };
 		FBEA431721ACDECD003BA479 /* StationListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListInfo.swift; sourceTree = "<group>"; };
 		FBF25F28219E7A24006F9217 /* JSRL IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JSRL IOS.entitlements"; sourceTree = "<group>"; };
+		FBFC034D264ECF4C00DA7B3D /* MusicHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHistoryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				FB9E9BED2187F40F00066A18 /* Utility */,
 				FB5739072186C0B6009C3970 /* MusicPlayer */,
 				FBE12E5021A452DA00BA8AA0 /* PlayerVC */,
+				FBFC034C264ECF1600DA7B3D /* MusicHistory */,
 				FB5739062186C0A7009C3970 /* StationList */,
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
 				FB4AA271213E24F0009B62AD /* Model */,
@@ -217,6 +220,14 @@
 				FBA5AB1B2131526000684308 /* PlayerVC.swift */,
 			);
 			path = PlayerVC;
+			sourceTree = "<group>";
+		};
+		FBFC034C264ECF1600DA7B3D /* MusicHistory */ = {
+			isa = PBXGroup;
+			children = (
+				FBFC034D264ECF4C00DA7B3D /* MusicHistoryVC.swift */,
+			);
+			path = MusicHistory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				FB51A45B264CBE1300992721 /* StationListViewController.swift in Sources */,
 				FBA5AB1A2131526000684308 /* AppDelegate.swift in Sources */,
 				FB5BDA3D218BE21700CCE20D /* MusicFile.swift in Sources */,
+				FBFC034E264ECF4C00DA7B3D /* MusicHistoryVC.swift in Sources */,
 				FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */,
 				FB51A45E264D6B9B00992721 /* navbarButtons.swift in Sources */,
 				FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */,

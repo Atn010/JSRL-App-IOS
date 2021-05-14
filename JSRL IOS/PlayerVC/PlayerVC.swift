@@ -12,7 +12,7 @@ class PlayerVC: UIViewController {
 	
 	// MARK: - Object
 	let musicPlayer = MusicPlayerObject.shared
-	let musicPlayerPageTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.1)!)
+	let musicPlayerPageTimer = RepeatingTimer(timeInterval: TimeInterval.init(exactly: 0.2)!)
 	
 	
 	// MARK: - Outlet
@@ -143,7 +143,7 @@ class PlayerVC: UIViewController {
 	}
 	
 	@objc func openHistory(){
-		let vc = StationListViewController.init()
+		let vc = MusicHistoryVC.init()
 		vc.modalTransitionStyle = .coverVertical
 		self.present(UINavigationController.init(rootViewController: vc), animated: true, completion: nil)
 		
