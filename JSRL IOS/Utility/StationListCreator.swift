@@ -29,8 +29,8 @@ class StationListCreator{
 		
 		soundtrackStationSet.append(prepareStations(name: .classic))
 		soundtrackStationSet.append(prepareStations(name: .future))
-		soundtrackStationSet.append(prepareStations(name: .garage))
 		soundtrackStationSet.append(prepareStations(name: .ultraRemixes))
+		soundtrackStationSet.append(prepareStations(name: .garage))
 		
 		return soundtrackStationSet
 	}
@@ -39,12 +39,12 @@ class StationListCreator{
 		var gangStationSet: [MusicStation] = []
 		
 		gangStationSet.append(prepareStations(name: .ggs))
-		gangStationSet.append(prepareStations(name: .poisonJam))
-		
 		gangStationSet.append(prepareStations(name: .noiseTanks))
-		gangStationSet.append(prepareStations(name: .loveShockers))
 		
+		gangStationSet.append(prepareStations(name: .poisonJam))
 		gangStationSet.append(prepareStations(name: .rapid99))
+		
+		gangStationSet.append(prepareStations(name: .loveShockers))
 		gangStationSet.append(prepareStations(name: .theImmortals))
 		
 		gangStationSet.append(prepareStations(name: .doomRiders))

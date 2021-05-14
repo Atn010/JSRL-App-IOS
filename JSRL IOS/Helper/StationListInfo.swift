@@ -143,51 +143,51 @@ public enum StationListInfo: String {
 	// Station Description
 	enum Desc: String {
 		//Soundtrack
-		case classic = "Classic"
-		case future = "Future"
-		case garage = "Garage"
-		case ultraRemixes = "Ultra Remixes"
+		case classic = "Plays the Original Jet Set Radio soundtrack!"
+		case future = "Plays the Jet Set Radio Futuresoundtrack!"
+		case garage = "Nothing but chill city vibes to keep things cool."
+		case ultraRemixes = "New takes on past and future classics!"
 		
 		//Seasonal
-		case summer = "Summer"
-		case christmas = "Christmas"
-		case halloween = "Halloween"
-		case snowfi = "snowfi"
+		case summer = "Chill vibes to keep you cool for the summer."
+		case christmas = "Listen to some great tunes to get you into the holiday spirit, yo!"
+		case halloween = "Get into the spooktacular spirit with these tunes!"
+		case snowfi = "Relaxing & chill holday music vibes."
 		
 		//Gang
-		case ggs = "GG's"
-		case poisonJam = "Poison Jam"
-		case noiseTanks = "Noise Tanks"
-		case loveShockers = "Love Shockers"
-		case rapid99 = "Rapid 99"
-		case theImmortals = "The Immortals"
-		case doomRiders = "Doom Riders"
-		case goldenRhinos = "Golden Rhinos"
+		case ggs = "Funky energetic beats with positive vibes!"
+		case poisonJam = "Grunge rock & metal with that monster sound!"
+		case noiseTanks = "Digital & electronic sounds to fry your brain!"
+		case loveShockers = "Twisted, heartbroken, & love-sick ladies!"
+		case rapid99 = "Upbeat & chill female tunes!"
+		case theImmortals = "Ethnic music & balkan beats!"
+		case doomRiders = "Biker music & classic rock!"
+		case goldenRhinos = "Hip-Hop beats with deep classical rhythms of power and authority!"
 		
 		//Playlist
-		case ganjah = "Ganjah"
-		case lofi = "Lo-Fi"
-		case chiptunes = "Chiptunes"
-		case retroRemix = "Retro Remix"
-		case classical = "Classical Remix"
-		case revolution = "Revolution"
-		case endOfDays = "End Of Days"
+		case ganjah = "Reggae beats to chill, relax & reflect."
+		case lofi = "Relaxing and chill vibes."
+		case chiptunes = "Electronic music made using sound chips or synthesizers in arcade machines, computer & video game consoles."
+		case retroRemix = "Past classics remixed for the future."
+		case classical = "Songs of wealth, power & sophistication."
+		case revolution = "The future is one big blank slate... and it's up to you to decide what goes on in it."
+		case endOfDays = "Visions of the dark future that awaits if rudies fail to save the future."
 		
 		//Event
-		case silvaGunner = "SilvaGunner x JSR"
-		case futureGeneration = "Future Generation"
-		case jetMashRadio = "Jet Mash Radio"
+		case silvaGunner = "Featuring the hit tracks from the Silva Gunner KFAD Tournament (2020) & On Air Bootleg Live Stream!"
+		case futureGeneration = "A JSRF-inspired tribute album with tracks by Sashko Naganuma."
+		case jetMashRadio = "A mashyup compilation of Jet Set Radio tracks!!!"
 		
 		//Guest
-		case veraFX = "VeraFX"
-		case djChidow = "DJ Chidow"
+		case veraFX = "Music by VefaFX"
+		case djChidow = "Music by DJ Chidow"
 		
 		//Other Games
-		case hover = "Hover"
-		case butterflies = "Butterflies"
-		case ollieKing = "Ollie King"
-		case crazyTaxi = "Crazy Taxi"
-		case toeJamAndEarl = "Toe Jam and Earl"
+		case hover = "Plays the soundtrack from game."
+		case butterflies = "Plays the soundtrack from the fan tribute game."
+		case ollieKing = "Plays the official soundtrack from the arcade game!"
+		case crazyTaxi = "Plays the crazy soundtrack from the arcade game!"
+		case toeJamAndEarl = "Get `Back Into The Groove` with the official soundtrack!"
 		
 		//Shuffle
 		case shuffle = "All Stations, Ready"

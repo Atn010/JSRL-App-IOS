@@ -17,20 +17,8 @@ class StationListViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 	// MARK: - Variable
-	var toMusicPlayer = true
-	var isPlayingSomething = false
 	let musicStationList = StationListCreator().StationList()
-	
-	var trackName = ""
-	var trackStation: StationListInfo.Name = .classic
-	var trackLogo:UIImage = UIImage.init(named: "Preloadlogo")!
-	var bgColor = UIColor.black
-	var acColor = UIColor.black
-	var opColor = UIColor.white
-	
 	var playingAt:IndexPath?
-	
-	let shuffleList: [StationListInfo.Name] = StationListInfo.shuffleList
 	
 	init() {
 		super.init(nibName: "StationListViewController", bundle: Bundle.init(for: StationListViewController.self))
@@ -42,6 +30,9 @@ class StationListViewController: UIViewController {
 	
 	
 	// MARK: - Constant
+	let cellBGColor = UIColor.init(hexString: "#171717")
+	let cellTitleColor = UIColor.init(hexString: "#DDDDDD")
+	let cellSubtitleColor = UIColor.init(hexString: "#CCCCCC")
 	
 	
 	override func viewDidLoad() {
@@ -68,32 +59,15 @@ class StationListViewController: UIViewController {
 		return true
 	}
 	
-	@IBAction func ShuffleallStation(_ sender: UIButton) {
-		
-		trackStation = StationListInfo.Name.shuffle
-		bgColor = .black
-		acColor = .blue
-		
-		trackLogo = UIImage.init(named: StationListInfo.Name.classic.rawValue)!
-		
-		DispatchQueue.main.async {
-			self.musicPlayer.userCommandAudioPlaying = false
-			self.musicPlayer.playMusic(station: self.shuffleList)
-		}
-	}
 	
 }
 
 extension StationListViewController: UITableViewDelegate, UITableViewDataSource{
-	
-	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return UITableView.automaticDimension
-	}
-	
+/*
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableView.automaticDimension
 	}
-	
+	*/
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return musicStationList.count
 	}
@@ -106,71 +80,43 @@ extension StationListViewController: UITableViewDelegate, UITableViewDataSource{
 		tableView.deselectRow(at: indexPath, animated: true)
 		
 		if playingAt != indexPath{
-			
-			trackStation = musicStationList[indexPath.section].musicStation[indexPath.row].name
-			bgColor = .black
-			acColor = musicStationList[indexPath.section].musicStation[indexPath.row].accent
-			playingAt = indexPath
-			
-			
-			trackLogo = musicStationList[indexPath.section].musicStation[indexPath.row].logo
-			
-			
-			
+			let station = musicStationList[indexPath.section].musicStation[indexPath.row].name
 			self.musicPlayer.userCommandAudioPlaying = false
 			DispatchQueue.main.async {
-				if self.trackStation == .shuffle{
-					self.musicPlayer.playMusic(station: self.shuffleList)
+				if station == .shuffle{
+					self.musicPlayer.playMusic(station: StationListInfo.shuffleList)
 				} else {
-					self.musicPlayer.playMusic(station: [self.trackStation])
+					self.musicPlayer.playMusic(station: [station])
 				}
-				
-				
 			}
-			
-			//initMiniPlayer(trackName: "Tuning in to: \(trackStation) Station, Please Wait", bgColor: bgColor, acColor: acColor)
-			
-			
-			tableView.reloadData()
-			self.dismiss(animated: true, completion: nil)
 		}
+		self.dismiss(animated: true, completion: nil)
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		
 		return musicStationList[section].group
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		//let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MusicStationCell
 		let cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "Cell")
 		
-		cell.backgroundColor = UIColor.init(hexString: "#171717")
-		
+		cell.backgroundColor = cellBGColor
 		cell.imageView?.image = musicStationList[indexPath.section].musicStation[indexPath.row].logo
 		
 		cell.textLabel?.text = musicStationList[indexPath.section].musicStation[indexPath.row].name.rawValue
-		cell.textLabel?.textColor = UIColor.init(hexString: "#DDDDDD")
+		cell.textLabel?.textColor = cellTitleColor
+		cell.detailTextLabel?.numberOfLines = 1
 		
 		cell.detailTextLabel?.text = musicStationList[indexPath.section].musicStation[indexPath.row].desc.rawValue
-		cell.detailTextLabel?.textColor = UIColor.init(hexString: "#CCCCCC")
-		/*
-		cell.stationImage.image = musicStationList[indexPath.section].musicStation[indexPath.row].logo
-		cell.stationImage.backgroundColor = .black
+		cell.detailTextLabel?.textColor = cellSubtitleColor
+		cell.detailTextLabel?.numberOfLines = 1
 		
-		cell.stationName.text = musicStationList[indexPath.section].musicStation[indexPath.row].name.rawValue
-		cell.stationPlayingIndicator.animating = false
-		cell.stationPlayingIndicator.alpha = 0
 		
-		if let playAt = playingAt{
-			if playAt == indexPath{
-				cell.stationPlayingIndicator.alpha = 1
-				cell.stationPlayingIndicator.animating = true
-			}
+		
+		if musicStationList[indexPath.section].musicStation[indexPath.row].name == musicPlayer.currentStation {
+			self.playingAt = indexPath
+			cell.accessoryType = .checkmark
 		}
-		*/
-		//musicStationList[indexPath.section].MusicStation[indexPath.row].name
-		
 		return cell
 	}
 	

@@ -32,11 +32,13 @@ class PlayerVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		registerNotificationObserver()
 		
 		
 		self.navigationController?.navigationBar.barStyle = .black
 		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
 		self.addRightBarButtonItem(image: UIImage.init(named: "station")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openList))
+		//self.addRightBarButtonItem(image: UIImage.init(named: "history")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openHistory))
 		
 		self.title = musicPlayer.currentStation.rawValue
 		playerControlsBG.backgroundColor = .black
@@ -60,8 +62,6 @@ class PlayerVC: UIViewController {
 			} else {
 				self.musicPlayer.playMusic(station: [station])
 			}
-		} else {
-			self.musicPlayer.playMusic(station: [.classic])
 		}
 		
 		self.initMusicPlayer(trackName: "")
@@ -142,6 +142,13 @@ class PlayerVC: UIViewController {
 		
 	}
 	
+	@objc func openHistory(){
+		let vc = StationListViewController.init()
+		vc.modalTransitionStyle = .coverVertical
+		self.present(UINavigationController.init(rootViewController: vc), animated: true, completion: nil)
+		
+	}
+	
 	@IBAction func playPauseClicked(_ sender: UIButton) {
 		if musicPlayer.userCommandAudioPlaying{
 			musicPlayer.musicPlayer.pause()
@@ -153,16 +160,21 @@ class PlayerVC: UIViewController {
 			musicPlayer.userCommandAudioPlaying = true
 		}
 		controlsUpdater()
-		
-		
 	}
+	
 	@IBAction func skipNextClicked(_ sender: UIButton) {
 		musicPlayer.playNextItem()
 		scrollingTrackName.destroy()
 	}
-	
-	
-	
+}
+
+extension PlayerVC {
+	func registerNotificationObserver() {
+		NotificationCenter.default.addObserver(forName: .init("First Run Update"), object: nil, queue: .main) { [weak self] notification in
+			guard let self = self else { return }
+			self.musicPlayer.playMusic(station: [.classic])
+		}
+	}
 }
 
 extension UIViewController {

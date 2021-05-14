@@ -41,7 +41,7 @@ class ListUpdater: NSObject {
 		
 	}
 	
-	private func downloadList(fileUrl:String, fileKey:String){
+	private func downloadList(fileUrl: String, fileKey: String){
 		let url = URL(string: fileUrl)!
 		var fileList:[String] = []
 		
@@ -71,6 +71,11 @@ class ListUpdater: NSObject {
 						UserDefaults.standard.set(fileList, forKey: fileKey)
 						//print(fileList)
 						
+					}
+					
+					if fileKey == StationListInfo.Name.classic.rawValue,
+					   UserDefaults.standard.object(forKey: "LastPlayed") == nil {
+						NotificationCenter.default.post(name: .init("First Run Update"), object: nil)
 					}
 				}
 				}.resume()
