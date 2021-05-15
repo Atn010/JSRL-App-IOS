@@ -38,7 +38,7 @@ class PlayerVC: UIViewController {
 		self.navigationController?.navigationBar.barStyle = .black
 		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
 		self.addRightBarButtonItem(image: UIImage.init(named: "station")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openList))
-		//self.addRightBarButtonItem(image: UIImage.init(named: "history")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openHistory))
+		self.addRightBarButtonItem(image: UIImage.init(named: "history")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openHistory))
 		
 		self.title = musicPlayer.currentStation.rawValue
 		playerControlsBG.backgroundColor = .black

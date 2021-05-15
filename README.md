@@ -10,31 +10,30 @@ This is a quick project for the iOS after the other app (link below) stopped wor
 
 Do send me a merge/pull request when you have any improvements or bug fixes!
 
+
+## Feature
+- Native Controls
+- Listening History
+- Global Shuffle
+
 ## Prerequisites
 
 - MacOS, preferrably able to run latest version of XCode
 - XCode, preferrably able to run latest version of IOS
-- iPhone, preferrable running latest version of IOS (11 and above)
+- iPhone, preferrable running latest version of IOS (12 and above)
   - please create compatibility with previous versions
 - Apple Developer Account
   - or you can follow <https://9to5mac.com/2016/03/27/how-to-create-free-apple-developer-account-sideload-apps/>
 - Know how to compile and build application to your phone.
 - Know How to use CocoaPod
 
+
 ## TODO
 
-- [ ] Implement prebuffering next item
 - [x] Implement shuffle
   - [ ] Implement selected shuffle
-- [ ] Able to pull mini player up to reveal full player
-- [ ] Vectorized Music Station Logo
 - [ ] Playing seasonal station based on season
-- [ ] Implement Application Customization: Dark & Light Mode for example
 - [ ] Implement Audio Normalization (**Need Help**)
-
-### WARNING
-
-I collect crash report using Crashlytics. Other than that, I don't collect anything else.
 
 #### Details
 

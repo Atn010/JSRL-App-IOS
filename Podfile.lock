@@ -1,16 +1,20 @@
 PODS:
   - SwiftAudioPlayer (5.0.5)
+  - TTGSnackbar (1.10.5)
 
 DEPENDENCIES:
   - SwiftAudioPlayer
+  - TTGSnackbar
 
 SPEC REPOS:
   trunk:
     - SwiftAudioPlayer
+    - TTGSnackbar
 
 SPEC CHECKSUMS:
   SwiftAudioPlayer: 398557539e8727977f1c8bf7ae39fa973a40a279
+  TTGSnackbar: 2bd245d2bbf83639483410273fd936af0b7ba2a9
 
-PODFILE CHECKSUM: 3af1b5d560e0abce34ab561ff0d223faebec4e54
+PODFILE CHECKSUM: 5d13f21a44ff1c24141aac4aa00cd24e83386864
 
 COCOAPODS: 1.10.1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class MusicHistoryVC: UIViewController {
 	
@@ -19,6 +20,8 @@ class MusicHistoryVC: UIViewController {
 	}
 	
 	let tableView = UITableView.init(frame: .null, style: .plain)
+	let cellBGColor = UIColor.init(hexString: "#171717")
+	let cellTitleColor = UIColor.init(hexString: "#DDDDDD")
 	
 	var historyList: [String] = []
 	
@@ -34,14 +37,29 @@ class MusicHistoryVC: UIViewController {
 		
 		self.addLeftBarButtonItem(image: UIImage.init(named: "closeButton"), selector: #selector(closeHistory))
 		
+		let button = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clearHistory))
+		button.tintColor = .white
+		navigationItem.rightBarButtonItem = button
+		
 		self.view.addSubview(tableView)
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.backgroundColor = UIColor.init(hexString: "#111111")
 		
     }
 	
 	@objc func closeHistory(){
 		self.dismiss(animated: true, completion: nil)
+	}
+	
+	
+	@objc func clearHistory(){
+		UserDefaults.standard.setValue(nil, forKey: "MusicHistory")
+		self.historyList = []
+		self.tableView.reloadData()
+		
+		let snackbar = TTGSnackbar(message: "History Cleared", duration: .middle)
+		snackbar.show()
 	}
 	
 	
@@ -53,7 +71,7 @@ class MusicHistoryVC: UIViewController {
 	
 	func updateHistoryList() {
 		DispatchQueue.main.async {
-			self.historyList = UserDefaults.standard.array(forKey: "MusicHistory") as? [String] ?? []
+			self.historyList = (UserDefaults.standard.array(forKey: "MusicHistory") as? [String] ?? []).reversed()
 			self.tableView.reloadData()
 		}
 	}
@@ -75,6 +93,8 @@ extension MusicHistoryVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell.init(style: .default, reuseIdentifier: "Cell")
+		cell.backgroundColor = cellBGColor
+		cell.textLabel?.textColor = cellTitleColor
 		cell.textLabel?.text = historyList[indexPath.row]
 		cell.textLabel?.numberOfLines = 0
 		return cell
@@ -82,7 +102,10 @@ extension MusicHistoryVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		UIPasteboard.general.string = historyList[indexPath.row]
+		let track = historyList[indexPath.row]
+		UIPasteboard.general.string = track
+		let snackbar = TTGSnackbar(message: "\(track)\nTrack Copied", duration: .middle)
+		snackbar.show()
 	}
 	
 	

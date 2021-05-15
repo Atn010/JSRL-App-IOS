@@ -126,14 +126,23 @@ class MusicPlayerObject: NSObject{
 		
 	}
 	
+	public func saveCurrentMusic() {
+		if let currentItem = musicPlayer.currentItem,
+		   currentItem.accessibilityLabel != "bump" {
+			let trackNow = currentTrack
+			self.updateHistoryList(track: trackNow)
+		}
+	}
+	
 	// MARK: - Play Next Media Item
 	func playNextItem(){
 		musicPlayer.pause()
 		
 		if let currentItem = musicPlayer.currentItem,
 		   currentItem.accessibilityLabel != "bump" {
+			let trackNow = currentTrack
 			DispatchQueue.main.async {
-				self.updateHistoryList(track: self.currentTrack)
+				self.updateHistoryList(track: trackNow)
 			}
 		}
 		
@@ -394,7 +403,7 @@ class MusicPlayerObject: NSObject{
 		var itemCount = 0
 		var randomInterval = Int.random(in: 3 ... 5)
 		
-		let totalBump = bumpSet.count
+		let totalBump = bumpSet.count - 1
 		
 		if totalBump != 0 || playList.count != 0 {
 			
