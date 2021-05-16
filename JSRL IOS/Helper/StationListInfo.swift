@@ -18,6 +18,12 @@ public enum StationListInfo: String {
 	static let shuffleList = [
 		StationListInfo.Name.classic,
 		StationListInfo.Name.future,
+		StationListInfo.Name.ultraRemixes,
+		StationListInfo.Name.garage,
+		StationListInfo.Name.summer,
+		StationListInfo.Name.halloween,
+		StationListInfo.Name.christmas,
+		StationListInfo.Name.snowfi,
 		StationListInfo.Name.ggs,
 		StationListInfo.Name.poisonJam,
 		StationListInfo.Name.noiseTanks,
@@ -25,7 +31,24 @@ public enum StationListInfo: String {
 		StationListInfo.Name.rapid99,
 		StationListInfo.Name.theImmortals,
 		StationListInfo.Name.doomRiders,
-		StationListInfo.Name.goldenRhinos
+		StationListInfo.Name.goldenRhinos,
+		StationListInfo.Name.ganjah,
+		StationListInfo.Name.lofi,
+		StationListInfo.Name.chiptunes,
+		StationListInfo.Name.retroRemix,
+		StationListInfo.Name.classical,
+		StationListInfo.Name.revolution,
+		StationListInfo.Name.endOfDays,
+		StationListInfo.Name.silvaGunner,
+		StationListInfo.Name.futureGeneration,
+		StationListInfo.Name.jetMashRadio,
+		StationListInfo.Name.veraFX,
+		StationListInfo.Name.djChidow,
+		StationListInfo.Name.hover,
+		StationListInfo.Name.butterflies,
+		StationListInfo.Name.ollieKing,
+		StationListInfo.Name.crazyTaxi,
+		StationListInfo.Name.toeJamAndEarl
 	]
 	
 	// Station Playlist Path

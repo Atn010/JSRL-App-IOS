@@ -80,7 +80,7 @@ extension StationListViewController: UITableViewDelegate, UITableViewDataSource{
 		tableView.deselectRow(at: indexPath, animated: true)
 		
 		if playingAt != indexPath{
-			let station = musicStationList[indexPath.section].musicStation[indexPath.row].name
+			let station = musicStationList[safe: indexPath.section]?.musicStation[safe: indexPath.row]?.name ?? .shuffle
 			self.musicPlayer.userCommandAudioPlaying = false
 			DispatchQueue.main.async {
 				if station == .shuffle{

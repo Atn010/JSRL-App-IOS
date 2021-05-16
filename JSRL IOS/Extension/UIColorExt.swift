@@ -9,6 +9,16 @@
 import UIKit
 import ImageIO
 
+extension Array {
+	public subscript(safe index: Int) -> Element? {
+		guard index >= 0, index < endIndex else {
+			return nil
+		}
+
+		return self[index]
+	}
+}
+
 extension UIColor {
 	convenience init(red: Int, green: Int, blue: Int) {
 		assert(red >= 0 && red <= 255, "Invalid red component")

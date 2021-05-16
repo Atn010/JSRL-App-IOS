@@ -345,7 +345,7 @@ class MusicPlayerObject: NSObject{
 		//let metadata = JSRLSongMetadata(currentTrack!)
 		var data:[String] = currentTrack.components(separatedBy: " - ")
 		if data.count == 1{
-			data.append("Professor K")
+			data.append("DJ Professor K")
 		}
 		
 		let MPLogo = logo
@@ -353,8 +353,8 @@ class MusicPlayerObject: NSObject{
 		let artwork = MPMediaItemArtwork(boundsSize: CGSize(), requestHandler: {size in MPLogo})
 		
 		MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-			MPMediaItemPropertyTitle: data[0],
-			MPMediaItemPropertyArtist: data[1],
+			MPMediaItemPropertyTitle: data[safe: 0] ?? "Bump",
+			MPMediaItemPropertyArtist: data[safe: 1] ?? "DJ Professor K",
 			MPMediaItemPropertyArtwork: artwork,
 			MPNowPlayingInfoPropertyPlaybackRate: (userCommandAudioPlaying ? 1 : 0),
 			MPNowPlayingInfoPropertyIsLiveStream: true
