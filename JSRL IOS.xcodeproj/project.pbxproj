@@ -11,7 +11,6 @@
 		FB1ED0D6218AE3AE0008289E /* MusicPlayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */; };
 		FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1ED0D7218AE4C90008289E /* static.mp3 */; };
 		FB1ED0DA218AECBE0008289E /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */; };
-		FB51A458264CB86100992721 /* Station.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB51A457264CB86100992721 /* Station.storyboard */; };
 		FB51A45B264CBE1300992721 /* StationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51A459264CBE1300992721 /* StationListViewController.swift */; };
 		FB51A45C264CBE1300992721 /* StationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB51A45A264CBE1300992721 /* StationListViewController.xib */; };
 		FB51A45E264D6B9B00992721 /* navbarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51A45D264D6B9B00992721 /* navbarButtons.swift */; };
@@ -39,7 +38,6 @@
 		FB1ED0D5218AE3AE0008289E /* MusicPlayerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerObject.swift; sourceTree = "<group>"; };
 		FB1ED0D7218AE4C90008289E /* static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = static.mp3; sourceTree = "<group>"; };
 		FB1ED0D9218AECBE0008289E /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
-		FB51A457264CB86100992721 /* Station.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Station.storyboard; sourceTree = "<group>"; };
 		FB51A459264CBE1300992721 /* StationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListViewController.swift; sourceTree = "<group>"; };
 		FB51A45A264CBE1300992721 /* StationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationListViewController.xib; sourceTree = "<group>"; };
 		FB51A45D264D6B9B00992721 /* navbarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navbarButtons.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				FBA5AB192131526000684308 /* AppDelegate.swift */,
 				FB4AA271213E24F0009B62AD /* Model */,
 				FBA5AB1D2131526000684308 /* Main.storyboard */,
-				FB51A457264CB86100992721 /* Station.storyboard */,
 				FBA5AB202131526200684308 /* Assets.xcassets */,
 				FBA5AB222131526200684308 /* LaunchScreen.storyboard */,
 				FBA5AB252131526200684308 /* Info.plist */,
@@ -304,7 +301,6 @@
 				FBA5AB212131526200684308 /* Assets.xcassets in Resources */,
 				FB1ED0D8218AE4CA0008289E /* static.mp3 in Resources */,
 				FBA5AB1F2131526000684308 /* Main.storyboard in Resources */,
-				FB51A458264CB86100992721 /* Station.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,19 +515,21 @@
 			baseConfigurationReference = 1EA060106008A25C9921DF37 /* Pods-JSRL IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "JSRL IOS/JSRL IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 017;
+				CURRENT_PROJECT_VERSION = 018;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W7VX669QKF;
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.17;
+				MARKETING_VERSION = 0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atn010.JSRL-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -542,18 +540,20 @@
 			baseConfigurationReference = 1E21D3887607B01322C75979 /* Pods-JSRL IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "JSRL IOS/JSRL IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 017;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 018;
+				DEVELOPMENT_TEAM = W7VX669QKF;
 				INFOPLIST_FILE = "JSRL IOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.17;
+				MARKETING_VERSION = 0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.atn010.JSRL-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

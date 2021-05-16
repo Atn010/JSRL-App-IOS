@@ -25,8 +25,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZS-bl-ZW8">
                                 <rect key="frame" x="0.0" y="242.5" width="320" height="197.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Oei-0L-xcV">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Oei-0L-xcV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="141.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NLM-wU-RZG">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -51,7 +51,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="15P-j4-Hs4">
-                                                <rect key="frame" x="40" y="120" width="240" height="69.5"/>
+                                                <rect key="frame" x="40" y="72" width="240" height="69.5"/>
                                                 <subviews>
                                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZK-aH-Lcz">
                                                         <rect key="frame" x="0.0" y="0.0" width="69.5" height="69.5"/>
@@ -99,7 +99,7 @@
                                 <color key="backgroundColor" red="1" green="0.000832612335216254" blue="0.18144577741622925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="995" constant="220" id="1Ed-Is-psp"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="Oei-0L-xcV" secondAttribute="bottom" id="9rX-Wo-85h"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Oei-0L-xcV" secondAttribute="bottom" constant="48" id="9rX-Wo-85h"/>
                                     <constraint firstItem="Oei-0L-xcV" firstAttribute="leading" secondItem="iZS-bl-ZW8" secondAttribute="leading" id="MAD-VC-8WI"/>
                                     <constraint firstItem="Oei-0L-xcV" firstAttribute="top" secondItem="iZS-bl-ZW8" secondAttribute="firstBaseline" id="Qza-mb-0PL"/>
                                     <constraint firstAttribute="trailing" secondItem="Oei-0L-xcV" secondAttribute="trailing" id="cZQ-cm-EPk"/>
@@ -163,7 +163,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jiu-Op-Qjo" customClass="CustomNavigationTransition" customModule="JSRL_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NkB-kP-izz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

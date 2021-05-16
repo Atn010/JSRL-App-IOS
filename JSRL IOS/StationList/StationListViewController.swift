@@ -18,6 +18,7 @@ class StationListViewController: UIViewController {
 	
 	// MARK: - Variable
 	let musicStationList = StationListCreator().StationList()
+	var stationList = StationListCreator().StationList()
 	var playingAt:IndexPath?
 	
 	init() {
@@ -31,9 +32,9 @@ class StationListViewController: UIViewController {
 	
 	// MARK: - Constant
 	let cellBGColor = UIColor.init(hexString: "#171717")
-	let cellTitleColor = UIColor.init(hexString: "#DDDDDD")
-	let cellSubtitleColor = UIColor.init(hexString: "#CCCCCC")
-	
+	let cellTitleColor = UIColor.init(hexString: "#FFFFFF")
+	let cellSubtitleColor = UIColor.init(hexString: "#B4B4B4")
+	let searchController = UISearchController(searchResultsController: nil)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -44,6 +45,26 @@ class StationListViewController: UIViewController {
 		
 		self.addLeftBarButtonItem(image: UIImage.init(named: "closeButton"), selector: #selector(closeStationList))
 		
+		searchController.hidesNavigationBarDuringPresentation = false
+		searchController.searchResultsUpdater = self
+		searchController.obscuresBackgroundDuringPresentation = false
+		searchController.searchBar.placeholder = "Find your Station"
+		searchController.becomeFirstResponder()
+		searchController.searchBar.isTranslucent = false
+		
+		let textFieldInsideUISearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+
+		textFieldInsideUISearchBar?.backgroundColor = UIColor.init(hexString: "#333333")
+
+		
+		let backgroundView = textFieldInsideUISearchBar?.subviews.first
+			backgroundView?.backgroundColor = UIColor.init(hexString: "#333333")
+		backgroundView?.subviews.forEach({ $0.removeFromSuperview() })
+		definesPresentationContext = true
+		UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.init(hexString: "#FFFFFF")
+		
+		navigationItem.searchController = searchController
+		navigationController?.navigationBar.backgroundColor = .black
 		
 		tableView.delegate = self
 		tableView.dataSource = self
@@ -69,18 +90,18 @@ extension StationListViewController: UITableViewDelegate, UITableViewDataSource{
 	}
 	*/
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return musicStationList.count
+		return stationList.count
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return musicStationList[section].musicStation.count
+		return stationList[section].musicStation.count
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		
 		if playingAt != indexPath{
-			let station = musicStationList[safe: indexPath.section]?.musicStation[safe: indexPath.row]?.name ?? .shuffle
+			let station = stationList[safe: indexPath.section]?.musicStation[safe: indexPath.row]?.name ?? .shuffle
 			self.musicPlayer.userCommandAudioPlaying = false
 			DispatchQueue.main.async {
 				if station == .shuffle{
@@ -94,26 +115,26 @@ extension StationListViewController: UITableViewDelegate, UITableViewDataSource{
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return musicStationList[section].group
+		return stationList[section].group
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "Cell")
 		
 		cell.backgroundColor = cellBGColor
-		cell.imageView?.image = musicStationList[indexPath.section].musicStation[indexPath.row].logo
+		cell.imageView?.image = stationList[indexPath.section].musicStation[indexPath.row].logo
 		
-		cell.textLabel?.text = musicStationList[indexPath.section].musicStation[indexPath.row].name.rawValue
+		cell.textLabel?.text = stationList[indexPath.section].musicStation[indexPath.row].name.rawValue
 		cell.textLabel?.textColor = cellTitleColor
 		cell.detailTextLabel?.numberOfLines = 1
 		
-		cell.detailTextLabel?.text = musicStationList[indexPath.section].musicStation[indexPath.row].desc.rawValue
+		cell.detailTextLabel?.text = stationList[indexPath.section].musicStation[indexPath.row].desc.rawValue
 		cell.detailTextLabel?.textColor = cellSubtitleColor
 		cell.detailTextLabel?.numberOfLines = 1
 		
 		
 		
-		if musicStationList[indexPath.section].musicStation[indexPath.row].name == musicPlayer.currentStation {
+		if stationList[indexPath.section].musicStation[indexPath.row].name == musicPlayer.currentStation {
 			self.playingAt = indexPath
 			cell.accessoryType = .checkmark
 		}
@@ -121,4 +142,24 @@ extension StationListViewController: UITableViewDelegate, UITableViewDataSource{
 	}
 	
 	
+}
+
+extension StationListViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+	func updateSearchResults(for searchController: UISearchController) {
+		stationList = musicStationList
+		if let searchText = searchController.searchBar.text,
+				  !searchText.isBlank{
+			
+			for item in stationList {
+				let filtered = item.musicStation.filter { station in
+					return station.name.rawValue.contains(searchText)
+						|| station.desc.rawValue.contains(searchText)
+				}
+				
+				stationList.removeFirst()
+				if !filtered.isEmpty { stationList.append(.init(group: item.group, musicStation: filtered)) }
+			}
+		}
+		self.tableView.reloadData()
+	}
 }

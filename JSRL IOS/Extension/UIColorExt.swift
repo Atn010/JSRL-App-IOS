@@ -19,6 +19,20 @@ extension Array {
 	}
 }
 
+extension Optional where Wrapped == String {
+	var isBlank: Bool {
+		return self?.isBlank ?? true
+	}
+}
+
+
+extension String {
+	var isBlank: Bool {
+		return allSatisfy({ $0.isWhitespace })
+	}
+}
+
+
 extension UIColor {
 	convenience init(red: Int, green: Int, blue: Int) {
 		assert(red >= 0 && red <= 255, "Invalid red component")

@@ -406,7 +406,7 @@ class MusicPlayerObject: NSObject{
 		let totalBump = bumpSet.count - 1
 		
 		if totalBump != 0 || playList.count != 0 {
-			
+			if totalBump < 0 { return playList }
 			playList.insert(bumpSet[Int.random(in: 0 ... totalBump)], at: 0)
 			while itemCount < playList.count {
 				counting += 1

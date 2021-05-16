@@ -41,8 +41,8 @@ class PlayerVC: UIViewController {
 		self.addRightBarButtonItem(image: UIImage.init(named: "history")?.withRenderingMode(.alwaysTemplate), tintColor: .white, selector: #selector(openHistory))
 		
 		self.title = musicPlayer.currentStation.rawValue
-		playerControlsBG.backgroundColor = .black
-		playerControlsBGExtra.backgroundColor = .black
+		playerControlsBG.backgroundColor = UIColor.init(hexString: "#111111")
+		playerControlsBGExtra.backgroundColor = UIColor.init(hexString: "#111111")
 		initMusicPlayer(trackName: "")
 		
 		musicPlayerPageTimer.eventHandler = {
@@ -65,7 +65,8 @@ class PlayerVC: UIViewController {
 		}
 		
 		self.initMusicPlayer(trackName: "")
-		
+		playPauseButton.tintColor = UIColor.init(hexString: "#FFFFFF")
+		skipNextButton.tintColor = UIColor.init(hexString: "#4B4B4D")
 	}
 	
 	func musicChecker(){
@@ -115,11 +116,11 @@ class PlayerVC: UIViewController {
 	
 	func controlsUpdater() {
 		if musicPlayer.userCommandAudioPlaying{
-			playPauseButton.setImage(UIImage.init(named: "LPause"), for: .normal)
+			playPauseButton.setImage(UIImage.init(named: "LPause")?.withRenderingMode(.alwaysTemplate), for: .normal)
 		} else {
-			playPauseButton.setImage(UIImage.init(named: "Play"), for: .normal)
+			playPauseButton.setImage(UIImage.init(named: "Play")?.withRenderingMode(.alwaysTemplate), for: .normal)
 		}
-		skipNextButton.setImage(UIImage.init(named: "SkipNext"), for: .normal)
+		skipNextButton.setImage(UIImage.init(named: "SkipNext")?.withRenderingMode(.alwaysTemplate), for: .normal)
 		
 		
 	}
@@ -130,7 +131,10 @@ class PlayerVC: UIViewController {
 		self.view.backgroundColor = .black
 		self.title = musicPlayer.currentStation.rawValue
 		self.stationLogo.image = StationListInfo.getStationImage(station: musicPlayer.currentStation)
-		trackProgressBar.tintColor = StationListInfo.getStationAccent(station: musicPlayer.currentStation)
+		
+		let accent = StationListInfo.getStationAccent(station: musicPlayer.currentStation)
+		trackProgressBar.tintColor = accent
+		trackProgressBar.backgroundColor = accent.darker()
 		
 		scrollingTrackName.setup(text: trackName, TextColor: UIColor.white)
 		

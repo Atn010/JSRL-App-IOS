@@ -34,6 +34,7 @@ class MusicHistoryVC: UIViewController {
 		self.title = "History"
 		self.navigationController?.navigationBar.barStyle = .black
 		self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+		self.navigationController?.navigationBar.backgroundColor = .black
 		
 		self.addLeftBarButtonItem(image: UIImage.init(named: "closeButton"), selector: #selector(closeHistory))
 		
